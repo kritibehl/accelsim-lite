@@ -1,0 +1,6 @@
+id,op,src0,src1,dst,is_mem,mem_bytes
+0,ADD,1,2,3,0,0
+1,MATMUL,3,4,5,0,0
+2,LOAD,0,0,6,1,64
+3,ADD,6,3,7,0,0
+4,ADD,7,1,8,0,0
