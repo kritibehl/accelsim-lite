@@ -65,6 +65,7 @@ accelsim-lite/
 ├── traces/                # Sample instruction traces
 ├── docs/                  # Architecture and design notes
 └── CMakeLists.txt         # CMake build configuration
+```
 
 ## Build
 AccelSim-Lite uses CMake for build configuration.
@@ -72,6 +73,26 @@ AccelSim-Lite uses CMake for build configuration.
 ```bash
 cmake -S . -B build
 cmake --build build -j
+```
+
+## Run Tests
+Unit tests validate correctness, ordering guarantees, and determinism.
+
+```bash
+ctest --test-dir build --output-on-failure
+```
+
+Test coverage includes:
+- FIFO queue behavior
+- Instruction lifecycle state transitions
+- Deterministic execution across repeated runs
+
+## Run the Simulator
+Run the simulator with a sample instruction trace:
+
+```bash
+./build/accelsim_cli traces/sample_trace.csv build/trace_out.csv
+```
 
 
 
