@@ -44,6 +44,7 @@ This project is designed to highlight:
 
 ## Project Structure
 
+```text
 accelsim-lite/
 ├── include/accelsim/      # Public interfaces and core data structures
 ├── src/                   # Core simulation implementation
@@ -61,6 +62,5 @@ AccelSim-Lite uses CMake for build configuration.
 ```bash
 cmake -S . -B build
 cmake --build build -j
-
 
 
