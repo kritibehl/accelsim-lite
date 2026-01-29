@@ -45,14 +45,13 @@ This project is designed to highlight:
 ## Project Structure
 
 accelsim-lite/
-├── include/accelsim/ Public interfaces and core data structures
-├── src/ Core simulation implementation
-├── tests/ GoogleTest unit tests
-├── tools/ Trace analysis and helper scripts
-├── traces/ Sample instruction traces
-├── docs/ Architecture and design notes
-└── CMakeLists.txt CMake build configuration
-
+├── include/accelsim/      # Public interfaces and core data structures
+├── src/                   # Core simulation implementation
+├── tests/                 # GoogleTest unit tests
+├── tools/                 # Trace analysis and helper scripts
+├── traces/                # Sample instruction traces
+├── docs/                  # Architecture and design notes
+└── CMakeLists.txt         # CMake build configuration
 
 ---
 
@@ -62,5 +61,6 @@ AccelSim-Lite uses CMake for build configuration.
 ```bash
 cmake -S . -B build
 cmake --build build -j
+
 
 
