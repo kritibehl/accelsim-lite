@@ -2,14 +2,14 @@
 Deterministic CPU / Accelerator Functional Simulator (C++)
 
 AccelSim-Lite is a deterministic, instruction-level functional simulator for a simplified CPU / ML-accelerator pipeline.  
-It is designed to model instruction flow, scheduling, execution latency and memory behavior with a strong emphasis on correctness, reproducibility and testability.
+It is designed to model instruction flow, scheduling, execution latency, and memory behavior with a strong emphasis on correctness, reproducibility, and testability.
 
-The simulator is intentionally functional (not cycle-accurate) to focus on system behavior, execution invariants and validation rather than microarchitectural detail.
+The simulator is intentionally functional (not cycle-accurate) to focus on system behavior, execution invariants, and validation rather than microarchitectural detail.
 
 ---
 
 ## Motivation
-Complex systems frequently fail due to subtle ordering bugs, nondeterministic execution and insufficient validation of execution paths.
+Complex systems frequently fail due to subtle ordering bugs, nondeterministic execution, and insufficient validation of execution paths.
 
 AccelSim-Lite was built to:
 - Make execution behavior explicit and inspectable
@@ -19,24 +19,36 @@ AccelSim-Lite was built to:
 ---
 
 ## Key Features
-- Instruction-level functional simulation pipeline  
-  Fetch → Decode → Dispatch → Issue → Execute → Done
-- Deterministic execution  
-  Stable scheduling and tie-breaking with bit-for-bit reproducibility
-- Compute and memory modeling  
-  Compute units with configurable latency and a fixed-latency memory controller
-- Trace-driven simulation  
-  CSV instruction input and structured execution trace output
-- Test-first design  
-  GoogleTest unit tests validating queue semantics, state transitions and determinism across runs
+
+### Instruction-Level Functional Simulation
+- Pipeline stages:
+  - Fetch → Decode → Dispatch → Issue → Execute → Done
+
+### Deterministic Execution
+- Stable scheduling and deterministic tie-breaking
+- Bit-for-bit reproducibility across repeated runs
+
+### Compute and Memory Modeling
+- Compute units with configurable execution latency
+- Fixed-latency memory controller for load and store operations
+
+### Trace-Driven Simulation
+- CSV-based instruction input
+- Structured execution trace output for downstream analysis
+
+### Test-First Design
+- GoogleTest-based unit tests validating:
+  - FIFO queue semantics
+  - Instruction state transitions
+  - Determinism across executions
 
 ---
 
 ## What This Project Demonstrates
-This project is designed to highlight:
-- C++ ownership and lifecycle discipline
+This project is designed to demonstrate:
+- Strong C++ ownership and lifecycle discipline
 - Deterministic system design and reproducibility guarantees
-- Clear separation of concerns across scheduler, compute and memory components
+- Clear separation of concerns across scheduler, compute, and memory components
 - Validation of system invariants rather than only functional outcomes
 - Ability to reason across the hardware–software boundary
 
@@ -54,13 +66,13 @@ accelsim-lite/
 ├── docs/                  # Architecture and design notes
 └── CMakeLists.txt         # CMake build configuration
 
----
-
 ## Build
 AccelSim-Lite uses CMake for build configuration.
 
 ```bash
 cmake -S . -B build
 cmake --build build -j
+
+
 
 
