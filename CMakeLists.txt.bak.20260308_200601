@@ -16,8 +16,8 @@ add_library(accelsim
 )
 target_include_directories(accelsim PUBLIC include)
 
-###add_executable(accelsim_cli src/main.cpp)
-###target_link_libraries(accelsim_cli PRIVATE accelsim)
+add_executable(accelsim_cli src/main.cpp)
+target_link_libraries(accelsim_cli PRIVATE accelsim)
 
 enable_testing()
 add_subdirectory(tests)
@@ -43,4 +43,20 @@ add_executable(accelsim-lite
 target_link_libraries(accelsim-lite PRIVATE accelsim_lite_core)
 
 set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
+
+include(CTest)
+if(BUILD_TESTING)
+  find_package(GTest REQUIRED)
+  include(GoogleTest)
+
+  add_executable(accelsim_lite_tests
+    tests/test_workload_parser.cpp
+    tests/test_determinism.cpp
+    tests/test_compare_mode.cpp
+  )
+
+  target_link_libraries(accelsim_lite_tests PRIVATE accelsim_lite_core GTest::gtest_main)
+  target_compile_features(accelsim_lite_tests PRIVATE cxx_std_17)
+  gtest_discover_tests(accelsim_lite_tests)
+endif()
 # /ACCELSIM_LITE_STAGE2

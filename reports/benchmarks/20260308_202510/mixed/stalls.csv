@@ -1,0 +1,6 @@
+stall_reason,count
+DispatchQueueFull,0
+NoComputeUnit,0
+NoMemoryPort,8
+ReadyQueueFull,0
+WaitingDependency,46

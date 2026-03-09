@@ -1,0 +1,7 @@
+id,op_type,latency,memory_bytes,deps
+1,LOAD,8,64,
+2,LOAD,8,64,
+3,LOAD,8,64,
+4,COMPUTE,2,0,1
+5,STORE,6,64,4
+6,LOAD,8,64,2

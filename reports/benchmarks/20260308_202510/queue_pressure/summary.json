@@ -1,0 +1,11 @@
+{
+  "workload":"queue_pressure",
+  "total_cycles":25,
+  "completed_ops":8,
+  "throughput":0.3200,
+  "average_latency":15.0000,
+  "top_bottleneck":"WaitingDependency",
+  "stage_busy_cycles":{"Decode":2,"Dispatch":13,"Execute":20,"Fetch":1,"Issue":13,"Retire":4},
+  "stall_counts":{"DispatchQueueFull":0,"NoComputeUnit":24,"NoMemoryPort":0,"ReadyQueueFull":0,"WaitingDependency":30},
+  "max_queue_occupancy":{"decode_q":4,"dispatch_q":4,"execute_slots":2,"fetch_q":4,"ready_q":2,"retire_q":2}
+}

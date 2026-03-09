@@ -1,0 +1,7 @@
+queue,max_occupancy
+decode_q,4
+dispatch_q,4
+execute_slots,2
+fetch_q,4
+ready_q,1
+retire_q,1

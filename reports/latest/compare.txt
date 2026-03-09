@@ -1,0 +1,7 @@
+left=compute_heavy
+right=memory_heavy
+cycles_delta=25
+throughput_delta=-0.1938
+avg_latency_delta=13.8333
+left_top_bottleneck=WaitingDependency
+right_top_bottleneck=NoMemoryPort

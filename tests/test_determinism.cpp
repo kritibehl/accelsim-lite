@@ -1,29 +1,29 @@
-#include "accelsim/simulator.h"
 #include <gtest/gtest.h>
-#include <fstream>
-#include <sstream>
+#include <vector>
+#include "accelsim/core/simulator.hpp"
+#include "accelsim/model/config.hpp"
+#include "accelsim/model/instruction.hpp"
 
-#ifndef PROJECT_SOURCE_DIR
-#define PROJECT_SOURCE_DIR "."
-#endif
+TEST(Determinism, SameWorkloadSameSummary) {
+    using namespace accelsim;
 
-static std::string slurp(const std::string& path) {
-  std::ifstream in(path);
-  std::stringstream ss;
-  ss << in.rdbuf();
-  return ss.str();
-}
+    std::vector<Instruction> workload = {
+        {1, OpType::Compute, 3, 0, {}, Stage::Fetch, 0, 0, 0},
+        {2, OpType::Load, 8, 64, {}, Stage::Fetch, 0, 0, 0},
+        {3, OpType::Compute, 2, 0, {1, 2}, Stage::Fetch, 0, 0, 0},
+        {4, OpType::Store, 6, 64, {3}, Stage::Fetch, 0, 0, 0}
+    };
 
-TEST(Simulator, DeterministicOutput) {
-  accelsim::SimConfig cfg;
-  accelsim::Simulator sim1(cfg), sim2(cfg);
+    SimulatorConfig config;
+    config.workload_name = "determinism";
 
-  std::string trace = std::string(PROJECT_SOURCE_DIR) + "/traces/sample_trace.csv";
-  sim1.load_trace_csv(trace);
-  sim2.load_trace_csv(trace);
+    const auto a = run_workload(workload, config);
+    const auto b = run_workload(workload, config);
 
-  sim1.run("out1.csv");
-  sim2.run("out2.csv");
-
-  EXPECT_EQ(slurp("out1.csv"), slurp("out2.csv"));
+    EXPECT_EQ(a.stats.total_cycles, b.stats.total_cycles);
+    EXPECT_EQ(a.stats.completed_ops, b.stats.completed_ops);
+    EXPECT_DOUBLE_EQ(a.stats.throughput(), b.stats.throughput());
+    EXPECT_DOUBLE_EQ(a.stats.average_latency(), b.stats.average_latency());
+    EXPECT_EQ(a.stats.stall_counts, b.stats.stall_counts);
+    EXPECT_EQ(a.stats.stage_busy_cycles, b.stats.stage_busy_cycles);
 }

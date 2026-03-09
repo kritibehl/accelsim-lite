@@ -1,0 +1,7 @@
+stage,busy_cycles
+Decode,2
+Dispatch,14
+Execute,10
+Fetch,1
+Issue,0
+Retire,5
