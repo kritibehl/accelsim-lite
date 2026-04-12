@@ -1,0 +1,7 @@
+id,op_type,enqueue_cycle,issue_cycle,complete_cycle
+1,LOAD,0,3,11
+2,LOAD,0,11,19
+3,LOAD,0,19,27
+4,COMPUTE,0,12,14
+5,STORE,1,27,33
+6,LOAD,1,33,41

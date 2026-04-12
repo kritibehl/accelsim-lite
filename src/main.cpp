@@ -1,18 +1,29 @@
-#include "accelsim/simulator.h"
 #include <iostream>
+#include "accelsim/core/simulator.hpp"
+#include "accelsim/core/workload_parser.hpp"
+
+using namespace accelsim;
 
 int main(int argc, char** argv) {
-  if (argc < 3) {
-    std::cerr << "Usage: accelsim_cli <input_trace.csv> <output_trace.csv>\n";
-    return 1;
-  }
+    if (argc < 2) {
+        std::cerr << "Usage: ./accelsim-lite <workload.csv>\n";
+        return 1;
+    }
 
-  accelsim::SimConfig cfg;
-  accelsim::Simulator sim(cfg);
+    const std::string workload_path = argv[1];
 
-  sim.load_trace_csv(argv[1]);
-  int cycles = sim.run(argv[2]);
+    SimulatorConfig config;
+    config.num_compute_units = 2;
+    config.num_memory_ports = 1;
+    config.queue_capacity = 4;
 
-  std::cout << "Done in " << cycles << " cycles\n";
-  return 0;
+    auto workload = parse_workload_csv(workload_path);
+
+    auto result = run_workload(workload, config);
+
+    std::cout << "Throughput: " << result.throughput << "\n";
+    std::cout << "Avg Latency: " << result.average_latency << "\n";
+    std::cout << "Top Bottleneck: " << result.top_bottleneck << "\n";
+
+    return 0;
 }
