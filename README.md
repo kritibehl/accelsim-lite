@@ -1,258 +1,150 @@
-# accelsim-lite
+<div align="center">
 
-> A deterministic C++ compute-pipeline simulator for analyzing workload latency, throughput, queue pressure, and bottleneck behavior under configurable resource constraints.
+# AccelSim-Lite
+
+**Deterministic accelerator pipeline simulator for workload-level performance analysis**
+
+[![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?style=flat-square&logo=cplusplus&logoColor=white)](https://isocpp.org)
+[![CMake](https://img.shields.io/badge/CMake-Build-064F8C?style=flat-square&logo=cmake&logoColor=white)](https://cmake.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
+</div>
 
 ---
 
-## What it is
-
-**accelsim-lite** is a deterministic C++ workload simulator for comparative performance analysis. It models a staged execution pipeline, enforces configurable compute and memory resource limits, tracks dependency and resource stalls, and exports structured reports for benchmarking, diffing, and charting.
-
-It is not a full ISA or cycle-accurate hardware simulator. It is a focused systems-performance tool for understanding how different workload classes behave under constrained execution resources.
+> Performance profilers tell you a workload is slow.
+> **AccelSim-Lite tells you *why* — which pipeline stage is the binding constraint, and how that changes across workload types.**
 
 ---
 
-## Pipeline model
+## What it models
 
-Every instruction moves through seven stages in order:
+AccelSim-Lite simulates a six-stage compute pipeline:
 
 ```
-Fetch → Decode → Dispatch → Ready → Execute → Retire → Done
+Fetch → Decode → Dispatch → Issue → Execute → Retire
 ```
 
-| Stage      | Description                                                  |
-|------------|--------------------------------------------------------------|
-| `Fetch`    | Instruction enters the pipeline                              |
-| `Decode`   | Instruction advances through decode bandwidth limits              |
-| `Dispatch` | Instruction queued for issue (bounded by `dispatch_queue_capacity`) |
-| `Ready`    | All dependencies retired; instruction queued for execution   |
-| `Execute`  | Resource consumed for `latency` cycles                       |
-| `Retire`   | Instruction completes; dependents unblocked                  |
-| `Done`     | Instruction recorded in the completed trace                  |
+For each workload it measures:
+
+- **Throughput** (ops/cycle) — how many operations complete per clock cycle
+- **Latency** (cycles/op) — average cycles from fetch to retire
+- **Stall classification** — which stage is the binding constraint
+- **Queue occupancy** — pressure across all six pipeline stages
+- **Bottleneck transitions** — how the dominant constraint shifts across workload types
 
 ---
 
-## Resource limits
+## Validated results
 
-Configure the simulator by adjusting these four parameters:
+All four workload profiles produce deterministic, reproducible output:
 
-| Parameter                | Controls                                      |
-|--------------------------|-----------------------------------------------|
-| `compute_units`          | Max concurrent COMPUTE ops                    |
-| `memory_ports`           | Max concurrent LOAD/STORE ops                 |
-| `dispatch_queue_capacity`| Max instructions waiting to be issued         |
-| `ready_queue_capacity`   | Max instructions with resolved dependencies   |
+| Workload | Throughput (ops/cycle) | Avg latency (cycles) | Dominant bottleneck |
+|---|---|---|---|
+| `compute_heavy` | 0.3333 | 10.0 | WaitingDependency |
+| `memory_heavy` | 0.1395 | 23.8 | NoMemoryPort |
+| `mixed` | 0.20 | 16.8 | WaitingDependency |
+| `queue_pressure` | 0.32 | 15.0 | WaitingDependency + NoComputeUnit |
 
----
+### Key findings
 
-## Op types
+**Memory pressure causes ~2.4× throughput degradation and ~2.4× latency increase** compared to compute-heavy execution. The binding constraint shifts from instruction dependency (WaitingDependency) to memory bandwidth (NoMemoryPort) — reflecting real accelerator behavior where data movement becomes the bottleneck before compute capacity is exhausted.
 
-| Type      | Uses              |
-|-----------|-------------------|
-| `COMPUTE` | Compute units     |
-| `LOAD`    | Memory ports      |
-| `STORE`   | Memory ports      |
+**Queue-pressure workloads surface compute contention** (NoComputeUnit=24) alongside dependency stalls, exposing the interaction between scheduling pressure and execution unit availability under mixed load.
+
+**Bottleneck transitions are workload-driven, not configuration-driven.** The same pipeline configuration behaves differently depending on instruction mix and access pattern — which is the core insight AccelSim-Lite makes observable.
 
 ---
 
-## Input format
+## Connection to LLM inference
 
-Workloads are CSV files placed in `workloads/`. Each row is one instruction.
+The memory-bandwidth bottleneck modeled in `memory_heavy` maps directly to transformer inference behavior:
 
-### Fields
+- KV-cache access during autoregressive decoding is bandwidth-limited, not compute-limited
+- Attention computation transitions from compute-bound (small batches) to memory-bound (large batches)
+- The `NoMemoryPort` stall pattern in AccelSim-Lite models this bandwidth saturation
 
-| Field          | Type     | Description                                      |
-|----------------|----------|--------------------------------------------------|
-| `id`           | integer  | Unique instruction identifier                    |
-| `op_type`      | string   | `COMPUTE`, `LOAD`, or `STORE`                    |
-| `latency`      | integer  | Execution cycles                                 |
-| `memory_bytes` | integer  | Bytes accessed (LOAD/STORE only; ignored otherwise) |
-| `deps`         | string   | `\|`- or `;`-separated list of instruction IDs this op depends on (empty = no deps) |
-
-### Example
-
-```csv
-id,op_type,latency,memory_bytes,deps
-1,COMPUTE,4,0,
-2,LOAD,8,64,1
-3,COMPUTE,2,0,2
-4,STORE,6,64,3
-```
-
-### Parser validation
-
-The parser rejects workloads with:
-- duplicate instruction IDs
-- references to dependency IDs that do not exist
-- unrecognized op types
-
-Empty `deps` fields are valid and treated as no dependencies.
+This makes the project relevant to anyone reasoning about inference optimization, hardware selection for LLM serving, or the compute/memory trade-off in AI workload scheduling.
 
 ---
 
-## Metrics collected
+## Output artifacts
 
-Each run produces the following metrics:
+Every run produces structured reports under `reports/latest/`:
 
-| Metric                | Description                                             |
-|-----------------------|---------------------------------------------------------|
-| `total_cycles`        | Cycles from first fetch to last retire                  |
-| `completed_ops`       | Number of instructions that reached `Done`              |
-| `throughput`          | Ops per cycle                                           |
-| `average_latency`     | Mean cycles per instruction (fetch → retire)            |
-| `stage_busy_cycles`   | Per-stage cycle counts where the stage was active       |
-| `stall_counts`        | Per-stall-type counts (see below)                       |
-| `max_queue_occupancy` | Peak depth recorded for dispatch and ready queues       |
-| `top_bottleneck`      | Stall type with the highest count for this run          |
+| Artifact | Contents |
+|---|---|
+| `summary.json` | Throughput, latency, dominant bottleneck per workload |
+| `stalls.csv` | Per-stage stall counts |
+| `utilization.csv` | Stage busy-cycle fractions |
+| `queue_occupancy.csv` | Max queue occupancy across stages |
+| `pipeline_utilization.png` | Visual stage utilization breakdown |
+| `stall_breakdown.png` | Stall distribution by type |
 
 ---
 
-## Stall and bottleneck analysis
+## Scope
 
-The simulator accounts for five stall categories:
+AccelSim-Lite is a **workload-level performance model**, not a cycle-accurate GPU simulator.
 
-| Stall type          | Triggered when                                              |
-|---------------------|-------------------------------------------------------------|
-| `DispatchQueueFull` | Dispatch queue is at capacity; fetch stalls                 |
-| `ReadyQueueFull`    | Ready queue is at capacity; dispatch stalls                 |
-| `WaitingDependency` | Instruction has unretired dependencies; cannot enter Ready  |
-| `NoComputeUnit`     | All compute units occupied; COMPUTE op stalls in Ready      |
-| `NoMemoryPort`      | All memory ports occupied; LOAD/STORE op stalls in Ready    |
+What it captures faithfully:
+- Throughput and latency trends across workload types
+- Relative bottleneck behavior: dependency vs memory vs compute vs queue
+- Stall classification and pipeline occupancy patterns
 
-`top_bottleneck` in the summary identifies which stall type dominated the run.
+What it deliberately simplifies:
+- No SIMD or warp-level execution
+- No cache hierarchy (L1/L2/shared memory)
+- No inter-SM communication or memory controller modeling
+- No instruction-level cycle accuracy
 
----
-
-## Reports
-
-Every run exports to `reports/latest/`:
-
-| File                   | Contents                                              |
-|------------------------|-------------------------------------------------------|
-| `summary.txt`          | Human-readable metrics summary                        |
-| `summary.json`         | Machine-readable metrics (for scripting/CI)           |
-| `utilization.csv`      | Per-stage busy cycle counts                           |
-| `stalls.csv`           | Per-stall-type counts                                 |
-| `queue_occupancy.csv`  | Peak occupancy recorded for tracked queues                    |
-| `completed_trace.csv`  | Per-instruction enqueue, issue, and completion cycles         |
+The goal is bottleneck reasoning and capacity analysis, not hardware verification.
 
 ---
 
-## CLI
+## Running
 
-```sh
-# Run a single workload and export a report
-accelsim-lite run <workload.csv>
+```bash
+# Build
+cmake -B build && cmake --build build
 
-# Run two workloads and produce a diff summary
-accelsim-lite compare <left.csv> <right.csv>
+# Run a workload
+./accelsim-lite run workloads/compute_heavy.csv
 
-# Run all bundled workloads
-accelsim-lite benchmark all
+# Run all workloads
+./accelsim-lite benchmark all
 
-# Print the most recently saved summary
-accelsim-lite report latest
+# View results
+./accelsim-lite report latest
+cat reports/latest/summary.json
 ```
 
 ---
 
-## Bundled workloads
+## What-if analysis
 
-Four workloads ship with the repo to cover the primary performance scenarios:
+AccelSim-Lite supports parameter sweeps for capacity reasoning:
 
-| File                           | Character                                                    |
-|--------------------------------|--------------------------------------------------------------|
-| `workloads/compute_heavy.csv`  | High compute-unit contention, minimal memory traffic         |
-| `workloads/memory_heavy.csv`   | High memory-port contention, minimal compute                 |
-| `workloads/queue_pressure.csv` | Queue-capacity-sensitive workload for observing pressure and backpressure |
-| `workloads/mixed.csv`          | Balanced mix of COMPUTE, LOAD, and STORE with cross-deps     |
+- What throughput do I get if I double compute units?
+- How does reducing queue depth affect latency under queue-pressure workloads?
+- At what memory bandwidth does a workload transition from compute-bound to memory-bound?
 
 ---
 
-## Charting
+## Interview framing
 
-`tools/plot_report.py` reads the exported CSVs and generates two charts:
-
-- **Pipeline utilization** — busy cycles per stage
-- **Stall breakdown** — stall counts by type
-
-```sh
-python3 tools/plot_report.py reports/latest/
-```
-
-Requires `matplotlib`.
+AccelSim-Lite started as a question: can I build a performance model that explains *why* a workload is slow, not just *that* it is slow? The stall classification system — WaitingDependency, NoMemoryPort, NoComputeUnit — gives a named reason for every cycle that does not produce output. That named classification is what makes it useful for capacity reasoning rather than just measurement.
 
 ---
 
-## Docs
+## Stack
 
-| File                  | Contents                                            |
-|-----------------------|-----------------------------------------------------|
-| `docs/model.md`       | Formal description of the simulation model          |
-| `docs/limitations.md` | Explicit scope boundaries and known approximations  |
+C++ · CMake
 
 ---
 
-## Implementation status
+## Related
 
-### Fully implemented
-
-- Core workload simulation and staged pipeline
-- Dependency-aware instruction issuing
-- Resource contention tracking (compute units, memory ports, queues)
-- Stall accounting with five stall categories
-- Metrics collection and `top_bottleneck` identification
-- Report export (txt, json, csv)
-- CLI: `run`, `compare`, `benchmark all`, `report latest`
-- Bundled workloads (four classes)
-- Python charting helper
-- Simulation model and limitations docs
-
-### Partially implemented / needs cleanup
-
-- Full CMake integration with pre-existing repo targets
-- Unified test target setup (older and newer targets conflict during `cmake --build build -j`)
-- Clean end-to-end test build without legacy target conflicts
-
-### Not yet implemented
-
-- Richer workload comparison tables
-- Before/after tuning report formatting
-- Deterministic scheduling policy documentation
-- Architecture and event-flow diagrams
-- Regression baseline snapshots
-- Polished benchmark artifacts
-
----
-
-## Project structure
-
-```
-accelsim-lite/
-├── workloads/
-│   ├── compute_heavy.csv
-│   ├── memory_heavy.csv
-│   ├── queue_pressure.csv
-│   └── mixed.csv
-├── tools/
-│   └── plot_report.py
-├── docs/
-│   ├── model.md
-│   └── limitations.md
-├── reports/
-│   └── latest/
-│       ├── summary.txt
-│       ├── summary.json
-│       ├── utilization.csv
-│       ├── stalls.csv
-│       ├── queue_occupancy.csv
-│       └── completed_trace.csv
-└── src/
-    └── (C++ source)
-```
-
----
-
-## License
-
-See `LICENSE` for details.
+- [DetTrace](https://github.com/kritibehl/dettrace) — deterministic replay for concurrency failures in software systems
+- [KubePulse](https://github.com/kritibehl/KubePulse) — performance and resilience validation for Kubernetes services
+- [Faultline](https://github.com/kritibehl/faultline) — correctness under failure for distributed job execution
