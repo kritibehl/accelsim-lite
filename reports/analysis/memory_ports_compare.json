@@ -1,0 +1,17 @@
+{
+  "workload": "memory_heavy",
+  "baseline": {
+    "memory_ports": 1,
+    "latency": 23.8333,
+    "throughput": 0.1395,
+    "top_bottleneck": "NoMemoryPort"
+  },
+  "optimized": {
+    "memory_ports": 4,
+    "latency": 14.5,
+    "throughput": 0.2609,
+    "top_bottleneck": "WaitingDependency"
+  },
+  "latency_improvement_percent": 39.16,
+  "throughput_improvement_percent": 87.03
+}

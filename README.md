@@ -256,3 +256,51 @@ accelsim-lite/
 ## License
 
 See `LICENSE` for details.
+
+## Scope and modeling assumptions
+
+AccelSim-Lite is **not a cycle-accurate GPU simulator** and does not model:
+- warp scheduling
+- cache-line behavior
+- Tensor Core instruction timing
+- coalescing effects
+- occupancy at the SM / warp level
+- kernel launch overheads
+- vendor-specific compiler and runtime optimizations
+
+What it **does** model faithfully at the workload level:
+- bottleneck shifts between compute, memory, and dependency pressure
+- queue buildup and backpressure propagation
+- throughput and latency sensitivity to constrained resources
+- how instruction dependencies reduce effective parallelism
+
+This makes it useful for:
+- early-stage accelerator performance reasoning
+- capacity and bottleneck analysis
+- comparing workload classes before lower-level kernel tuning
+
+## Why this matters for AI inference
+
+This matters directly for modern AI infrastructure: NVIDIA describes LLM inference as both memory- and compute-intensive, and notes that decode can be **memory-bandwidth-bound** because GPUs spend significant time moving KV-cache data rather than computing. In that sense, the simulator's memory-heavy mode is a useful abstraction for reasoning about transformer inference paths where bandwidth, dependency chains, and queue pressure dominate end-to-end latency.
+
+## 🧠 How to explain this in an interview
+
+This system models **workload-level execution behavior**, not hardware cycles.
+
+Key idea:
+- Instructions form a dependency graph
+- Execution is constrained by compute units, memory ports, and queue capacities
+- Performance emerges from resource contention and dependency structure
+
+What it shows:
+- Why memory-bound workloads slow down (bandwidth bottleneck)
+- Why dependency chains limit parallelism
+- How queue pressure leads to backpressure and reduced throughput
+
+What it does NOT do:
+- It does not simulate warp-level GPU execution
+- It does not model cache-line or instruction-level timing
+- It is not calibrated to exact GPU hardware latencies
+
+Think of it as:
+→ a **performance reasoning tool**, not a hardware emulator
