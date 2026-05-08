@@ -304,3 +304,56 @@ What it does NOT do:
 
 Think of it as:
 → a **performance reasoning tool**, not a hardware emulator
+
+## Hardware / AI-infra validation artifacts
+
+AccelSim-Lite is intentionally scoped for niche systems and performance roles:
+- accelerator performance modeling
+- AI infrastructure
+- runtime/compiler-adjacent SWE
+- hardware-performance analysis
+
+### Workload comparison reports
+
+Generated reports compare throughput, latency, and bottleneck shifts across:
+- `compute_heavy`
+- `memory_heavy`
+- `mixed`
+- `queue_pressure`
+
+Artifacts:
+
+```bash
+python3 scripts/analysis/workload_comparison.py
+python3 scripts/analysis/classify_workloads.py
+python3 scripts/analysis/plot_workloads.py
+Outputs:
+
+reports/analysis/workload_comparison.json
+reports/analysis/workload_comparison.md
+reports/analysis/workload_classification.json
+reports/analysis/throughput_by_workload.png
+reports/analysis/latency_by_workload.png
+What-if config sweep
+
+Memory-port scaling on memory_heavy:
+
+python3 scripts/analysis/memory_sweep_report.py
+
+Observed result:
+
+Memory ports: 1 -> 4
+Latency improvement: 39.16%
+Throughput improvement: 87.03%
+Bottleneck shift: NoMemoryPort -> WaitingDependency
+
+This shows that improving memory bandwidth removes the memory bottleneck, but exposes the next limiting factor: dependency stalls.
+
+AI inference relevance
+
+Transformer inference often contains memory-bound phases, especially attention and KV-cache-heavy decoding.
+
+AccelSim-Lite models the same high-level behavior:
+
+throughput and latency degrade under memory pressure
+scaling memory bandwidth shifts the bottleneck rather than eliminating it
