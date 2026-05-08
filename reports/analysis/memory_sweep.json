@@ -1,0 +1,53 @@
+{
+  "workload": "memory_heavy",
+  "sweep": [
+    {
+      "memory_ports": 1,
+      "total_cycles": 43,
+      "throughput": 0.1395,
+      "average_latency": 23.8333,
+      "top_bottleneck": "NoMemoryPort",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 49,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 36
+      }
+    },
+    {
+      "memory_ports": 2,
+      "total_cycles": 27,
+      "throughput": 0.2222,
+      "average_latency": 16.3333,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 11,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 28
+      }
+    },
+    {
+      "memory_ports": 4,
+      "total_cycles": 23,
+      "throughput": 0.2609,
+      "average_latency": 14.5,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 28
+      }
+    }
+  ],
+  "comparison_1_to_4": {
+    "latency_improvement_percent": 39.16,
+    "throughput_improvement_percent": 87.03,
+    "bottleneck_shift": "NoMemoryPort -> WaitingDependency",
+    "memory_port_stall_reduction": 49
+  }
+}

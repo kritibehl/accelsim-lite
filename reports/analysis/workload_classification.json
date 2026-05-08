@@ -1,0 +1,74 @@
+{
+  "classified_workloads": [
+    {
+      "workload": "compute_heavy",
+      "total_cycles": 18,
+      "completed_ops": 6,
+      "throughput": 0.3333,
+      "average_latency": 10.0,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 27
+      },
+      "classification": "dependency-bound"
+    },
+    {
+      "workload": "memory_heavy",
+      "total_cycles": 43,
+      "completed_ops": 6,
+      "throughput": 0.1395,
+      "average_latency": 23.8333,
+      "top_bottleneck": "NoMemoryPort",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 49,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 36
+      },
+      "classification": "memory-bound"
+    },
+    {
+      "workload": "mixed",
+      "total_cycles": 30,
+      "completed_ops": 6,
+      "throughput": 0.2,
+      "average_latency": 16.8333,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 8,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 46
+      },
+      "classification": "dependency-bound with memory pressure"
+    },
+    {
+      "workload": "queue_pressure",
+      "total_cycles": 25,
+      "completed_ops": 8,
+      "throughput": 0.32,
+      "average_latency": 15.0,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 24,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 30
+      },
+      "classification": "dependency-bound with compute contention"
+    }
+  ],
+  "summary": {
+    "compute_heavy": "dependency-bound",
+    "memory_heavy": "memory-bound",
+    "mixed": "dependency-bound with memory pressure",
+    "queue_pressure": "dependency-bound with compute contention"
+  }
+}

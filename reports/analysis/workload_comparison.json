@@ -1,0 +1,76 @@
+{
+  "workloads": [
+    {
+      "workload": "compute_heavy",
+      "total_cycles": 18,
+      "completed_ops": 6,
+      "throughput": 0.3333,
+      "average_latency": 10.0,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 27
+      }
+    },
+    {
+      "workload": "memory_heavy",
+      "total_cycles": 43,
+      "completed_ops": 6,
+      "throughput": 0.1395,
+      "average_latency": 23.8333,
+      "top_bottleneck": "NoMemoryPort",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 49,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 36
+      }
+    },
+    {
+      "workload": "mixed",
+      "total_cycles": 30,
+      "completed_ops": 6,
+      "throughput": 0.2,
+      "average_latency": 16.8333,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 8,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 46
+      }
+    },
+    {
+      "workload": "queue_pressure",
+      "total_cycles": 25,
+      "completed_ops": 8,
+      "throughput": 0.32,
+      "average_latency": 15.0,
+      "top_bottleneck": "WaitingDependency",
+      "stall_counts": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 24,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 30
+      }
+    }
+  ],
+  "derived_metrics": {
+    "throughput_range_ops_per_cycle": [
+      0.1395,
+      0.3333
+    ],
+    "latency_range_cycles": [
+      10.0,
+      23.8333
+    ],
+    "memory_vs_compute_throughput_drop_percent": 58.15,
+    "memory_vs_compute_latency_increase_x": 2.38
+  }
+}
