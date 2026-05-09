@@ -415,3 +415,20 @@ Do not claim:
 - production LLM inference optimization
 
 See `docs/claims_boundary.md` for the full claims boundary.
+
+## Quality gate
+
+Run the full local quality gate:
+
+```bash
+./scripts/quality/run_quality_gate.sh
+The quality gate checks:
+
+CMake build
+validation workloads
+workload comparison artifacts
+memory sweep artifacts
+dashboard report generation
+claims boundary enforcement
+
+This keeps the project reproducible and prevents inflated hardware/GPU claims.
