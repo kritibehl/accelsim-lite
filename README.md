@@ -327,33 +327,59 @@ Artifacts:
 python3 scripts/analysis/workload_comparison.py
 python3 scripts/analysis/classify_workloads.py
 python3 scripts/analysis/plot_workloads.py
-Outputs:
+python3 scripts/analysis/memory_sweep_report.py
+Generated outputs:
 
 reports/analysis/workload_comparison.json
 reports/analysis/workload_comparison.md
 reports/analysis/workload_classification.json
 reports/analysis/throughput_by_workload.png
 reports/analysis/latency_by_workload.png
-What-if config sweep
+reports/analysis/memory_sweep.json
+reports/analysis/memory_sweep.md
+Validation highlights
 
-Memory-port scaling on memory_heavy:
+Observed workload behavior:
 
-python3 scripts/analysis/memory_sweep_report.py
+throughput range: 0.1395 -> 0.3333 ops/cycle
+latency range: 10.0 -> 23.8333 cycles
+memory-heavy throughput drop vs compute-heavy: 58.15%
+memory-heavy latency increase vs compute-heavy: 2.38x
+What-if memory sweep
 
-Observed result:
+Scaling memory ports on memory_heavy:
 
-Memory ports: 1 -> 4
-Latency improvement: 39.16%
-Throughput improvement: 87.03%
-Bottleneck shift: NoMemoryPort -> WaitingDependency
+memory ports: 1 -> 4
+latency improvement: 39.16%
+throughput improvement: 87.03%
+bottleneck shift:
+NoMemoryPort -> WaitingDependency
 
-This shows that improving memory bandwidth removes the memory bottleneck, but exposes the next limiting factor: dependency stalls.
+This demonstrates that removing a memory bottleneck exposes the next limiting factor: dependency stalls.
 
+Scope
+
+AccelSim-Lite is not a cycle-accurate GPU simulator.
+
+It is a workload-level performance model designed for:
+
+throughput analysis
+bottleneck reasoning
+memory-vs-compute pressure analysis
+accelerator workload comparison
+
+It intentionally does not model:
+
+warp scheduling
+Tensor Core timing
+cache-line behavior
+GPU occupancy details
 AI inference relevance
 
-Transformer inference often contains memory-bound phases, especially attention and KV-cache-heavy decoding.
+Transformer inference often contains memory-bound phases, especially KV-cache-heavy decoding and attention execution.
 
 AccelSim-Lite models the same high-level behavior:
 
 throughput and latency degrade under memory pressure
-scaling memory bandwidth shifts the bottleneck rather than eliminating it
+increasing bandwidth shifts bottlenecks rather than eliminating them
+
