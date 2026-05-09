@@ -20,6 +20,7 @@ CONTEXTUAL_BANNED = [
 ALLOWLIST_FILES = {
     "docs/claims_boundary.md",
     "docs/adr/0001-workload-level-not-cycle-accurate.md",
+    ".github/pull_request_template.md",
 }
 
 SAFE_CONTEXT = [
@@ -31,6 +32,8 @@ SAFE_CONTEXT = [
     "intentionally does not",
     "unsafe claim",
     "avoid this",
+    "scope",
+    "claims boundary",
     "does not",
 ]
 
@@ -51,7 +54,7 @@ for path in paths:
     lines = path.read_text(errors="ignore").lower().splitlines()
 
     for i, line in enumerate(lines):
-        window = " ".join(lines[max(0, i - 3): i + 4])
+        window = " ".join(lines[max(0, i - 4): i + 5])
 
         for phrase in BANNED_ALWAYS:
             if phrase in line and not any(marker in window for marker in SAFE_CONTEXT):

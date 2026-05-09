@@ -13,6 +13,7 @@ add_library(accelsim
   src/memory_controller.cpp
   src/compute_unit.cpp
   src/simulator.cpp
+  src/scheduler.cpp
 )
 target_include_directories(accelsim PUBLIC include)
 
