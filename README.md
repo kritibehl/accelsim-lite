@@ -383,3 +383,14 @@ AccelSim-Lite models the same high-level behavior:
 throughput and latency degrade under memory pressure
 increasing bandwidth shifts bottlenecks rather than eliminating them
 
+
+### Dashboard-style report
+
+Additional dashboard artifacts:
+
+- `reports/analysis/dashboard.md`
+- `reports/analysis/memory_sweep_latency.png`
+- `reports/analysis/memory_sweep_throughput.png`
+- `reports/analysis/memory_sweep_stalls.png`
+
+These summarize workload classification, latency/throughput trends, memory-port scaling, and bottleneck transitions in one reviewer-friendly report.
