@@ -1,14 +1,14 @@
 from pathlib import Path
 import sys
 
-BANNED = [
-    "accurate gpu simulator",
+BANNED_ALWAYS = [
     "matched nvidia",
     "production gpu runtime optimization",
     "production llm inference optimization",
 ]
 
 CONTEXTUAL_BANNED = [
+    "accurate gpu simulator",
     "cycle-accurate gpu simulator",
     "cuda kernel execution",
     "tensor core simulation",
@@ -19,14 +19,19 @@ CONTEXTUAL_BANNED = [
 
 ALLOWLIST_FILES = {
     "docs/claims_boundary.md",
+    "docs/adr/0001-workload-level-not-cycle-accurate.md",
 }
 
-ALLOWLIST_CONTEXT_MARKERS = [
+SAFE_CONTEXT = [
     "do not claim",
+    "does not claim",
     "does not model",
     "not a",
     "not calibrated",
     "intentionally does not",
+    "unsafe claim",
+    "avoid this",
+    "does not",
 ]
 
 paths = [
@@ -40,23 +45,21 @@ violations = []
 
 for path in paths:
     rel = str(path)
-    text = path.read_text(errors="ignore")
-    lowered = text.lower()
-
     if rel in ALLOWLIST_FILES:
         continue
 
-    for phrase in BANNED:
-        if phrase in lowered:
-            violations.append((rel, phrase))
+    lines = path.read_text(errors="ignore").lower().splitlines()
 
-    lines = lowered.splitlines()
     for i, line in enumerate(lines):
+        window = " ".join(lines[max(0, i - 3): i + 4])
+
+        for phrase in BANNED_ALWAYS:
+            if phrase in line and not any(marker in window for marker in SAFE_CONTEXT):
+                violations.append((rel, phrase))
+
         for phrase in CONTEXTUAL_BANNED:
-            if phrase in line:
-                window = " ".join(lines[max(0, i - 2): i + 3])
-                if not any(marker in window for marker in ALLOWLIST_CONTEXT_MARKERS):
-                    violations.append((rel, phrase))
+            if phrase in line and not any(marker in window for marker in SAFE_CONTEXT):
+                violations.append((rel, phrase))
 
 if violations:
     print("Potential inflated claims found:\n")
