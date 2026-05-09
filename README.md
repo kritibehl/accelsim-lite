@@ -394,3 +394,24 @@ Additional dashboard artifacts:
 - `reports/analysis/memory_sweep_stalls.png`
 
 These summarize workload classification, latency/throughput trends, memory-port scaling, and bottleneck transitions in one reviewer-friendly report.
+
+## Claims boundary
+
+AccelSim-Lite is a workload-level performance model, not a cycle-accurate GPU simulator.
+
+Safe claims:
+- workload-level throughput and latency modeling
+- bottleneck classification
+- memory-vs-dependency pressure analysis
+- what-if resource sensitivity sweeps
+- dashboard-style performance reporting
+
+Do not claim:
+- CUDA execution
+- Tensor Core simulation
+- warp scheduling
+- hardware-accurate NVIDIA/A100/H100 latency prediction
+- real MLPerf validation
+- production LLM inference optimization
+
+See `docs/claims_boundary.md` for the full claims boundary.
