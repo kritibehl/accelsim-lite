@@ -7,6 +7,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(accelsim_tests
+  test_large_queue_pressure.cpp
+  test_zero_resource_config.cpp
+  test_invalid_pipeline_config.cpp
+  test_boundary_workloads.cpp
   test_queue.cpp
   test_determinism.cpp
 )
