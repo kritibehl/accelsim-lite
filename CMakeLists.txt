@@ -45,3 +45,18 @@ target_link_libraries(accelsim-lite PRIVATE accelsim_lite_core)
 
 set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
 # /ACCELSIM_LITE_STAGE2
+
+
+add_executable(accelsim_tests
+  tests/test_pipeline_state.cpp
+  tests/test_invalid_workload_config.cpp
+  tests/test_memory_port_scaling.cpp
+  tests/test_queue_pressure.cpp
+)
+
+target_link_libraries(accelsim_tests
+  GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(accelsim_tests)
