@@ -1,0 +1,111 @@
+{
+  "scope": "simulator-cycle timing validation; not real hardware timing",
+  "baseline_source": "known deterministic workload outputs from AccelSim-Lite validation suite",
+  "timing_regressions": [
+    {
+      "workload": "compute_heavy",
+      "expected_cycles": 18,
+      "observed_cycles": 18,
+      "cycle_drift": 0,
+      "cycle_drift_percent": 0.0,
+      "average_latency": 10.0,
+      "throughput": 0.3333,
+      "top_bottleneck": "WaitingDependency",
+      "pipeline_stage_busy_cycles": {
+        "Decode": 2,
+        "Dispatch": 14,
+        "Execute": 10,
+        "Fetch": 1,
+        "Issue": 0,
+        "Retire": 5
+      },
+      "stall_timing_cycles": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 27
+      }
+    },
+    {
+      "workload": "memory_heavy",
+      "expected_cycles": 43,
+      "observed_cycles": 43,
+      "cycle_drift": 0,
+      "cycle_drift_percent": 0.0,
+      "average_latency": 23.8333,
+      "throughput": 0.1395,
+      "top_bottleneck": "NoMemoryPort",
+      "pipeline_stage_busy_cycles": {
+        "Decode": 2,
+        "Dispatch": 19,
+        "Execute": 38,
+        "Fetch": 1,
+        "Issue": 30,
+        "Retire": 6
+      },
+      "stall_timing_cycles": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 49,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 36
+      }
+    },
+    {
+      "workload": "mixed",
+      "expected_cycles": 30,
+      "observed_cycles": 30,
+      "cycle_drift": 0,
+      "cycle_drift_percent": 0.0,
+      "average_latency": 16.8333,
+      "throughput": 0.2,
+      "top_bottleneck": "WaitingDependency",
+      "pipeline_stage_busy_cycles": {
+        "Decode": 2,
+        "Dispatch": 25,
+        "Execute": 24,
+        "Fetch": 1,
+        "Issue": 8,
+        "Retire": 6
+      },
+      "stall_timing_cycles": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 0,
+        "NoMemoryPort": 8,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 46
+      }
+    },
+    {
+      "workload": "queue_pressure",
+      "expected_cycles": 25,
+      "observed_cycles": 25,
+      "cycle_drift": 0,
+      "cycle_drift_percent": 0.0,
+      "average_latency": 15.0,
+      "throughput": 0.32,
+      "top_bottleneck": "WaitingDependency",
+      "pipeline_stage_busy_cycles": {
+        "Decode": 2,
+        "Dispatch": 13,
+        "Execute": 20,
+        "Fetch": 1,
+        "Issue": 13,
+        "Retire": 4
+      },
+      "stall_timing_cycles": {
+        "DispatchQueueFull": 0,
+        "NoComputeUnit": 24,
+        "NoMemoryPort": 0,
+        "ReadyQueueFull": 0,
+        "WaitingDependency": 30
+      }
+    }
+  ],
+  "summary": {
+    "max_abs_cycle_drift": 0,
+    "regression_detected": false,
+    "workload_count": 4
+  }
+}

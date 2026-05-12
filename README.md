@@ -449,3 +449,17 @@ memory-port what-if sweep
 bottleneck transitions
 generated latency/throughput charts
 
+
+## Timing validation artifacts
+
+AccelSim-Lite includes simulator-cycle timing validation artifacts:
+
+- `validation/timing_regression_report.json`
+- `validation/clock_cycle_breakdown.md`
+
+These reports capture:
+- cycle drift against deterministic simulator baselines
+- pipeline-stage busy-cycle timing
+- stall timing by bottleneck type
+
+Scope note: these are simulator-cycle validation artifacts, not real hardware timing claims.
