@@ -422,7 +422,7 @@ Run the full local quality gate:
 
 ```bash
 ./scripts/quality/run_quality_gate.sh
-The quality gate checks:
+he quality gate checks:
 
 CMake build
 validation workloads
@@ -433,14 +433,13 @@ claims boundary enforcement
 
 This keeps the project reproducible and prevents inflated hardware/GPU claims.
 
-
-## Static workload visualizer
+Static workload visualizer
 
 AccelSim-Lite includes a static HTML workload visualizer:
 
-```bash
 python3 scripts/visualization/build_workload_visualizer.py
 open reports/visualization/workload_visualizer.html
+
 The visualizer summarizes:
 
 pipeline stages
@@ -449,3 +448,4 @@ memory-bound vs dependency-bound classifications
 memory-port what-if sweep
 bottleneck transitions
 generated latency/throughput charts
+
