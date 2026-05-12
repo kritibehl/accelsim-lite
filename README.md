@@ -433,3 +433,19 @@ claims boundary enforcement
 
 This keeps the project reproducible and prevents inflated hardware/GPU claims.
 
+
+## Static workload visualizer
+
+AccelSim-Lite includes a static HTML workload visualizer:
+
+```bash
+python3 scripts/visualization/build_workload_visualizer.py
+open reports/visualization/workload_visualizer.html
+The visualizer summarizes:
+
+pipeline stages
+workload throughput and latency
+memory-bound vs dependency-bound classifications
+memory-port what-if sweep
+bottleneck transitions
+generated latency/throughput charts
