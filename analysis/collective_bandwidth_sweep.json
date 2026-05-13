@@ -1,0 +1,165 @@
+{
+  "scope": "synthetic workload-level communication pressure model; not a real hardware/NCCL collective benchmark",
+  "modeled_patterns": [
+    "compute-heavy execution",
+    "all-gather-style transfer pressure",
+    "reduction-style transfer pressure",
+    "memory/bus contention proxy",
+    "queue growth under communication pressure"
+  ],
+  "results": [
+    {
+      "scenario": "compute_heavy",
+      "simulated_compute_groups": 1,
+      "compute_cycles": 120,
+      "synthetic_transfer_cycles": 8,
+      "queue_delay_cycles": 4,
+      "total_cycles": 132,
+      "simulated_throughput": 0.007576,
+      "communication_pressure_ratio": 0.0606,
+      "queue_delay_ratio": 0.0303,
+      "utilization_shift": {
+        "compute_share": 0.9091,
+        "communication_share": 0.0606,
+        "queue_delay_share": 0.0303
+      },
+      "bottleneck_classification": "compute-limited"
+    },
+    {
+      "scenario": "compute_heavy",
+      "simulated_compute_groups": 2,
+      "compute_cycles": 120,
+      "synthetic_transfer_cycles": 16,
+      "queue_delay_cycles": 16,
+      "total_cycles": 152,
+      "simulated_throughput": 0.013158,
+      "communication_pressure_ratio": 0.1053,
+      "queue_delay_ratio": 0.1053,
+      "utilization_shift": {
+        "compute_share": 0.7895,
+        "communication_share": 0.1053,
+        "queue_delay_share": 0.1053
+      },
+      "bottleneck_classification": "compute-limited"
+    },
+    {
+      "scenario": "compute_heavy",
+      "simulated_compute_groups": 4,
+      "compute_cycles": 120,
+      "synthetic_transfer_cycles": 32,
+      "queue_delay_cycles": 64,
+      "total_cycles": 216,
+      "simulated_throughput": 0.018519,
+      "communication_pressure_ratio": 0.1481,
+      "queue_delay_ratio": 0.2963,
+      "utilization_shift": {
+        "compute_share": 0.5556,
+        "communication_share": 0.1481,
+        "queue_delay_share": 0.2963
+      },
+      "bottleneck_classification": "queue-pressure-limited"
+    },
+    {
+      "scenario": "transfer_heavy_all_gather_style",
+      "simulated_compute_groups": 1,
+      "compute_cycles": 80,
+      "synthetic_transfer_cycles": 42,
+      "queue_delay_cycles": 8,
+      "total_cycles": 130,
+      "simulated_throughput": 0.007692,
+      "communication_pressure_ratio": 0.3231,
+      "queue_delay_ratio": 0.0615,
+      "utilization_shift": {
+        "compute_share": 0.6154,
+        "communication_share": 0.3231,
+        "queue_delay_share": 0.0615
+      },
+      "bottleneck_classification": "memory-port-limited"
+    },
+    {
+      "scenario": "transfer_heavy_all_gather_style",
+      "simulated_compute_groups": 2,
+      "compute_cycles": 80,
+      "synthetic_transfer_cycles": 84,
+      "queue_delay_cycles": 32,
+      "total_cycles": 196,
+      "simulated_throughput": 0.010204,
+      "communication_pressure_ratio": 0.4286,
+      "queue_delay_ratio": 0.1633,
+      "utilization_shift": {
+        "compute_share": 0.4082,
+        "communication_share": 0.4286,
+        "queue_delay_share": 0.1633
+      },
+      "bottleneck_classification": "communication-pressure-limited"
+    },
+    {
+      "scenario": "transfer_heavy_all_gather_style",
+      "simulated_compute_groups": 4,
+      "compute_cycles": 80,
+      "synthetic_transfer_cycles": 168,
+      "queue_delay_cycles": 128,
+      "total_cycles": 376,
+      "simulated_throughput": 0.010638,
+      "communication_pressure_ratio": 0.4468,
+      "queue_delay_ratio": 0.3404,
+      "utilization_shift": {
+        "compute_share": 0.2128,
+        "communication_share": 0.4468,
+        "queue_delay_share": 0.3404
+      },
+      "bottleneck_classification": "communication-pressure-limited"
+    },
+    {
+      "scenario": "reduction_style_pressure",
+      "simulated_compute_groups": 1,
+      "compute_cycles": 96,
+      "synthetic_transfer_cycles": 28,
+      "queue_delay_cycles": 6,
+      "total_cycles": 130,
+      "simulated_throughput": 0.007692,
+      "communication_pressure_ratio": 0.2154,
+      "queue_delay_ratio": 0.0462,
+      "utilization_shift": {
+        "compute_share": 0.7385,
+        "communication_share": 0.2154,
+        "queue_delay_share": 0.0462
+      },
+      "bottleneck_classification": "compute-limited"
+    },
+    {
+      "scenario": "reduction_style_pressure",
+      "simulated_compute_groups": 2,
+      "compute_cycles": 96,
+      "synthetic_transfer_cycles": 56,
+      "queue_delay_cycles": 24,
+      "total_cycles": 176,
+      "simulated_throughput": 0.011364,
+      "communication_pressure_ratio": 0.3182,
+      "queue_delay_ratio": 0.1364,
+      "utilization_shift": {
+        "compute_share": 0.5455,
+        "communication_share": 0.3182,
+        "queue_delay_share": 0.1364
+      },
+      "bottleneck_classification": "memory-port-limited"
+    },
+    {
+      "scenario": "reduction_style_pressure",
+      "simulated_compute_groups": 4,
+      "compute_cycles": 96,
+      "synthetic_transfer_cycles": 112,
+      "queue_delay_cycles": 96,
+      "total_cycles": 304,
+      "simulated_throughput": 0.013158,
+      "communication_pressure_ratio": 0.3684,
+      "queue_delay_ratio": 0.3158,
+      "utilization_shift": {
+        "compute_share": 0.3158,
+        "communication_share": 0.3684,
+        "queue_delay_share": 0.3158
+      },
+      "bottleneck_classification": "communication-pressure-limited"
+    }
+  ]
+}

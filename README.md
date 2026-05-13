@@ -463,3 +463,19 @@ These reports capture:
 - stall timing by bottleneck type
 
 Scope note: these are simulator-cycle validation artifacts, not real hardware timing claims.
+
+## Communication-pressure analysis
+
+AccelSim-Lite includes synthetic workload-level communication-pressure experiments:
+
+- `analysis/collective_bandwidth_sweep.json`
+- `analysis/communication_bottleneck_report.md`
+
+The experiment compares:
+- compute-heavy execution
+- transfer-heavy all-gather-style pressure
+- reduction-style transfer pressure
+- queue-delay growth under simulated communication pressure
+- bottleneck transitions across compute-limited, memory-port-limited, and communication-pressure-limited regimes
+
+Scope note: this is a synthetic workload-level model and does not claim real NCCL, EFA, PCIe, NVLink, or hardware collective benchmarking.
