@@ -1,0 +1,187 @@
+{
+  "scope": "std::thread workload scaling experiment; simulated cycle accounting, not OS scheduler benchmarking",
+  "results": [
+    {
+      "scenario": "balanced_partition",
+      "worker_threads": 1,
+      "task_count": 48,
+      "total_compute_cycles": 432,
+      "total_transfer_cycles": 168,
+      "max_worker_cycles": 600,
+      "min_worker_cycles": 600,
+      "imbalance_cycles": 0,
+      "throughput_tasks_per_cycle": 0.080000,
+      "bottleneck_classification": "serial-bound",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 432,
+          "transfer_cycles": 168,
+          "simulated_cycles": 600
+        }
+      ]
+    },
+    {
+      "scenario": "imbalanced_partition",
+      "worker_threads": 1,
+      "task_count": 48,
+      "total_compute_cycles": 372,
+      "total_transfer_cycles": 214,
+      "max_worker_cycles": 586,
+      "min_worker_cycles": 586,
+      "imbalance_cycles": 0,
+      "throughput_tasks_per_cycle": 0.081911,
+      "bottleneck_classification": "serial-bound",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 372,
+          "transfer_cycles": 214,
+          "simulated_cycles": 586
+        }
+      ]
+    },
+    {
+      "scenario": "balanced_partition",
+      "worker_threads": 2,
+      "task_count": 48,
+      "total_compute_cycles": 432,
+      "total_transfer_cycles": 168,
+      "max_worker_cycles": 600,
+      "min_worker_cycles": 0,
+      "imbalance_cycles": 600,
+      "throughput_tasks_per_cycle": 0.080000,
+      "bottleneck_classification": "worker-imbalance-limited",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 432,
+          "transfer_cycles": 168,
+          "simulated_cycles": 600
+        },
+        {
+          "worker_id": 1,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        }
+      ]
+    },
+    {
+      "scenario": "imbalanced_partition",
+      "worker_threads": 2,
+      "task_count": 48,
+      "total_compute_cycles": 372,
+      "total_transfer_cycles": 214,
+      "max_worker_cycles": 586,
+      "min_worker_cycles": 0,
+      "imbalance_cycles": 586,
+      "throughput_tasks_per_cycle": 0.081911,
+      "bottleneck_classification": "worker-imbalance-limited",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 372,
+          "transfer_cycles": 214,
+          "simulated_cycles": 586
+        },
+        {
+          "worker_id": 1,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        }
+      ]
+    },
+    {
+      "scenario": "balanced_partition",
+      "worker_threads": 4,
+      "task_count": 48,
+      "total_compute_cycles": 432,
+      "total_transfer_cycles": 168,
+      "max_worker_cycles": 600,
+      "min_worker_cycles": 0,
+      "imbalance_cycles": 600,
+      "throughput_tasks_per_cycle": 0.080000,
+      "bottleneck_classification": "worker-imbalance-limited",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 432,
+          "transfer_cycles": 168,
+          "simulated_cycles": 600
+        },
+        {
+          "worker_id": 1,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        },
+        {
+          "worker_id": 2,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        },
+        {
+          "worker_id": 3,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        }
+      ]
+    },
+    {
+      "scenario": "imbalanced_partition",
+      "worker_threads": 4,
+      "task_count": 48,
+      "total_compute_cycles": 372,
+      "total_transfer_cycles": 214,
+      "max_worker_cycles": 586,
+      "min_worker_cycles": 0,
+      "imbalance_cycles": 586,
+      "throughput_tasks_per_cycle": 0.081911,
+      "bottleneck_classification": "worker-imbalance-limited",
+      "workers": [
+        {
+          "worker_id": 0,
+          "tasks_completed": 48,
+          "compute_cycles": 372,
+          "transfer_cycles": 214,
+          "simulated_cycles": 586
+        },
+        {
+          "worker_id": 1,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        },
+        {
+          "worker_id": 2,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        },
+        {
+          "worker_id": 3,
+          "tasks_completed": 0,
+          "compute_cycles": 0,
+          "transfer_cycles": 0,
+          "simulated_cycles": 0
+        }
+      ]
+    }
+  ]
+}

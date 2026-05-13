@@ -46,3 +46,7 @@ target_link_libraries(accelsim-lite PRIVATE accelsim_lite_core)
 set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
 # /ACCELSIM_LITE_STAGE2
 
+
+add_executable(threaded_workload_runner
+  parallel_execution/threaded_workload_runner.cpp
+)

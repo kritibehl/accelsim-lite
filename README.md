@@ -479,3 +479,20 @@ The experiment compares:
 - bottleneck transitions across compute-limited, memory-port-limited, and communication-pressure-limited regimes
 
 Scope note: this is a synthetic workload-level model and does not claim real NCCL, EFA, PCIe, NVLink, or hardware collective benchmarking.
+
+## Threaded workload runner
+
+AccelSim-Lite includes a standalone C++ threaded workload experiment:
+
+- `parallel_execution/threaded_workload_runner.cpp`
+- `parallel_execution/threaded_worker_sweep.json`
+- `parallel_execution/threaded_workload_report.md`
+
+The experiment uses `std::thread` and `std::mutex` to model:
+- 1 / 2 / 4 worker-thread execution
+- balanced vs imbalanced synthetic workload partitions
+- shared queue coordination
+- worker-level simulated-cycle accounting
+- bottleneck classifications such as serial-bound, worker-imbalance-limited, contention-limited, and parallelism-improved
+
+Scope note: this experiment demonstrates C++ threading and workload-level scaling behavior. It is not an OS scheduler or hardware timing benchmark.

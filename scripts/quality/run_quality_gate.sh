@@ -21,6 +21,7 @@ python3 scripts/analysis/plot_memory_sweep.py
 python3 scripts/analysis/build_dashboard_report.py
 python3 scripts/validation/generate_timing_validation.py
 python3 scripts/analysis/analyze_collective_pressure.py
+./build/threaded_workload_runner
 
 echo
 echo "== Claims check =="
