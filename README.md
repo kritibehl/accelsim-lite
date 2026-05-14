@@ -496,3 +496,23 @@ The experiment uses `std::thread` and `std::mutex` to model:
 - bottleneck classifications such as serial-bound, worker-imbalance-limited, contention-limited, and parallelism-improved
 
 Scope note: this experiment demonstrates C++ threading and workload-level scaling behavior. It is not an OS scheduler or hardware timing benchmark.
+
+## Digital verification lab
+
+AccelSim-Lite includes a small SystemVerilog FIFO verification lab:
+
+- `digital_verification_lab/rtl/simple_fifo.sv`
+- `digital_verification_lab/tb/fifo_tb.sv`
+- `digital_verification_lab/tb/fifo_assertions.sv`
+- `digital_verification_lab/docs/fifo_verification_plan.md`
+- `digital_verification_lab/docs/fifo_coverage_notes.md`
+- `digital_verification_lab/docs/fifo_verification_report.md`
+
+The lab demonstrates:
+- FIFO RTL familiarity
+- directed SystemVerilog testbench construction
+- assertion-style checks
+- reset, full, empty, overfill, under-read, and simultaneous read/write scenarios
+- scenario coverage planning
+
+Scope note: this is a directed SystemVerilog verification lab, not a UVM environment, formal proof, synthesis flow, or timing-closure signoff.
