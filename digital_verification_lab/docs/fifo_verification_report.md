@@ -47,3 +47,18 @@ It demonstrates:
 - assertion-style thinking
 - corner-case verification planning
 - FIFO state and boundary-condition reasoning
+
+## Simulation command
+
+Run:
+
+```bash
+./digital_verification_lab/sim/run_fifo_tb.sh
+The script records output in:
+
+digital_verification_lab/sim/fifo_tb_simulation_log.txt
+Simulator note
+
+The lab supports an open-source simulation flow with iverilog + vvp when installed locally.
+
+If no compatible simulator is installed, the script records a skipped result instead of fabricating a pass.

@@ -1,0 +1,10 @@
+FIFO Simulation Run
+===================
+Date: 2026-05-14T00:35:44Z
+RTL: /Users/kritibehl/accelsim-lite/digital_verification_lab/rtl/simple_fifo.sv
+Assertions: /Users/kritibehl/accelsim-lite/digital_verification_lab/tb/fifo_assertions.sv
+Testbench: /Users/kritibehl/accelsim-lite/digital_verification_lab/tb/fifo_tb.sv
+
+Simulator: not found
+Result: SKIPPED
+Notes: Install iverilog to run this directed SystemVerilog simulation locally.
