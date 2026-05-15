@@ -1,0 +1,61 @@
+{
+  "scope": "toy semantic-equivalence differential validation for stack-bytecode traces; not a production compiler test harness",
+  "results": [
+    {
+      "case": "constant_fold_preserves_result",
+      "semantically_equivalent": true,
+      "mismatch_reason": "none",
+      "baseline_result": 20,
+      "optimized_result": 20,
+      "baseline_dispatch_steps": 6,
+      "optimized_dispatch_steps": 4,
+      "dispatch_step_delta": 2,
+      "baseline_branch_count": 0,
+      "optimized_branch_count": 0,
+      "baseline_max_stack_depth": 2,
+      "optimized_max_stack_depth": 2
+    },
+    {
+      "case": "load_constant_fold_preserves_result",
+      "semantically_equivalent": true,
+      "mismatch_reason": "none",
+      "baseline_result": 27,
+      "optimized_result": 27,
+      "baseline_dispatch_steps": 6,
+      "optimized_dispatch_steps": 4,
+      "dispatch_step_delta": 2,
+      "baseline_branch_count": 0,
+      "optimized_branch_count": 0,
+      "baseline_max_stack_depth": 3,
+      "optimized_max_stack_depth": 2
+    },
+    {
+      "case": "branch_shape_preserved",
+      "semantically_equivalent": true,
+      "mismatch_reason": "none",
+      "baseline_result": 42,
+      "optimized_result": 42,
+      "baseline_dispatch_steps": 6,
+      "optimized_dispatch_steps": 4,
+      "dispatch_step_delta": 2,
+      "baseline_branch_count": 1,
+      "optimized_branch_count": 1,
+      "baseline_max_stack_depth": 2,
+      "optimized_max_stack_depth": 1
+    },
+    {
+      "case": "intentional_mismatch_detected",
+      "semantically_equivalent": false,
+      "mismatch_reason": "result_mismatch",
+      "baseline_result": 5,
+      "optimized_result": 6,
+      "baseline_dispatch_steps": 4,
+      "optimized_dispatch_steps": 2,
+      "dispatch_step_delta": 2,
+      "baseline_branch_count": 0,
+      "optimized_branch_count": 0,
+      "baseline_max_stack_depth": 2,
+      "optimized_max_stack_depth": 1
+    }
+  ]
+}
