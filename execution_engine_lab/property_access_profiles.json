@@ -1,0 +1,25 @@
+{
+  "scope": "toy JavaScript-like object shape and inline-cache simulation; not V8 implementation",
+  "sites": [
+    {
+      "site": "load_x",
+      "final_state": "megamorphic_generic_fallback",
+      "cache_hits": 1,
+      "cache_misses": 5,
+      "fast_path_percent": 16.6667,
+      "generic_fallbacks": 2,
+      "shape_invalidations": 2,
+      "unique_shapes_seen": 5
+    },
+    {
+      "site": "load_y",
+      "final_state": "polymorphic",
+      "cache_hits": 1,
+      "cache_misses": 3,
+      "fast_path_percent": 25,
+      "generic_fallbacks": 0,
+      "shape_invalidations": 1,
+      "unique_shapes_seen": 3
+    }
+  ]
+}

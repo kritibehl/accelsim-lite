@@ -593,3 +593,20 @@ The lab models:
 - deoptimization event reporting
 
 Scope note: this is a toy tiered-execution and deoptimization simulation. It does not claim JIT, V8, WebAssembly runtime, or production compiler implementation experience.
+
+## Object shape and inline-cache lab
+
+AccelSim-Lite includes a toy JavaScript-like object-shape and inline-cache simulation:
+
+- `execution_engine_lab/object_shape_cache_sim.cpp`
+- `execution_engine_lab/property_access_profiles.json`
+- `execution_engine_lab/inline_cache_transition_report.md`
+
+The lab models:
+- simplified object shapes
+- property layouts and repeated access sites
+- monomorphic, polymorphic, and megamorphic-style cache states
+- shape invalidations
+- generic lookup fallback behavior
+
+Scope note: this is a toy runtime simulation. It does not claim V8 implementation, JavaScript engine internals, or production inline-cache work.
