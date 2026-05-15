@@ -1,5 +1,30 @@
 # accelsim-lite
 
+## Execution Engine & Runtime Experiments
+
+This lab explores simplified runtime-system concepts relevant to interpreter-style execution and dynamic-language optimization:
+
+1. Stack-bytecode interpreter and opcode dispatch profiling
+2. Bytecode optimization via constant folding and dispatch-step reduction
+3. Feedback-driven tiered execution with guard failures and deoptimization fallbacks
+4. JavaScript-like object-shape and inline-cache specialization behavior
+5. WebAssembly-style stack validation for structured control-flow traces
+
+These are educational runtime experiments, not a JIT compiler, not V8, and not a WebAssembly runtime.
+
+| Lab | What it proves | Key artifact |
+|---|---|---|
+| Bytecode interpreter | dispatch/runtime profiling | `execution_engine_lab/interpreter_dispatch_report.md` |
+| Bytecode optimizer | instruction-stream transformation | `execution_engine_lab/bytecode_optimization_report.md` |
+| Tiering/deopt | runtime feedback + fallback behavior | `execution_engine_lab/tiering_and_deopt_report.md` |
+| Object shapes / inline cache | JS-like runtime specialization | `execution_engine_lab/inline_cache_transition_report.md` |
+| Wasm validator | stack/control-flow correctness | `execution_engine_lab/wasm_validation_report.md` |
+
+See also:
+- `execution_engine_lab/runtime_experiment_summary.md`
+- `docs/runtime_execution_engine_overview.md`
+
+
 > A deterministic C++ compute-pipeline simulator for analyzing workload latency, throughput, queue pressure, and bottleneck behavior under configurable resource constraints.
 
 ---
