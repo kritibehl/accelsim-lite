@@ -58,3 +58,7 @@ add_executable(workload_scheduler_sim
 add_executable(stack_bytecode_interpreter
   execution_engine_lab/stack_bytecode_interpreter.cpp
 )
+
+add_executable(bytecode_optimizer
+  execution_engine_lab/bytecode_optimizer.cpp
+)

@@ -1,0 +1,131 @@
+{
+  "scope": "toy bytecode optimization pass; not a compiler, JIT, V8, or WebAssembly runtime",
+  "optimization": "constant folding for PUSH_CONST/PUSH_CONST/arithmetic patterns",
+  "results": [
+    {
+      "workload": "constant_fold_add_mul",
+      "folded_patterns": 1,
+      "before_instruction_count": 6,
+      "after_instruction_count": 4,
+      "dispatch_step_reduction": 2,
+      "dispatch_reduction_percent": 33.33,
+      "before_branch_count": 0,
+      "after_branch_count": 0,
+      "before_max_stack_depth_proxy": 2,
+      "after_max_stack_depth_proxy": 2,
+      "before_opcode_frequency": {
+        "ADD": 1,
+        "MUL": 1,
+        "PUSH_CONST": 3,
+        "RETURN": 1
+      },
+      "after_opcode_frequency": {
+        "MUL": 1,
+        "PUSH_CONST": 2,
+        "RETURN": 1
+      },
+      "before_program": [
+        {"opcode": "PUSH_CONST", "operand": 2},
+        {"opcode": "PUSH_CONST", "operand": 3},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 4},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ],
+      "after_program": [
+        {"opcode": "PUSH_CONST", "operand": 5},
+        {"opcode": "PUSH_CONST", "operand": 4},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    },
+    {
+      "workload": "mixed_load_and_constants",
+      "folded_patterns": 1,
+      "before_instruction_count": 6,
+      "after_instruction_count": 4,
+      "dispatch_step_reduction": 2,
+      "dispatch_reduction_percent": 33.33,
+      "before_branch_count": 0,
+      "after_branch_count": 0,
+      "before_max_stack_depth_proxy": 3,
+      "after_max_stack_depth_proxy": 2,
+      "before_opcode_frequency": {
+        "ADD": 1,
+        "LOAD": 1,
+        "MUL": 1,
+        "PUSH_CONST": 2,
+        "RETURN": 1
+      },
+      "after_opcode_frequency": {
+        "ADD": 1,
+        "LOAD": 1,
+        "PUSH_CONST": 1,
+        "RETURN": 1
+      },
+      "before_program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 10},
+        {"opcode": "PUSH_CONST", "operand": 2},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ],
+      "after_program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 20},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    },
+    {
+      "workload": "branch_guarded_arithmetic",
+      "folded_patterns": 1,
+      "before_instruction_count": 10,
+      "after_instruction_count": 8,
+      "dispatch_step_reduction": 2,
+      "dispatch_reduction_percent": 20.00,
+      "before_branch_count": 1,
+      "after_branch_count": 1,
+      "before_max_stack_depth_proxy": 2,
+      "after_max_stack_depth_proxy": 2,
+      "before_opcode_frequency": {
+        "ADD": 1,
+        "JUMP_IF_ZERO": 1,
+        "LOAD": 1,
+        "MUL": 1,
+        "PUSH_CONST": 4,
+        "RETURN": 2
+      },
+      "after_opcode_frequency": {
+        "ADD": 1,
+        "JUMP_IF_ZERO": 1,
+        "LOAD": 1,
+        "PUSH_CONST": 3,
+        "RETURN": 2
+      },
+      "before_program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "JUMP_IF_ZERO", "operand": 8},
+        {"opcode": "PUSH_CONST", "operand": 6},
+        {"opcode": "PUSH_CONST", "operand": 7},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 3},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "RETURN", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ],
+      "after_program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "JUMP_IF_ZERO", "operand": 8},
+        {"opcode": "PUSH_CONST", "operand": 42},
+        {"opcode": "PUSH_CONST", "operand": 3},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "RETURN", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    }
+  ]
+}

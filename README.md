@@ -544,3 +544,31 @@ It reports:
 - stack-depth behavior
 
 Scope note: this is a toy interpreter-style execution lab. It does not claim compiler, JIT, V8, or WebAssembly runtime implementation experience.
+
+## Bytecode optimization lab
+
+AccelSim-Lite includes a toy bytecode optimization pass:
+
+- `execution_engine_lab/bytecode_optimizer.cpp`
+- `execution_engine_lab/optimized_trace_comparison.json`
+- `execution_engine_lab/bytecode_optimization_report.md`
+
+The pass performs constant folding for simple stack-bytecode patterns such as:
+
+```text
+PUSH_CONST 2
+PUSH_CONST 3
+ADD
+into:
+
+PUSH_CONST 5
+
+It compares before/after:
+
+instruction count
+opcode distribution
+branch/control-flow behavior
+stack-depth proxy
+dispatch-step reduction
+
+Scope note: this is a toy bytecode transformation lab. It does not claim compiler, JIT, V8, or WebAssembly runtime implementation experience.
