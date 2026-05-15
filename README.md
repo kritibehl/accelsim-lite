@@ -737,3 +737,15 @@ Across:
 - inline-cache-style metadata workloads
 
 Scope note: this is an educational runtime metadata experiment and not a V8 benchmark or production engine benchmark.
+
+## Node/V8 runtime observation notes
+
+AccelSim-Lite includes a real Node/V8 optimization-trace observation that maps public V8 runtime behavior to the toy runtime labs:
+
+- `docs/real_v8_observations/node_v8_optimization_trace.md`
+- `docs/real_v8_observations/artifacts/stable_property_access.js`
+- `docs/real_v8_observations/artifacts/stable_property_access_trace.txt`
+
+The observation records a repeated property-access function being marked hot/stable and optimized to MAGLEV under Node/V8 tracing flags.
+
+Scope note: this is a Node/V8 observation artifact only. It does not claim V8 source build, d8 usage, V8 internals modification, Chromium contribution, or production JavaScript engine work.

@@ -8,34 +8,49 @@ This is not a claim of V8 implementation, Chromium contribution, JavaScript engi
 
 ## Environment
 
-```text
-Node.js: v23.9.0
-V8 flags observed:
+Node.js version used:
+
+```bash
+node --version
+Observed locally:
+
+v23.9.0
+
+V8 tracing flags observed through Node:
+
 --trace-opt
 --trace-deopt
-Command
-node --trace-opt --trace-deopt -e '
-function readX(o){ return o.x; }
-const a={x:1,y:2};
-const b={x:3,y:4};
-for(let i=0;i<100000;i++){ readX(a); readX(b); }
-console.log(readX(a));
-'
-Observed output excerpt
-marking JSFunction readX for optimization to MAGLEV
+Stable property-access experiment
+
+Script:
+
+docs/real_v8_observations/artifacts/stable_property_access.js
+
+Command:
+
+node --trace-opt --trace-deopt docs/real_v8_observations/artifacts/stable_property_access.js \
+  > docs/real_v8_observations/artifacts/stable_property_access_trace.txt 2>&1
+
+Trace artifact:
+
+docs/real_v8_observations/artifacts/stable_property_access_trace.txt
+
+Observed trace behavior:
+
+readX marked for optimization to MAGLEV
 reason: hot and stable
-completed compiling JSFunction readX target MAGLEV
+readX completed compiling to MAGLEV
 Interpretation
 
 The repeated property-access function became hot and stable enough for V8 to optimize it with MAGLEV in this local Node/V8 environment.
 
-This observation maps conceptually to AccelSim-Lite's toy runtime labs:
+This maps conceptually to AccelSim-Lite's toy runtime labs:
 
-Real V8/Node observation	AccelSim-Lite concept
+Real Node/V8 observation	AccelSim-Lite concept
 function marked hot and stable	hot-trace detection
-compiled to MAGLEV	optimized execution tier
-property access over stable object shapes	object-shape / inline-cache simulation
-no deopt observed in this run	stable optimized path
+optimized to MAGLEV	optimized execution tier
+repeated property access	object-shape / inline-cache simulation
+no deopt observed in this stable run	stable optimized path
 Claims boundary
 
 This observation shows public V8 runtime behavior through Node flags.
