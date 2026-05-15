@@ -1,0 +1,8 @@
+{
+  "scope": "toy differential runtime validation summary; not production VM/compiler validation",
+  "total_cases": 6,
+  "semantic_matches": 6,
+  "semantic_mismatches": 0,
+  "deopt_fallback_matches": 6,
+  "invalid_trace_rejections_preserved": 1
+}

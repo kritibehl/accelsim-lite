@@ -74,3 +74,11 @@ add_executable(object_shape_cache_sim
 add_executable(wasm_style_stack_validator
   execution_engine_lab/wasm_style_stack_validator.cpp
 )
+
+add_executable(semantic_equivalence_harness
+  execution_engine_lab/semantic_equivalence_harness.cpp
+)
+
+add_executable(runtime_equivalence_harness
+  execution_engine_lab/runtime_equivalence_harness.cpp
+)

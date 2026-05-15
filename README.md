@@ -661,3 +661,22 @@ It reports:
 - malformed trace classifications such as stack underflow, type mismatch, invalid branch depth, and unterminated block
 
 Scope note: this is a toy WebAssembly-style validation lab. It does not claim real WebAssembly runtime, compiler, validator, V8, or JIT implementation experience.
+
+## Runtime equivalence validation
+
+AccelSim-Lite includes a toy runtime equivalence harness:
+
+- `execution_engine_lab/runtime_equivalence_harness.cpp`
+- `execution_engine_lab/equivalence_trace_cases.json`
+- `execution_engine_lab/runtime_equivalence_report.md`
+- `execution_engine_lab/runtime_equivalence_summary.json`
+
+The harness compares baseline, optimized, tiered-style, and deoptimized stack-bytecode execution paths across:
+- returned values
+- final stack contents
+- error categories
+- branch outcomes
+- stack depth at exit
+- fallback correctness after unsafe optimized paths
+
+Scope note: this is a toy differential runtime-validation harness. It does not claim production compiler, VM, JIT, V8, or WebAssembly validation experience.

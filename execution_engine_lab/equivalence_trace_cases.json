@@ -1,0 +1,12 @@
+{
+  "scope": "toy runtime equivalence cases for baseline, optimized, and deopt fallback paths",
+  "case_count": 6,
+  "cases": [
+    {"name": "arithmetic_constant_fold_equivalence", "notes": "constant folding preserved return value"},
+    {"name": "branch_taken_equivalence", "notes": "taken branch result preserved"},
+    {"name": "branch_not_taken_equivalence", "notes": "not-taken branch result preserved"},
+    {"name": "hot_trace_optimized_equivalence", "notes": "hot optimized arithmetic path preserved result"},
+    {"name": "guard_failure_deopt_equivalence", "notes": "optimized path would be unsafe, deopt fallback preserves baseline output"},
+    {"name": "invalid_trace_rejected_consistently", "notes": "malformed trace rejected consistently"}
+  ]
+}
