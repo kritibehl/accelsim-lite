@@ -23,6 +23,7 @@ python3 scripts/validation/generate_timing_validation.py
 python3 scripts/analysis/analyze_collective_pressure.py
 ./build/threaded_workload_runner
 ./build/workload_scheduler_sim
+./build/stack_bytecode_interpreter
 
 echo
 echo "== Claims check =="

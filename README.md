@@ -516,3 +516,31 @@ The lab demonstrates:
 - scenario coverage planning
 
 Scope note: this is a directed SystemVerilog verification lab, not a UVM environment, formal proof, synthesis flow, or timing-closure signoff.
+
+## Execution engine lab
+
+AccelSim-Lite includes a compact C++ stack-bytecode interpreter lab:
+
+- `execution_engine_lab/stack_bytecode_interpreter.cpp`
+- `execution_engine_lab/bytecode_workloads.json`
+- `execution_engine_lab/interpreter_dispatch_report.md`
+- `execution_engine_lab/opcode_frequency_report.json`
+
+The lab models a small stack-bytecode instruction set:
+- `PUSH_CONST`
+- `LOAD`
+- `ADD`
+- `SUB`
+- `MUL`
+- `JUMP_IF_ZERO`
+- `RETURN`
+
+It reports:
+- instruction count
+- opcode frequency
+- dispatch-step count
+- branch-heavy vs arithmetic-heavy traces
+- basic-block length
+- stack-depth behavior
+
+Scope note: this is a toy interpreter-style execution lab. It does not claim compiler, JIT, V8, or WebAssembly runtime implementation experience.

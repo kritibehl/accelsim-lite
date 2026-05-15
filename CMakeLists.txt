@@ -54,3 +54,7 @@ add_executable(threaded_workload_runner
 add_executable(workload_scheduler_sim
   scheduler_lab/workload_scheduler_sim.cpp
 )
+
+add_executable(stack_bytecode_interpreter
+  execution_engine_lab/stack_bytecode_interpreter.cpp
+)

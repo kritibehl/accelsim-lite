@@ -1,0 +1,63 @@
+{
+  "scope": "opcode-frequency and dispatch-profile report for toy stack bytecode interpreter",
+  "profiles": [
+    {
+      "workload": "arithmetic_heavy",
+      "category": "arithmetic",
+      "result": 62,
+      "instruction_count": 8,
+      "dispatch_steps": 8,
+      "branch_count": 0,
+      "taken_branches": 0,
+      "max_stack_depth": 2,
+      "avg_basic_block_length": 8.00,
+      "behavior_classification": "arithmetic-heavy-dispatch",
+      "opcode_frequency": {
+        "ADD": 1,
+        "LOAD": 3,
+        "MUL": 2,
+        "PUSH_CONST": 1,
+        "RETURN": 1
+      }
+    },
+    {
+      "workload": "branch_zero_fast_path",
+      "category": "branch_heavy",
+      "result": 42,
+      "instruction_count": 4,
+      "dispatch_steps": 4,
+      "branch_count": 1,
+      "taken_branches": 1,
+      "max_stack_depth": 1,
+      "avg_basic_block_length": 2.00,
+      "behavior_classification": "branch-heavy-dispatch",
+      "opcode_frequency": {
+        "JUMP_IF_ZERO": 1,
+        "LOAD": 1,
+        "PUSH_CONST": 1,
+        "RETURN": 1
+      }
+    },
+    {
+      "workload": "mixed_control_arithmetic",
+      "category": "mixed",
+      "result": 20,
+      "instruction_count": 10,
+      "dispatch_steps": 10,
+      "branch_count": 1,
+      "taken_branches": 0,
+      "max_stack_depth": 2,
+      "avg_basic_block_length": 5.00,
+      "behavior_classification": "mixed-dispatch",
+      "opcode_frequency": {
+        "ADD": 1,
+        "JUMP_IF_ZERO": 1,
+        "LOAD": 4,
+        "MUL": 1,
+        "PUSH_CONST": 1,
+        "RETURN": 1,
+        "SUB": 1
+      }
+    }
+  ]
+}

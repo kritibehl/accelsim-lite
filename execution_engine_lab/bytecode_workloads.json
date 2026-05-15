@@ -1,0 +1,54 @@
+{
+  "scope": "toy stack-bytecode workloads for interpreter dispatch analysis; not a compiler or JIT",
+  "workloads": [
+    {
+      "name": "arithmetic_heavy",
+      "category": "arithmetic",
+      "instruction_count": 8,
+      "program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "LOAD", "operand": 1},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "LOAD", "operand": 2},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 2},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    },
+    {
+      "name": "branch_zero_fast_path",
+      "category": "branch_heavy",
+      "instruction_count": 8,
+      "program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "JUMP_IF_ZERO", "operand": 6},
+        {"opcode": "LOAD", "operand": 1},
+        {"opcode": "PUSH_CONST", "operand": 10},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "RETURN", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 42},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    },
+    {
+      "name": "mixed_control_arithmetic",
+      "category": "mixed",
+      "instruction_count": 12,
+      "program": [
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "LOAD", "operand": 1},
+        {"opcode": "SUB", "operand": 0},
+        {"opcode": "JUMP_IF_ZERO", "operand": 9},
+        {"opcode": "LOAD", "operand": 0},
+        {"opcode": "LOAD", "operand": 1},
+        {"opcode": "ADD", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 4},
+        {"opcode": "MUL", "operand": 0},
+        {"opcode": "RETURN", "operand": 0},
+        {"opcode": "PUSH_CONST", "operand": 0},
+        {"opcode": "RETURN", "operand": 0}
+      ]
+    }
+  ]
+}
