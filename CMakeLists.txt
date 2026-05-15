@@ -50,3 +50,7 @@ set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
 add_executable(threaded_workload_runner
   parallel_execution/threaded_workload_runner.cpp
 )
+
+add_executable(workload_scheduler_sim
+  scheduler_lab/workload_scheduler_sim.cpp
+)

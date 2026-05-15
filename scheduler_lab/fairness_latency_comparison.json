@@ -1,0 +1,305 @@
+{
+  "scope": "synthetic workload scheduling experiment; not an OS scheduler benchmark",
+  "policies": [
+    {
+      "policy": "fifo",
+      "total_time": 66,
+      "avg_wait_time": 26.0000,
+      "avg_turnaround_time": 34.2500,
+      "throughput": 0.121212,
+      "max_wait_time": 43,
+      "fairness_index": 0.7669,
+      "starvation_risk": "elevated",
+      "tasks": [
+        {
+          "task_id": 0,
+          "name": "cpu-render-0",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 0,
+          "start_time": 0,
+          "finish_time": 14,
+          "wait_time": 0,
+          "turnaround_time": 14
+        },
+        {
+          "task_id": 1,
+          "name": "io-fetch-0",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 1,
+          "start_time": 14,
+          "finish_time": 18,
+          "wait_time": 13,
+          "turnaround_time": 17
+        },
+        {
+          "task_id": 2,
+          "name": "cpu-compile-1",
+          "kind": "cpu_bound",
+          "priority": 3,
+          "arrival_time": 2,
+          "start_time": 18,
+          "finish_time": 30,
+          "wait_time": 16,
+          "turnaround_time": 28
+        },
+        {
+          "task_id": 3,
+          "name": "io-fetch-1",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 3,
+          "start_time": 30,
+          "finish_time": 33,
+          "wait_time": 27,
+          "turnaround_time": 30
+        },
+        {
+          "task_id": 4,
+          "name": "cpu-analysis-2",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 4,
+          "start_time": 33,
+          "finish_time": 43,
+          "wait_time": 29,
+          "turnaround_time": 39
+        },
+        {
+          "task_id": 5,
+          "name": "io-sync-2",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 5,
+          "start_time": 43,
+          "finish_time": 48,
+          "wait_time": 38,
+          "turnaround_time": 43
+        },
+        {
+          "task_id": 6,
+          "name": "priority-control",
+          "kind": "io_bound",
+          "priority": 0,
+          "arrival_time": 6,
+          "start_time": 48,
+          "finish_time": 50,
+          "wait_time": 42,
+          "turnaround_time": 44
+        },
+        {
+          "task_id": 7,
+          "name": "cpu-batch-3",
+          "kind": "cpu_bound",
+          "priority": 4,
+          "arrival_time": 7,
+          "start_time": 50,
+          "finish_time": 66,
+          "wait_time": 43,
+          "turnaround_time": 59
+        }
+      ]
+    },
+    {
+      "policy": "round_robin_q4",
+      "total_time": 66,
+      "avg_wait_time": 29.7500,
+      "avg_turnaround_time": 38.0000,
+      "throughput": 0.121212,
+      "max_wait_time": 44,
+      "fairness_index": 0.7888,
+      "starvation_risk": "elevated",
+      "tasks": [
+        {
+          "task_id": 0,
+          "name": "cpu-render-0",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 0,
+          "start_time": 0,
+          "finish_time": 58,
+          "wait_time": 44,
+          "turnaround_time": 58
+        },
+        {
+          "task_id": 1,
+          "name": "io-fetch-0",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 1,
+          "start_time": 4,
+          "finish_time": 8,
+          "wait_time": 3,
+          "turnaround_time": 7
+        },
+        {
+          "task_id": 2,
+          "name": "cpu-compile-1",
+          "kind": "cpu_bound",
+          "priority": 3,
+          "arrival_time": 2,
+          "start_time": 8,
+          "finish_time": 54,
+          "wait_time": 40,
+          "turnaround_time": 52
+        },
+        {
+          "task_id": 3,
+          "name": "io-fetch-1",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 3,
+          "start_time": 12,
+          "finish_time": 15,
+          "wait_time": 9,
+          "turnaround_time": 12
+        },
+        {
+          "task_id": 4,
+          "name": "cpu-analysis-2",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 4,
+          "start_time": 15,
+          "finish_time": 56,
+          "wait_time": 42,
+          "turnaround_time": 52
+        },
+        {
+          "task_id": 5,
+          "name": "io-sync-2",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 5,
+          "start_time": 23,
+          "finish_time": 46,
+          "wait_time": 36,
+          "turnaround_time": 41
+        },
+        {
+          "task_id": 6,
+          "name": "priority-control",
+          "kind": "io_bound",
+          "priority": 0,
+          "arrival_time": 6,
+          "start_time": 27,
+          "finish_time": 29,
+          "wait_time": 21,
+          "turnaround_time": 23
+        },
+        {
+          "task_id": 7,
+          "name": "cpu-batch-3",
+          "kind": "cpu_bound",
+          "priority": 4,
+          "arrival_time": 7,
+          "start_time": 29,
+          "finish_time": 66,
+          "wait_time": 43,
+          "turnaround_time": 59
+        }
+      ]
+    },
+    {
+      "policy": "priority",
+      "total_time": 66,
+      "avg_wait_time": 20.1250,
+      "avg_turnaround_time": 28.3750,
+      "throughput": 0.121212,
+      "max_wait_time": 43,
+      "fairness_index": 0.7009,
+      "starvation_risk": "elevated",
+      "tasks": [
+        {
+          "task_id": 0,
+          "name": "cpu-render-0",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 0,
+          "start_time": 0,
+          "finish_time": 14,
+          "wait_time": 0,
+          "turnaround_time": 14
+        },
+        {
+          "task_id": 6,
+          "name": "priority-control",
+          "kind": "io_bound",
+          "priority": 0,
+          "arrival_time": 6,
+          "start_time": 14,
+          "finish_time": 16,
+          "wait_time": 8,
+          "turnaround_time": 10
+        },
+        {
+          "task_id": 1,
+          "name": "io-fetch-0",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 1,
+          "start_time": 16,
+          "finish_time": 20,
+          "wait_time": 15,
+          "turnaround_time": 19
+        },
+        {
+          "task_id": 3,
+          "name": "io-fetch-1",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 3,
+          "start_time": 20,
+          "finish_time": 23,
+          "wait_time": 17,
+          "turnaround_time": 20
+        },
+        {
+          "task_id": 5,
+          "name": "io-sync-2",
+          "kind": "io_bound",
+          "priority": 1,
+          "arrival_time": 5,
+          "start_time": 23,
+          "finish_time": 28,
+          "wait_time": 18,
+          "turnaround_time": 23
+        },
+        {
+          "task_id": 4,
+          "name": "cpu-analysis-2",
+          "kind": "cpu_bound",
+          "priority": 2,
+          "arrival_time": 4,
+          "start_time": 28,
+          "finish_time": 38,
+          "wait_time": 24,
+          "turnaround_time": 34
+        },
+        {
+          "task_id": 2,
+          "name": "cpu-compile-1",
+          "kind": "cpu_bound",
+          "priority": 3,
+          "arrival_time": 2,
+          "start_time": 38,
+          "finish_time": 50,
+          "wait_time": 36,
+          "turnaround_time": 48
+        },
+        {
+          "task_id": 7,
+          "name": "cpu-batch-3",
+          "kind": "cpu_bound",
+          "priority": 4,
+          "arrival_time": 7,
+          "start_time": 50,
+          "finish_time": 66,
+          "wait_time": 43,
+          "turnaround_time": 59
+        }
+      ]
+    }
+  ]
+}
