@@ -1,0 +1,31 @@
+{
+  "scope": "checked runtime regression expectations for toy execution-engine labs",
+  "semantic_equivalence": {
+    "expected_total_cases": 4,
+    "expected_mismatches": 1,
+    "expected_mismatch_case": "intentional_mismatch_detected"
+  },
+  "runtime_equivalence": {
+    "expected_total_cases": 6,
+    "expected_semantic_mismatches": 0,
+    "expected_deopt_fallback_matches": 6,
+    "expected_invalid_trace_rejections_preserved": 1
+  },
+  "wasm_malformed_regression": {
+    "expected_total_traces": 7,
+    "expected_false_accepts": 0,
+    "expected_regression_status": "pass"
+  },
+  "tiered_execution": {
+    "expected_deopt_reasons": [
+      "operand-type-changed",
+      "branch-direction-changed"
+    ]
+  },
+  "inline_cache": {
+    "expected_terminal_states": {
+      "load_x": "megamorphic_generic_fallback",
+      "load_y": "polymorphic"
+    }
+  }
+}

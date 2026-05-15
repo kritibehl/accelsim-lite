@@ -700,3 +700,21 @@ The regression pack checks deterministic rejection behavior for:
 - malformed return shape
 
 Scope note: this is a toy WebAssembly-style validation-regression workflow. It does not claim production WebAssembly runtime, compiler, validator, V8, or JIT implementation experience.
+
+## CI-style execution-engine regression gate
+
+AccelSim-Lite includes a CI-style runtime regression gate:
+
+- `execution_engine_lab/runtime_regression_baseline.json`
+- `execution_engine_lab/run_runtime_regression_gate.py`
+- `execution_engine_lab/runtime_regression_report.md`
+- `execution_engine_lab/runtime_regression_summary.json`
+
+The gate compares current runtime experiment outputs against checked-in expectations for:
+- semantic-equivalence drift
+- runtime-equivalence mismatches
+- malformed Wasm-style false accepts
+- deoptimization guard-failure classification drift
+- inline-cache terminal-state regressions
+
+Scope note: this is a toy execution-engine regression gate. It does not claim production compiler, VM, JIT, V8, or WebAssembly validation infrastructure.

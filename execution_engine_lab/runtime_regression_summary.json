@@ -1,0 +1,72 @@
+{
+  "scope": "CI-style runtime regression gate for toy execution-engine labs",
+  "total_runtime_checks": 12,
+  "checks_passed": 12,
+  "checks_failed": 0,
+  "semantic_drift_detected": false,
+  "false_accepts": 0,
+  "classification_regressions": [],
+  "regression_gate_status": "PASS",
+  "checks": [
+    {
+      "name": "semantic_equivalence_total_cases",
+      "passed": true,
+      "detail": "observed=4"
+    },
+    {
+      "name": "semantic_equivalence_expected_mismatch_count",
+      "passed": true,
+      "detail": "observed_mismatches=1"
+    },
+    {
+      "name": "semantic_equivalence_expected_mismatch_case",
+      "passed": true,
+      "detail": "mismatch_cases=['intentional_mismatch_detected']"
+    },
+    {
+      "name": "runtime_equivalence_no_semantic_mismatches",
+      "passed": true,
+      "detail": "semantic_mismatches=0"
+    },
+    {
+      "name": "runtime_equivalence_deopt_fallback_matches",
+      "passed": true,
+      "detail": "deopt_fallback_matches=6"
+    },
+    {
+      "name": "runtime_equivalence_invalid_rejections_preserved",
+      "passed": true,
+      "detail": "invalid_trace_rejections_preserved=1"
+    },
+    {
+      "name": "wasm_malformed_total_traces",
+      "passed": true,
+      "detail": "total_traces=7"
+    },
+    {
+      "name": "wasm_malformed_no_false_accepts",
+      "passed": true,
+      "detail": "false_accepts=0"
+    },
+    {
+      "name": "wasm_malformed_regression_status",
+      "passed": true,
+      "detail": "regression_status=pass"
+    },
+    {
+      "name": "tiered_execution_guard_failure_reasons",
+      "passed": true,
+      "detail": "observed=['branch-direction-changed', 'operand-type-changed']"
+    },
+    {
+      "name": "inline_cache_terminal_state_load_x",
+      "passed": true,
+      "detail": "observed=megamorphic_generic_fallback expected=megamorphic_generic_fallback"
+    },
+    {
+      "name": "inline_cache_terminal_state_load_y",
+      "passed": true,
+      "detail": "observed=polymorphic expected=polymorphic"
+    }
+  ]
+}
