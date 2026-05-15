@@ -62,3 +62,7 @@ add_executable(stack_bytecode_interpreter
 add_executable(bytecode_optimizer
   execution_engine_lab/bytecode_optimizer.cpp
 )
+
+add_executable(tiered_execution_sim
+  execution_engine_lab/tiered_execution_sim.cpp
+)

@@ -25,6 +25,7 @@ python3 scripts/analysis/analyze_collective_pressure.py
 ./build/workload_scheduler_sim
 ./build/stack_bytecode_interpreter
 ./build/bytecode_optimizer
+./build/tiered_execution_sim
 
 echo
 echo "== Claims check =="

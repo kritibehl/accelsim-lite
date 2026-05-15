@@ -1,0 +1,35 @@
+{
+  "scope": "toy hot-trace profiling for tiered execution simulation; not a JIT or production runtime",
+  "profiles": [
+    {
+      "trace_name": "arith_trace",
+      "invocation_count": 5,
+      "opcode_count_total": 40,
+      "repeated_branch_path_count": 5,
+      "basic_block_reuse_count": 5,
+      "dominant_branch_direction": "none",
+      "dominant_basic_block": 1,
+      "hot_trace": true
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_count": 5,
+      "opcode_count_total": 31,
+      "repeated_branch_path_count": 4,
+      "basic_block_reuse_count": 4,
+      "dominant_branch_direction": "taken",
+      "dominant_basic_block": 2,
+      "hot_trace": true
+    },
+    {
+      "trace_name": "mixed_trace",
+      "invocation_count": 4,
+      "opcode_count_total": 40,
+      "repeated_branch_path_count": 4,
+      "basic_block_reuse_count": 4,
+      "dominant_branch_direction": "not_taken",
+      "dominant_basic_block": 4,
+      "hot_trace": true
+    }
+  ]
+}

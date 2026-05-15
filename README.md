@@ -572,3 +572,24 @@ stack-depth proxy
 dispatch-step reduction
 
 Scope note: this is a toy bytecode transformation lab. It does not claim compiler, JIT, V8, or WebAssembly runtime implementation experience.
+
+## Tiered execution and deoptimization lab
+
+AccelSim-Lite includes a toy tiered-execution and deoptimization simulation:
+
+- `execution_engine_lab/tiered_execution_sim.cpp`
+- `execution_engine_lab/hot_trace_profiles.json`
+- `execution_engine_lab/speculative_guard_cases.json`
+- `execution_engine_lab/tiering_and_deopt_report.md`
+
+The lab models:
+- baseline execution
+- hot-trace detection
+- repeated branch-path tracking
+- basic-block reuse
+- speculative optimized-path execution
+- guard checks
+- fallback to baseline execution
+- deoptimization event reporting
+
+Scope note: this is a toy tiered-execution and deoptimization simulation. It does not claim JIT, V8, WebAssembly runtime, or production compiler implementation experience.

@@ -1,0 +1,177 @@
+{
+  "scope": "toy speculative guard and deoptimization simulation; not a JIT or V8 implementation",
+  "guard_cases": [
+    {
+      "trace_name": "arith_trace",
+      "invocation_index": 1,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "arith_trace",
+      "invocation_index": 2,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "arith_trace",
+      "invocation_index": 3,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "arith_trace",
+      "invocation_index": 4,
+      "optimized_path_attempted": true,
+      "optimized_path_taken": true,
+      "guard_failed": false,
+      "guard_failure_reason": "none",
+      "execution_tier": "optimized_candidate",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "arith_trace",
+      "invocation_index": 5,
+      "optimized_path_attempted": true,
+      "optimized_path_taken": false,
+      "guard_failed": true,
+      "guard_failure_reason": "operand-type-changed",
+      "execution_tier": "deoptimized-to-baseline",
+      "fallback_action": "fallback_to_baseline_execution"
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_index": 1,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_index": 2,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_index": 3,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_index": 4,
+      "optimized_path_attempted": true,
+      "optimized_path_taken": false,
+      "guard_failed": true,
+      "guard_failure_reason": "branch-direction-changed",
+      "execution_tier": "deoptimized-to-baseline",
+      "fallback_action": "fallback_to_baseline_execution"
+    },
+    {
+      "trace_name": "branch_trace",
+      "invocation_index": 5,
+      "optimized_path_attempted": true,
+      "optimized_path_taken": true,
+      "guard_failed": false,
+      "guard_failure_reason": "none",
+      "execution_tier": "optimized_candidate",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "mixed_trace",
+      "invocation_index": 1,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "mixed_trace",
+      "invocation_index": 2,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "mixed_trace",
+      "invocation_index": 3,
+      "optimized_path_attempted": false,
+      "optimized_path_taken": false,
+      "guard_failed": false,
+      "guard_failure_reason": "",
+      "execution_tier": "baseline",
+      "fallback_action": "none"
+    },
+    {
+      "trace_name": "mixed_trace",
+      "invocation_index": 4,
+      "optimized_path_attempted": true,
+      "optimized_path_taken": true,
+      "guard_failed": false,
+      "guard_failure_reason": "none",
+      "execution_tier": "optimized_candidate",
+      "fallback_action": "none"
+    }
+  ],
+  "summary": [
+    {
+      "trace_name": "arith_trace",
+      "total_invocations": 5,
+      "hot_threshold": 3,
+      "optimized_attempts": 2,
+      "optimized_hits": 1,
+      "deopt_count": 1,
+      "optimized_hit_rate": 0.5000,
+      "final_status": "hot-with-deopt-events"
+    },
+    {
+      "trace_name": "branch_trace",
+      "total_invocations": 5,
+      "hot_threshold": 3,
+      "optimized_attempts": 2,
+      "optimized_hits": 1,
+      "deopt_count": 1,
+      "optimized_hit_rate": 0.5000,
+      "final_status": "hot-with-deopt-events"
+    },
+    {
+      "trace_name": "mixed_trace",
+      "total_invocations": 4,
+      "hot_threshold": 3,
+      "optimized_attempts": 1,
+      "optimized_hits": 1,
+      "deopt_count": 0,
+      "optimized_hit_rate": 1.0000,
+      "final_status": "hot-stable-optimized"
+    }
+  ]
+}
