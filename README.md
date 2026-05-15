@@ -749,3 +749,15 @@ AccelSim-Lite includes a real Node/V8 optimization-trace observation that maps p
 The observation records a repeated property-access function being marked hot/stable and optimized to MAGLEV under Node/V8 tracing flags.
 
 Scope note: this is a Node/V8 observation artifact only. It does not claim V8 source build, d8 usage, V8 internals modification, Chromium contribution, or production JavaScript engine work.
+
+## Node/V8 shape-instability observation
+
+AccelSim-Lite includes a second Node/V8 observation artifact for property-shape instability:
+
+- `docs/real_v8_observations/node_v8_shape_instability_trace.md`
+- `docs/real_v8_observations/artifacts/shape_instability_deopt.js`
+- `docs/real_v8_observations/artifacts/shape_instability_deopt_trace.txt`
+
+The experiment warms up stable property access, then introduces a different object shape to connect real Node/V8 trace behavior with AccelSim-Lite's toy object-shape and inline-cache experiments.
+
+Scope note: this is a Node/V8 observation artifact only. It does not claim d8 usage, V8 source build, V8 internals modification, Chromium contribution, or production JavaScript engine work.
