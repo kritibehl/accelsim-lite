@@ -718,3 +718,22 @@ The gate compares current runtime experiment outputs against checked-in expectat
 - inline-cache terminal-state regressions
 
 Scope note: this is a toy execution-engine regression gate. It does not claim production compiler, VM, JIT, V8, or WebAssembly validation infrastructure.
+
+## Runtime metadata lookup benchmark
+
+AccelSim-Lite includes a runtime metadata lookup benchmark:
+
+- `execution_engine_lab/dispatch_lookup_structure_benchmark.cpp`
+- `execution_engine_lab/lookup_structure_benchmark_report.md`
+- `execution_engine_lab/lookup_structure_benchmark_summary.json`
+
+The benchmark compares:
+- hash-table-backed metadata lookup via `std::unordered_map`
+- tree-backed metadata lookup via `std::map`
+
+Across:
+- opcode dispatch metadata
+- object-shape metadata
+- inline-cache-style metadata workloads
+
+Scope note: this is an educational runtime metadata experiment and not a V8 benchmark or production engine benchmark.

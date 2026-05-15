@@ -1,0 +1,77 @@
+{
+  "scope": "educational runtime metadata lookup benchmark; not a V8 benchmark or production engine benchmark",
+  "results": [
+    {
+      "workload": "opcode_dispatch_small",
+      "structure": "unordered_map_hash_table",
+      "entries": 16,
+      "lookups": 100000,
+      "hits": 95085,
+      "misses": 4915,
+      "elapsed_ms": 17.5967
+    },
+    {
+      "workload": "opcode_dispatch_small",
+      "structure": "map_tree_index",
+      "entries": 16,
+      "lookups": 100000,
+      "hits": 95085,
+      "misses": 4915,
+      "elapsed_ms": 47.7590
+    },
+    {
+      "workload": "opcode_dispatch_medium",
+      "structure": "unordered_map_hash_table",
+      "entries": 128,
+      "lookups": 200000,
+      "hits": 179890,
+      "misses": 20110,
+      "elapsed_ms": 34.8213
+    },
+    {
+      "workload": "opcode_dispatch_medium",
+      "structure": "map_tree_index",
+      "entries": 128,
+      "lookups": 200000,
+      "hits": 179890,
+      "misses": 20110,
+      "elapsed_ms": 143.4610
+    },
+    {
+      "workload": "shape_metadata_diverse",
+      "structure": "unordered_map_hash_table",
+      "entries": 512,
+      "lookups": 300000,
+      "hits": 240373,
+      "misses": 59627,
+      "elapsed_ms": 57.7286
+    },
+    {
+      "workload": "shape_metadata_diverse",
+      "structure": "map_tree_index",
+      "entries": 512,
+      "lookups": 300000,
+      "hits": 240373,
+      "misses": 59627,
+      "elapsed_ms": 261.4867
+    },
+    {
+      "workload": "inline_cache_state_diverse",
+      "structure": "unordered_map_hash_table",
+      "entries": 1024,
+      "lookups": 400000,
+      "hits": 279989,
+      "misses": 120011,
+      "elapsed_ms": 74.8703
+    },
+    {
+      "workload": "inline_cache_state_diverse",
+      "structure": "map_tree_index",
+      "entries": 1024,
+      "lookups": 400000,
+      "hits": 279989,
+      "misses": 120011,
+      "elapsed_ms": 407.1053
+    }
+  ]
+}

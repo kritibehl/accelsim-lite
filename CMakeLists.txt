@@ -82,3 +82,8 @@ add_executable(semantic_equivalence_harness
 add_executable(runtime_equivalence_harness
   execution_engine_lab/runtime_equivalence_harness.cpp
 )
+
+
+add_executable(dispatch_lookup_structure_benchmark
+    execution_engine_lab/dispatch_lookup_structure_benchmark.cpp)
+
