@@ -680,3 +680,23 @@ The harness compares baseline, optimized, tiered-style, and deoptimized stack-by
 - fallback correctness after unsafe optimized paths
 
 Scope note: this is a toy differential runtime-validation harness. It does not claim production compiler, VM, JIT, V8, or WebAssembly validation experience.
+
+## WebAssembly-style malformed-trace regression pack
+
+AccelSim-Lite includes a toy malformed-trace regression workflow for WebAssembly-style validation:
+
+- `execution_engine_lab/wasm_malformed_trace_regression_cases.json`
+- `execution_engine_lab/run_wasm_validation_regression.py`
+- `execution_engine_lab/wasm_regression_report.md`
+- `execution_engine_lab/wasm_regression_summary.json`
+
+The regression pack checks deterministic rejection behavior for:
+- stack underflow
+- type mismatch
+- invalid branch depth
+- unterminated block
+- unterminated loop
+- unexpected block end
+- malformed return shape
+
+Scope note: this is a toy WebAssembly-style validation-regression workflow. It does not claim production WebAssembly runtime, compiler, validator, V8, or JIT implementation experience.

@@ -1,0 +1,69 @@
+{
+  "scope": "toy WebAssembly-style malformed-trace regression cases; not a real Wasm validator",
+  "cases": [
+    {
+      "name": "stack_underflow_add",
+      "expected_rejection_class": "stack_underflow",
+      "instructions": [
+        {"opcode": "i32.const", "operand": 1},
+        {"opcode": "i32.add", "operand": 0},
+        {"opcode": "return", "operand": 0}
+      ]
+    },
+    {
+      "name": "type_mismatch_add",
+      "expected_rejection_class": "type_mismatch",
+      "instructions": [
+        {"opcode": "local.get", "operand": 1},
+        {"opcode": "i32.const", "operand": 2},
+        {"opcode": "i32.add", "operand": 0},
+        {"opcode": "return", "operand": 0}
+      ]
+    },
+    {
+      "name": "invalid_branch_depth",
+      "expected_rejection_class": "invalid_branch_depth",
+      "instructions": [
+        {"opcode": "block", "operand": 0},
+        {"opcode": "i32.const", "operand": 1},
+        {"opcode": "br_if", "operand": 2},
+        {"opcode": "return", "operand": 0}
+      ]
+    },
+    {
+      "name": "unterminated_block",
+      "expected_rejection_class": "unterminated_block",
+      "instructions": [
+        {"opcode": "block", "operand": 0},
+        {"opcode": "i32.const", "operand": 1},
+        {"opcode": "i32.const", "operand": 2},
+        {"opcode": "i32.add", "operand": 0}
+      ]
+    },
+    {
+      "name": "unterminated_loop",
+      "expected_rejection_class": "unterminated_block",
+      "instructions": [
+        {"opcode": "loop", "operand": 0},
+        {"opcode": "local.get", "operand": 0},
+        {"opcode": "i32.const", "operand": 1},
+        {"opcode": "i32.add", "operand": 0}
+      ]
+    },
+    {
+      "name": "unexpected_block_end",
+      "expected_rejection_class": "unknown_opcode",
+      "instructions": [
+        {"opcode": "end", "operand": 0},
+        {"opcode": "return", "operand": 0}
+      ]
+    },
+    {
+      "name": "malformed_return_shape",
+      "expected_rejection_class": "stack_underflow",
+      "instructions": [
+        {"opcode": "return", "operand": 0}
+      ]
+    }
+  ]
+}

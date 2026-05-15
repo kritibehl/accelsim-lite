@@ -1,0 +1,273 @@
+{
+  "scope": "toy WebAssembly-style malformed-trace regression summary; not a real Wasm validator",
+  "total_traces": 7,
+  "correctly_rejected_traces": 7,
+  "mismatches": 0,
+  "false_accepts": 0,
+  "regression_status": "pass",
+  "results": [
+    {
+      "name": "stack_underflow_add",
+      "expected_rejection_class": "stack_underflow",
+      "observed_rejection_class": "stack_underflow",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "i32.const",
+          "stack_height_before": 0,
+          "stack_height_after": 1,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 1,
+          "opcode": "i32.add",
+          "stack_height_before": 1,
+          "stack_height_after": 1,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": false,
+          "error_reason": "stack_underflow"
+        }
+      ]
+    },
+    {
+      "name": "type_mismatch_add",
+      "expected_rejection_class": "type_mismatch",
+      "observed_rejection_class": "type_mismatch",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "local.get",
+          "stack_height_before": 0,
+          "stack_height_after": 1,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 1,
+          "opcode": "i32.const",
+          "stack_height_before": 1,
+          "stack_height_after": 2,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 2,
+          "opcode": "i32.add",
+          "stack_height_before": 2,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": false,
+          "error_reason": "type_mismatch"
+        }
+      ]
+    },
+    {
+      "name": "invalid_branch_depth",
+      "expected_rejection_class": "invalid_branch_depth",
+      "observed_rejection_class": "invalid_branch_depth",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "block",
+          "stack_height_before": 0,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 1,
+          "opcode": "i32.const",
+          "stack_height_before": 0,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 2,
+          "opcode": "br_if",
+          "stack_height_before": 1,
+          "stack_height_after": 0,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": false,
+          "error_reason": "invalid_branch_depth"
+        }
+      ]
+    },
+    {
+      "name": "unterminated_block",
+      "expected_rejection_class": "unterminated_block",
+      "observed_rejection_class": "unterminated_block",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "block",
+          "stack_height_before": 0,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 1,
+          "opcode": "i32.const",
+          "stack_height_before": 0,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 2,
+          "opcode": "i32.const",
+          "stack_height_before": 1,
+          "stack_height_after": 2,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 3,
+          "opcode": "i32.add",
+          "stack_height_before": 2,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 4,
+          "opcode": "end_of_program",
+          "stack_height_before": 1,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": false,
+          "error_reason": "unterminated_block"
+        }
+      ]
+    },
+    {
+      "name": "unterminated_loop",
+      "expected_rejection_class": "unterminated_block",
+      "observed_rejection_class": "unterminated_block",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "loop",
+          "stack_height_before": 0,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 1,
+          "opcode": "local.get",
+          "stack_height_before": 0,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 2,
+          "opcode": "i32.const",
+          "stack_height_before": 1,
+          "stack_height_after": 2,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 3,
+          "opcode": "i32.add",
+          "stack_height_before": 2,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": true,
+          "error_reason": "none"
+        },
+        {
+          "pc": 4,
+          "opcode": "end_of_program",
+          "stack_height_before": 1,
+          "stack_height_after": 1,
+          "control_depth_before": 1,
+          "control_depth_after": 1,
+          "ok": false,
+          "error_reason": "unterminated_block"
+        }
+      ]
+    },
+    {
+      "name": "unexpected_block_end",
+      "expected_rejection_class": "unknown_opcode",
+      "observed_rejection_class": "unknown_opcode",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "end",
+          "stack_height_before": 0,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": false,
+          "error_reason": "unknown_opcode"
+        }
+      ]
+    },
+    {
+      "name": "malformed_return_shape",
+      "expected_rejection_class": "stack_underflow",
+      "observed_rejection_class": "stack_underflow",
+      "match": true,
+      "false_accept": false,
+      "steps": [
+        {
+          "pc": 0,
+          "opcode": "return",
+          "stack_height_before": 0,
+          "stack_height_after": 0,
+          "control_depth_before": 0,
+          "control_depth_after": 0,
+          "ok": false,
+          "error_reason": "stack_underflow"
+        }
+      ]
+    }
+  ]
+}
