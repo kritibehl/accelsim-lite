@@ -70,3 +70,7 @@ add_executable(tiered_execution_sim
 add_executable(object_shape_cache_sim
   execution_engine_lab/object_shape_cache_sim.cpp
 )
+
+add_executable(wasm_style_stack_validator
+  execution_engine_lab/wasm_style_stack_validator.cpp
+)

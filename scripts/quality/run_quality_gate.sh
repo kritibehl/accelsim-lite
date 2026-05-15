@@ -27,6 +27,7 @@ python3 scripts/analysis/analyze_collective_pressure.py
 ./build/bytecode_optimizer
 ./build/tiered_execution_sim
 ./build/object_shape_cache_sim
+./build/wasm_style_stack_validator
 
 echo
 echo "== Claims check =="

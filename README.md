@@ -610,3 +610,29 @@ The lab models:
 - generic lookup fallback behavior
 
 Scope note: this is a toy runtime simulation. It does not claim V8 implementation, JavaScript engine internals, or production inline-cache work.
+
+## WebAssembly-style stack validation lab
+
+AccelSim-Lite includes a toy WebAssembly-style stack validation lab:
+
+- `execution_engine_lab/wasm_style_stack_validator.cpp`
+- `execution_engine_lab/wasm_control_flow_cases.json`
+- `execution_engine_lab/wasm_validation_report.md`
+
+The lab validates structured control-flow traces using a small Wasm-style instruction subset:
+- `i32.const`
+- `i32.add`
+- `local.get`
+- `block`
+- `loop`
+- `br_if`
+- `return`
+
+It reports:
+- valid vs invalid traces
+- operand-stack height transitions
+- control-flow depth transitions
+- branch-target validation outcomes
+- malformed trace classifications such as stack underflow, type mismatch, invalid branch depth, and unterminated block
+
+Scope note: this is a toy WebAssembly-style validation lab. It does not claim real WebAssembly runtime, compiler, validator, V8, or JIT implementation experience.
