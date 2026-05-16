@@ -1,0 +1,37 @@
+{
+  "scope": "simulated transformer-style inference workload profiles; not real LLM serving or hardware benchmarking",
+  "profiles": [
+    {
+      "name": "prefill_heavy",
+      "description": "Large prompt/batch-style phase with higher parallel compute and memory demand.",
+      "base_compute_cycles": 180,
+      "base_memory_cycles": 140,
+      "dependency_delay_cycles": 24,
+      "queue_pressure_factor": 1.2
+    },
+    {
+      "name": "decode_heavy",
+      "description": "Stepwise token-generation phase with sequential dependency pressure and latency sensitivity.",
+      "base_compute_cycles": 70,
+      "base_memory_cycles": 60,
+      "dependency_delay_cycles": 90,
+      "queue_pressure_factor": 0.8
+    },
+    {
+      "name": "mixed_serving_trace",
+      "description": "Prefill burst followed by repeated decode-style steps.",
+      "base_compute_cycles": 130,
+      "base_memory_cycles": 100,
+      "dependency_delay_cycles": 58,
+      "queue_pressure_factor": 1.0
+    },
+    {
+      "name": "queue_pressure_serving_trace",
+      "description": "Concurrent request pattern that increases queue buildup and scheduling delay.",
+      "base_compute_cycles": 120,
+      "base_memory_cycles": 95,
+      "dependency_delay_cycles": 64,
+      "queue_pressure_factor": 1.8
+    }
+  ]
+}

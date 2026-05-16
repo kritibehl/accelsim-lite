@@ -1,0 +1,1601 @@
+{
+  "scope": "simulated ML systems study of transformer-style prefill/decode bottleneck behavior; not real LLM serving or hardware benchmarking",
+  "sweep_parameters": {
+    "memory_ports": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "queue_depth": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "dependency_delay": [
+      "low",
+      "high"
+    ]
+  },
+  "results": [
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 389.84,
+      "throughput_units": 2.565155,
+      "queue_delay_cycles": 51.84,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 51.84
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 404.24,
+      "throughput_units": 2.473778,
+      "queue_delay_cycles": 51.84,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 51.84
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 407.12,
+      "throughput_units": 2.456278,
+      "queue_delay_cycles": 69.12,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 69.12
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 421.52,
+      "throughput_units": 2.372367,
+      "queue_delay_cycles": 69.12,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 69.12
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 438.224,
+      "throughput_units": 2.281938,
+      "queue_delay_cycles": 100.224,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 100.224
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 452.624,
+      "throughput_units": 2.209339,
+      "queue_delay_cycles": 100.224,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 140.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 100.224
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 308.5,
+      "throughput_units": 3.241491,
+      "queue_delay_cycles": 40.5,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 40.5
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 322.9,
+      "throughput_units": 3.096934,
+      "queue_delay_cycles": 40.5,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 40.5
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 322.0,
+      "throughput_units": 3.10559,
+      "queue_delay_cycles": 54.0,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 54.0
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 336.4,
+      "throughput_units": 2.972652,
+      "queue_delay_cycles": 54.0,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 54.0
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 346.3,
+      "throughput_units": 2.88767,
+      "queue_delay_cycles": 78.3,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 78.3
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 360.7,
+      "throughput_units": 2.772387,
+      "queue_delay_cycles": 78.3,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 70.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 78.3
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 267.83,
+      "throughput_units": 3.733712,
+      "queue_delay_cycles": 34.83,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 34.83
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 282.23,
+      "throughput_units": 3.543209,
+      "queue_delay_cycles": 34.83,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 34.83
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 279.44,
+      "throughput_units": 3.578586,
+      "queue_delay_cycles": 46.44,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 46.44
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 293.84,
+      "throughput_units": 3.403213,
+      "queue_delay_cycles": 46.44,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 46.44
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 300.338,
+      "throughput_units": 3.329582,
+      "queue_delay_cycles": 67.338,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 67.338
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 314.738,
+      "throughput_units": 3.177246,
+      "queue_delay_cycles": 67.338,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 35.0,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 67.338
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 247.495,
+      "throughput_units": 4.040486,
+      "queue_delay_cycles": 31.995,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 31.995
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 261.895,
+      "throughput_units": 3.818324,
+      "queue_delay_cycles": 31.995,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 31.995
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 258.16,
+      "throughput_units": 3.873567,
+      "queue_delay_cycles": 42.66,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 42.66
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 272.56,
+      "throughput_units": 3.668917,
+      "queue_delay_cycles": 42.66,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 42.66
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 277.357,
+      "throughput_units": 3.605462,
+      "queue_delay_cycles": 61.857,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 18.0,
+        "queue_delay_cycles": 61.857
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "prefill_heavy",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 291.757,
+      "throughput_units": 3.42751,
+      "queue_delay_cycles": 61.857,
+      "stall_distribution": {
+        "compute_cycles": 180,
+        "memory_stall_cycles": 17.5,
+        "dependency_stall_cycles": 32.4,
+        "queue_delay_cycles": 61.857
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 211.54,
+      "throughput_units": 4.727238,
+      "queue_delay_cycles": 14.04,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 14.04
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 265.54,
+      "throughput_units": 3.765911,
+      "queue_delay_cycles": 14.04,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 14.04
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 216.22,
+      "throughput_units": 4.624919,
+      "queue_delay_cycles": 18.72,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 18.72
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 270.22,
+      "throughput_units": 3.700688,
+      "queue_delay_cycles": 18.72,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 18.72
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 224.644,
+      "throughput_units": 4.451488,
+      "queue_delay_cycles": 27.144,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 27.144
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 278.644,
+      "throughput_units": 3.588809,
+      "queue_delay_cycles": 27.144,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 60.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 27.144
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 178.3,
+      "throughput_units": 5.608525,
+      "queue_delay_cycles": 10.8,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 10.8
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 232.3,
+      "throughput_units": 4.304778,
+      "queue_delay_cycles": 10.8,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 10.8
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 181.9,
+      "throughput_units": 5.497526,
+      "queue_delay_cycles": 14.4,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 14.4
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 235.9,
+      "throughput_units": 4.239084,
+      "queue_delay_cycles": 14.4,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 14.4
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 188.38,
+      "throughput_units": 5.308419,
+      "queue_delay_cycles": 20.88,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 20.88
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 242.38,
+      "throughput_units": 4.125753,
+      "queue_delay_cycles": 20.88,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 30.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 20.88
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 161.68,
+      "throughput_units": 6.185057,
+      "queue_delay_cycles": 9.18,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 9.18
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 215.68,
+      "throughput_units": 4.636499,
+      "queue_delay_cycles": 9.18,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 9.18
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 164.74,
+      "throughput_units": 6.070171,
+      "queue_delay_cycles": 12.24,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 12.24
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 218.74,
+      "throughput_units": 4.571638,
+      "queue_delay_cycles": 12.24,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 12.24
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 170.248,
+      "throughput_units": 5.873784,
+      "queue_delay_cycles": 17.748,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 17.748
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 224.248,
+      "throughput_units": 4.459349,
+      "queue_delay_cycles": 17.748,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 15.0,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 17.748
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 153.37,
+      "throughput_units": 6.52018,
+      "queue_delay_cycles": 8.37,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 8.37
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 207.37,
+      "throughput_units": 4.822298,
+      "queue_delay_cycles": 8.37,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 8.37
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 156.16,
+      "throughput_units": 6.403689,
+      "queue_delay_cycles": 11.16,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 11.16
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 210.16,
+      "throughput_units": 4.758279,
+      "queue_delay_cycles": 11.16,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 11.16
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 161.182,
+      "throughput_units": 6.204167,
+      "queue_delay_cycles": 16.182,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 67.5,
+        "queue_delay_cycles": 16.182
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "decode_heavy",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 215.182,
+      "throughput_units": 4.647229,
+      "queue_delay_cycles": 16.182,
+      "stall_distribution": {
+        "compute_cycles": 70,
+        "memory_stall_cycles": 7.5,
+        "dependency_stall_cycles": 121.5,
+        "queue_delay_cycles": 16.182
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 304.55,
+      "throughput_units": 3.283533,
+      "queue_delay_cycles": 31.05,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 31.05
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 339.35,
+      "throughput_units": 2.94681,
+      "queue_delay_cycles": 31.05,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 31.05
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 314.9,
+      "throughput_units": 3.175611,
+      "queue_delay_cycles": 41.4,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 41.4
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 349.7,
+      "throughput_units": 2.859594,
+      "queue_delay_cycles": 41.4,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 41.4
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 333.53,
+      "throughput_units": 2.998231,
+      "queue_delay_cycles": 60.03,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 60.03
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 368.33,
+      "throughput_units": 2.714957,
+      "queue_delay_cycles": 60.03,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 100.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 60.03
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 247.8,
+      "throughput_units": 4.035513,
+      "queue_delay_cycles": 24.3,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 24.3
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 282.6,
+      "throughput_units": 3.53857,
+      "queue_delay_cycles": 24.3,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 24.3
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 255.9,
+      "throughput_units": 3.907776,
+      "queue_delay_cycles": 32.4,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 32.4
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 290.7,
+      "throughput_units": 3.439972,
+      "queue_delay_cycles": 32.4,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 32.4
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 270.48,
+      "throughput_units": 3.697131,
+      "queue_delay_cycles": 46.98,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 46.98
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 305.28,
+      "throughput_units": 3.275681,
+      "queue_delay_cycles": 46.98,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 50.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 46.98
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 219.425,
+      "throughput_units": 4.557366,
+      "queue_delay_cycles": 20.925,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 20.925
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 254.225,
+      "throughput_units": 3.933523,
+      "queue_delay_cycles": 20.925,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 20.925
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 226.4,
+      "throughput_units": 4.416961,
+      "queue_delay_cycles": 27.9,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 27.9
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 261.2,
+      "throughput_units": 3.828484,
+      "queue_delay_cycles": 27.9,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 27.9
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 238.955,
+      "throughput_units": 4.184888,
+      "queue_delay_cycles": 40.455,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 40.455
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 273.755,
+      "throughput_units": 3.652901,
+      "queue_delay_cycles": 40.455,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 25.0,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 40.455
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 205.2375,
+      "throughput_units": 4.872404,
+      "queue_delay_cycles": 19.2375,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 19.2375
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 240.0375,
+      "throughput_units": 4.166016,
+      "queue_delay_cycles": 19.2375,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 19.2375
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 211.65,
+      "throughput_units": 4.724781,
+      "queue_delay_cycles": 25.65,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 25.65
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 246.45,
+      "throughput_units": 4.057618,
+      "queue_delay_cycles": 25.65,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 25.65
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 223.1925,
+      "throughput_units": 4.480437,
+      "queue_delay_cycles": 37.1925,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 43.5,
+        "queue_delay_cycles": 37.1925
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "mixed_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 257.9925,
+      "throughput_units": 3.876082,
+      "queue_delay_cycles": 37.1925,
+      "stall_distribution": {
+        "compute_cycles": 130,
+        "memory_stall_cycles": 12.5,
+        "dependency_stall_cycles": 78.3,
+        "queue_delay_cycles": 37.1925
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 315.245,
+      "throughput_units": 3.172136,
+      "queue_delay_cycles": 52.245,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 52.245
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 353.645,
+      "throughput_units": 2.827694,
+      "queue_delay_cycles": 52.245,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 52.245
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 332.66,
+      "throughput_units": 3.006072,
+      "queue_delay_cycles": 69.66,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 69.66
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 371.06,
+      "throughput_units": 2.694982,
+      "queue_delay_cycles": 69.66,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 69.66
+      },
+      "bottleneck_classification": "memory-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 364.007,
+      "throughput_units": 2.7472,
+      "queue_delay_cycles": 101.007,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 101.007
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 1,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 402.407,
+      "throughput_units": 2.485046,
+      "queue_delay_cycles": 101.007,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 95.0,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 101.007
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 256.2025,
+      "throughput_units": 3.903163,
+      "queue_delay_cycles": 40.7025,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 40.7025
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 294.6025,
+      "throughput_units": 3.394404,
+      "queue_delay_cycles": 40.7025,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 40.7025
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 269.77,
+      "throughput_units": 3.706861,
+      "queue_delay_cycles": 54.27,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 54.27
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 308.17,
+      "throughput_units": 3.244962,
+      "queue_delay_cycles": 54.27,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 54.27
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 294.1915,
+      "throughput_units": 3.399146,
+      "queue_delay_cycles": 78.6915,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 78.6915
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 2,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 332.5915,
+      "throughput_units": 3.006691,
+      "queue_delay_cycles": 78.6915,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 47.5,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 78.6915
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 226.6813,
+      "throughput_units": 4.411481,
+      "queue_delay_cycles": 34.9312,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 34.9312
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 265.0813,
+      "throughput_units": 3.772428,
+      "queue_delay_cycles": 34.9312,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 34.9312
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 238.325,
+      "throughput_units": 4.195951,
+      "queue_delay_cycles": 46.575,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 46.575
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 276.725,
+      "throughput_units": 3.613696,
+      "queue_delay_cycles": 46.575,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 46.575
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 259.2837,
+      "throughput_units": 3.856779,
+      "queue_delay_cycles": 67.5337,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 67.5337
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 4,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 297.6838,
+      "throughput_units": 3.35927,
+      "queue_delay_cycles": 67.5337,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 23.75,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 67.5337
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "low",
+      "latency_cycles": 211.9206,
+      "throughput_units": 4.718748,
+      "queue_delay_cycles": 32.0456,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 32.0456
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "low",
+      "dependency_delay": "high",
+      "latency_cycles": 250.3206,
+      "throughput_units": 3.994877,
+      "queue_delay_cycles": 32.0456,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 32.0456
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "low",
+      "latency_cycles": 222.6025,
+      "throughput_units": 4.492313,
+      "queue_delay_cycles": 42.7275,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 42.7275
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "medium",
+      "dependency_delay": "high",
+      "latency_cycles": 261.0025,
+      "throughput_units": 3.831381,
+      "queue_delay_cycles": 42.7275,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 42.7275
+      },
+      "bottleneck_classification": "dependency-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "low",
+      "latency_cycles": 241.8299,
+      "throughput_units": 4.135138,
+      "queue_delay_cycles": 61.9549,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 48.0,
+        "queue_delay_cycles": 61.9549
+      },
+      "bottleneck_classification": "queue-pressure-bound"
+    },
+    {
+      "workload": "queue_pressure_serving_trace",
+      "memory_ports": 8,
+      "queue_depth": "high",
+      "dependency_delay": "high",
+      "latency_cycles": 280.2299,
+      "throughput_units": 3.568499,
+      "queue_delay_cycles": 61.9549,
+      "stall_distribution": {
+        "compute_cycles": 120,
+        "memory_stall_cycles": 11.875,
+        "dependency_stall_cycles": 86.4,
+        "queue_delay_cycles": 61.9549
+      },
+      "bottleneck_classification": "dependency-bound"
+    }
+  ],
+  "summary_by_workload": {
+    "prefill_heavy": {
+      "memory_ports_1_to_8_latency_improvement_percent": 36.59,
+      "memory_ports_1_to_8_throughput_gain_percent": 57.7,
+      "baseline_bottleneck": "memory-bound",
+      "scaled_bottleneck": "queue-pressure-bound",
+      "bottleneck_counts": {
+        "memory-bound": 12,
+        "queue-pressure-bound": 11,
+        "dependency-bound": 1
+      }
+    },
+    "decode_heavy": {
+      "memory_ports_1_to_8_latency_improvement_percent": 27.78,
+      "memory_ports_1_to_8_throughput_gain_percent": 38.46,
+      "baseline_bottleneck": "dependency-bound",
+      "scaled_bottleneck": "dependency-bound",
+      "bottleneck_counts": {
+        "dependency-bound": 24
+      }
+    },
+    "mixed_serving_trace": {
+      "memory_ports_1_to_8_latency_improvement_percent": 32.79,
+      "memory_ports_1_to_8_throughput_gain_percent": 48.78,
+      "baseline_bottleneck": "memory-bound",
+      "scaled_bottleneck": "dependency-bound",
+      "bottleneck_counts": {
+        "memory-bound": 9,
+        "dependency-bound": 15
+      }
+    },
+    "queue_pressure_serving_trace": {
+      "memory_ports_1_to_8_latency_improvement_percent": 33.08,
+      "memory_ports_1_to_8_throughput_gain_percent": 49.44,
+      "baseline_bottleneck": "memory-bound",
+      "scaled_bottleneck": "dependency-bound",
+      "bottleneck_counts": {
+        "memory-bound": 4,
+        "queue-pressure-bound": 6,
+        "dependency-bound": 14
+      }
+    }
+  }
+}

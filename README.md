@@ -761,3 +761,28 @@ AccelSim-Lite includes a second Node/V8 observation artifact for property-shape 
 The experiment warms up stable property access, then introduces a different object shape to connect real Node/V8 trace behavior with AccelSim-Lite's toy object-shape and inline-cache experiments.
 
 Scope note: this is a Node/V8 observation artifact only. It does not claim d8 usage, V8 source build, V8 internals modification, Chromium contribution, or production JavaScript engine work.
+
+## ML systems study: simulated LLM inference bottlenecks
+
+AccelSim-Lite includes a simulated ML systems study of transformer-style inference workload behavior:
+
+- `ml_systems_studies/llm_inference_workload_profiles.json`
+- `ml_systems_studies/run_prefill_decode_bottleneck_sweep.py`
+- `ml_systems_studies/llm_inference_bottleneck_results.json`
+- `ml_systems_studies/llm_inference_bottleneck_report.md`
+- `ml_systems_studies/research_note_prefill_decode_pressure.md`
+
+The study compares simulated:
+- prefill-heavy workloads
+- decode-heavy workloads
+- mixed serving traces
+- queue-pressure serving traces
+
+It sweeps:
+- memory ports
+- queue depth
+- dependency delay
+
+and reports latency, throughput, queue delay, stall distributions, and bottleneck transitions.
+
+Scope note: this is a simulator-based ML systems study. It does not claim real LLM serving, real accelerator benchmarking, or production inference measurements.
