@@ -786,3 +786,17 @@ It sweeps:
 and reports latency, throughput, queue delay, stall distributions, and bottleneck transitions.
 
 Scope note: this is a simulator-based ML systems study. It does not claim real LLM serving, real accelerator benchmarking, or production inference measurements.
+
+## C++ systems/performance flagship artifacts
+
+AccelSim-Lite includes packaging artifacts for C++ systems, runtime, and performance roles:
+
+- `docs/cpp_systems_architecture.md`
+- `docs/limitations.md`
+- `docs/cpu_cache_locality_note.md`
+- `scripts/dev/run_flagship_demo.sh`
+- `scripts/dev/generate_gtest_report.sh`
+- `reports/flagship/gtest_report.md`
+- `reports/flagship/performance_dashboard.md`
+
+These artifacts summarize the project architecture, claims boundary, GoogleTest/CTest workflow, performance-dashboard proof points, runtime regression gates, threading/queue experiments, ML systems studies, and metadata lookup benchmarks.
