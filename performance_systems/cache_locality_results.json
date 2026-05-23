@@ -1,0 +1,45 @@
+{
+  "scope": "Python cache/locality-adjacent experiment; not hardware cache measurement",
+  "results": [
+    {
+      "experiment": "contiguous_scan",
+      "description": "contiguous list traversal",
+      "items": 250000,
+      "elapsed_ms": 3.862,
+      "result_checksum": 31249875000,
+      "relative_to_contiguous_x": 1.0
+    },
+    {
+      "experiment": "strided_scan",
+      "description": "strided access pattern",
+      "items": 250000,
+      "elapsed_ms": 3.8297,
+      "result_checksum": 3906125000,
+      "relative_to_contiguous_x": 0.9916
+    },
+    {
+      "experiment": "pointer_heavy_scan",
+      "description": "pointer-like dictionary chain traversal",
+      "items": 250000,
+      "elapsed_ms": 99.0685,
+      "result_checksum": 31249875000,
+      "relative_to_contiguous_x": 25.6521
+    },
+    {
+      "experiment": "array_of_structs",
+      "description": "array-of-structs-style object layout",
+      "items": 250000,
+      "elapsed_ms": 49.0654,
+      "result_checksum": 31249875000,
+      "relative_to_contiguous_x": 12.7047
+    },
+    {
+      "experiment": "struct_of_arrays",
+      "description": "structure-of-arrays-style layout",
+      "items": 250000,
+      "elapsed_ms": 17.9809,
+      "result_checksum": 31249875000,
+      "relative_to_contiguous_x": 4.6559
+    }
+  ]
+}

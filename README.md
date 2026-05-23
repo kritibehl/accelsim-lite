@@ -800,3 +800,20 @@ AccelSim-Lite includes packaging artifacts for C++ systems, runtime, and perform
 - `reports/flagship/performance_dashboard.md`
 
 These artifacts summarize the project architecture, claims boundary, GoogleTest/CTest workflow, performance-dashboard proof points, runtime regression gates, threading/queue experiments, ML systems studies, and metadata lookup benchmarks.
+
+## Extended C++ systems/performance studies
+
+AccelSim-Lite includes additional systems/performance artifacts:
+
+- `docs/performance_systems/sanitizers_and_profiling.md`
+- `docs/performance_systems/threading_and_contention_notes.md`
+- `performance_systems/cache_locality_experiment.py`
+- `performance_systems/cache_locality_report.md`
+- `performance_systems/cache_locality_results.json`
+- `performance_systems/kv_cache_batching_sim.py`
+- `performance_systems/kv_cache_batching_report.md`
+- `performance_systems/kv_cache_batching_results.json`
+
+These cover sanitizer-aware build workflows, profiling notes, cache/locality-adjacent access-pattern experiments, threading/queue-contention notes, and simulated KV-cache/token-batching inference pressure.
+
+Scope note: these are educational systems/performance studies and do not claim production profiling, hardware-cache measurement, or real LLM serving benchmarks.

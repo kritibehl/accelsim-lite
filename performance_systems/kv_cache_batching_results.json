@@ -1,0 +1,239 @@
+{
+  "scope": "simulated KV-cache/token batching pressure model; not real LLM serving",
+  "results": [
+    {
+      "profile": "small_batch_decode",
+      "batch": 1,
+      "context": 2048,
+      "decode_steps": 64,
+      "memory_ports": 1,
+      "simulated_latency": 51.6638,
+      "simulated_throughput": 1.238777,
+      "kv_pressure": 0.1638,
+      "decode_dependency": 48.0,
+      "batching_overhead": 3.5,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "small_batch_decode",
+      "batch": 1,
+      "context": 2048,
+      "decode_steps": 64,
+      "memory_ports": 2,
+      "simulated_latency": 51.5819,
+      "simulated_throughput": 1.240745,
+      "kv_pressure": 0.0819,
+      "decode_dependency": 48.0,
+      "batching_overhead": 3.5,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "small_batch_decode",
+      "batch": 1,
+      "context": 2048,
+      "decode_steps": 64,
+      "memory_ports": 4,
+      "simulated_latency": 51.541,
+      "simulated_throughput": 1.241731,
+      "kv_pressure": 0.041,
+      "decode_dependency": 48.0,
+      "batching_overhead": 3.5,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "small_batch_decode",
+      "batch": 1,
+      "context": 2048,
+      "decode_steps": 64,
+      "memory_ports": 8,
+      "simulated_latency": 51.5205,
+      "simulated_throughput": 1.242224,
+      "kv_pressure": 0.0205,
+      "decode_dependency": 48.0,
+      "batching_overhead": 3.5,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "medium_batch_decode",
+      "batch": 8,
+      "context": 4096,
+      "decode_steps": 128,
+      "memory_ports": 1,
+      "simulated_latency": 126.6214,
+      "simulated_throughput": 8.087098,
+      "kv_pressure": 2.6214,
+      "decode_dependency": 96.0,
+      "batching_overhead": 28.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "medium_batch_decode",
+      "batch": 8,
+      "context": 4096,
+      "decode_steps": 128,
+      "memory_ports": 2,
+      "simulated_latency": 125.3107,
+      "simulated_throughput": 8.171687,
+      "kv_pressure": 1.3107,
+      "decode_dependency": 96.0,
+      "batching_overhead": 28.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "medium_batch_decode",
+      "batch": 8,
+      "context": 4096,
+      "decode_steps": 128,
+      "memory_ports": 4,
+      "simulated_latency": 124.6554,
+      "simulated_throughput": 8.214649,
+      "kv_pressure": 0.6554,
+      "decode_dependency": 96.0,
+      "batching_overhead": 28.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "medium_batch_decode",
+      "batch": 8,
+      "context": 4096,
+      "decode_steps": 128,
+      "memory_ports": 8,
+      "simulated_latency": 124.3277,
+      "simulated_throughput": 8.236299,
+      "kv_pressure": 0.3277,
+      "decode_dependency": 96.0,
+      "batching_overhead": 28.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "large_batch_prefill_decode",
+      "batch": 16,
+      "context": 8192,
+      "decode_steps": 256,
+      "memory_ports": 1,
+      "simulated_latency": 258.4858,
+      "simulated_throughput": 15.846134,
+      "kv_pressure": 10.4858,
+      "decode_dependency": 192.0,
+      "batching_overhead": 56.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "large_batch_prefill_decode",
+      "batch": 16,
+      "context": 8192,
+      "decode_steps": 256,
+      "memory_ports": 2,
+      "simulated_latency": 253.2429,
+      "simulated_throughput": 16.174196,
+      "kv_pressure": 5.2429,
+      "decode_dependency": 192.0,
+      "batching_overhead": 56.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "large_batch_prefill_decode",
+      "batch": 16,
+      "context": 8192,
+      "decode_steps": 256,
+      "memory_ports": 4,
+      "simulated_latency": 250.6214,
+      "simulated_throughput": 16.343374,
+      "kv_pressure": 2.6214,
+      "decode_dependency": 192.0,
+      "batching_overhead": 56.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "large_batch_prefill_decode",
+      "batch": 16,
+      "context": 8192,
+      "decode_steps": 256,
+      "memory_ports": 8,
+      "simulated_latency": 249.3107,
+      "simulated_throughput": 16.429298,
+      "kv_pressure": 1.3107,
+      "decode_dependency": 192.0,
+      "batching_overhead": 56.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "queue_pressure_serving",
+      "batch": 32,
+      "context": 4096,
+      "decode_steps": 192,
+      "memory_ports": 1,
+      "simulated_latency": 266.4858,
+      "simulated_throughput": 23.055641,
+      "kv_pressure": 10.4858,
+      "decode_dependency": 144.0,
+      "batching_overhead": 112.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "queue_pressure_serving",
+      "batch": 32,
+      "context": 4096,
+      "decode_steps": 192,
+      "memory_ports": 2,
+      "simulated_latency": 261.2429,
+      "simulated_throughput": 23.518344,
+      "kv_pressure": 5.2429,
+      "decode_dependency": 144.0,
+      "batching_overhead": 112.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "queue_pressure_serving",
+      "batch": 32,
+      "context": 4096,
+      "decode_steps": 192,
+      "memory_ports": 4,
+      "simulated_latency": 258.6214,
+      "simulated_throughput": 23.756731,
+      "kv_pressure": 2.6214,
+      "decode_dependency": 144.0,
+      "batching_overhead": 112.0,
+      "bottleneck": "decode-dependency-pressure"
+    },
+    {
+      "profile": "queue_pressure_serving",
+      "batch": 32,
+      "context": 4096,
+      "decode_steps": 192,
+      "memory_ports": 8,
+      "simulated_latency": 257.3107,
+      "simulated_throughput": 23.877746,
+      "kv_pressure": 1.3107,
+      "decode_dependency": 144.0,
+      "batching_overhead": 112.0,
+      "bottleneck": "decode-dependency-pressure"
+    }
+  ],
+  "summary": {
+    "small_batch_decode": {
+      "latency_improvement_1_to_8_ports_percent": 0.28,
+      "throughput_gain_1_to_8_ports_percent": 0.28,
+      "bottleneck_1_port": "decode-dependency-pressure",
+      "bottleneck_8_ports": "decode-dependency-pressure"
+    },
+    "medium_batch_decode": {
+      "latency_improvement_1_to_8_ports_percent": 1.81,
+      "throughput_gain_1_to_8_ports_percent": 1.84,
+      "bottleneck_1_port": "decode-dependency-pressure",
+      "bottleneck_8_ports": "decode-dependency-pressure"
+    },
+    "large_batch_prefill_decode": {
+      "latency_improvement_1_to_8_ports_percent": 3.55,
+      "throughput_gain_1_to_8_ports_percent": 3.68,
+      "bottleneck_1_port": "decode-dependency-pressure",
+      "bottleneck_8_ports": "decode-dependency-pressure"
+    },
+    "queue_pressure_serving": {
+      "latency_improvement_1_to_8_ports_percent": 3.44,
+      "throughput_gain_1_to_8_ports_percent": 3.57,
+      "bottleneck_1_port": "decode-dependency-pressure",
+      "bottleneck_8_ports": "decode-dependency-pressure"
+    }
+  }
+}
