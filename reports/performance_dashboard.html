@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AccelSim-Lite Performance Dashboard</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 40px;
+  background: #f7f7f8;
+  color: #1f2937;
+}
+.hero {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.metric {
+  font-size: 30px;
+  font-weight: 700;
+}
+.label {
+  color: #6b7280;
+  font-size: 13px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+th {
+  background: #111827;
+  color: white;
+}
+.bar {
+  margin-top: 6px;
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: #2563eb;
+}
+.section {
+  margin-top: 28px;
+}
+code {
+  background: #eef2ff;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.note {
+  color: #6b7280;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>AccelSim-Lite Performance Dashboard</h1>
+  <p>C++ runtime/performance experimentation platform with workload benchmarks, runtime regression gates, cache/locality studies, and simulated inference-systems pressure models.</p>
+  <p class="note">Scope: simulator-derived metrics and educational systems studies. Not hardware benchmarking, production inference measurement, V8 implementation, or production compiler infrastructure.</p>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="metric">39.16%</div>
+    <div class="label">memory-heavy latency improvement from 1→4 memory ports</div>
+  </div>
+  <div class="card">
+    <div class="metric">87.03%</div>
+    <div class="label">memory-heavy throughput improvement from 1→4 memory ports</div>
+  </div>
+  <div class="card">
+    <div class="metric">0</div>
+    <div class="label">runtime semantic mismatches</div>
+  </div>
+  <div class="card">
+    <div class="metric">0</div>
+    <div class="label">Wasm malformed-trace false accepts</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Runtime Regression Gate</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th></tr>
+    <tr><td>Total runtime checks</td><td>12</td></tr>
+    <tr><td>Checks passed</td><td>12</td></tr>
+    <tr><td>Checks failed</td><td>0</td></tr>
+    <tr><td>Semantic drift detected</td><td>False</td></tr>
+    <tr><td>False accepts</td><td>0</td></tr>
+    <tr><td>Status</td><td><strong>PASS</strong></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Cache / Locality Study</h2>
+  <table>
+    <tr><th>Experiment</th><th>Elapsed ms</th><th>Relative to contiguous</th></tr>
+    
+    <tr>
+      <td>contiguous_scan</td>
+      <td>3.862</td>
+      <td>1.0x <div class="bar"><span style="width:3.90%"></span></div></td>
+    </tr>
+    
+
+    <tr>
+      <td>strided_scan</td>
+      <td>3.8297</td>
+      <td>0.9916x <div class="bar"><span style="width:3.87%"></span></div></td>
+    </tr>
+    
+
+    <tr>
+      <td>pointer_heavy_scan</td>
+      <td>99.0685</td>
+      <td>25.6521x <div class="bar"><span style="width:100.00%"></span></div></td>
+    </tr>
+    
+
+    <tr>
+      <td>array_of_structs</td>
+      <td>49.0654</td>
+      <td>12.7047x <div class="bar"><span style="width:49.53%"></span></div></td>
+    </tr>
+    
+
+    <tr>
+      <td>struct_of_arrays</td>
+      <td>17.9809</td>
+      <td>4.6559x <div class="bar"><span style="width:18.15%"></span></div></td>
+    </tr>
+    
+  </table>
+</div>
+
+<div class="section">
+  <h2>KV-Cache / Token Batching Simulation</h2>
+  <table>
+    <tr><th>Profile</th><th>Latency improvement</th><th>Throughput gain</th><th>Bottleneck transition</th></tr>
+    
+    <tr>
+      <td>small_batch_decode</td>
+      <td>0.28%</td>
+      <td>0.28% <div class="bar"><span style="width:7.61%"></span></div></td>
+      <td><code>decode-dependency-pressure</code> → <code>decode-dependency-pressure</code></td>
+    </tr>
+    
+
+    <tr>
+      <td>medium_batch_decode</td>
+      <td>1.81%</td>
+      <td>1.84% <div class="bar"><span style="width:50.00%"></span></div></td>
+      <td><code>decode-dependency-pressure</code> → <code>decode-dependency-pressure</code></td>
+    </tr>
+    
+
+    <tr>
+      <td>large_batch_prefill_decode</td>
+      <td>3.55%</td>
+      <td>3.68% <div class="bar"><span style="width:100.00%"></span></div></td>
+      <td><code>decode-dependency-pressure</code> → <code>decode-dependency-pressure</code></td>
+    </tr>
+    
+
+    <tr>
+      <td>queue_pressure_serving</td>
+      <td>3.44%</td>
+      <td>3.57% <div class="bar"><span style="width:97.01%"></span></div></td>
+      <td><code>decode-dependency-pressure</code> → <code>decode-dependency-pressure</code></td>
+    </tr>
+    
+  </table>
+</div>
+
+</body>
+</html>

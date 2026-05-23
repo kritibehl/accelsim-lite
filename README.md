@@ -817,3 +817,18 @@ AccelSim-Lite includes additional systems/performance artifacts:
 These cover sanitizer-aware build workflows, profiling notes, cache/locality-adjacent access-pattern experiments, threading/queue-contention notes, and simulated KV-cache/token-batching inference pressure.
 
 Scope note: these are educational systems/performance studies and do not claim production profiling, hardware-cache measurement, or real LLM serving benchmarks.
+
+## Performance dashboard
+
+AccelSim-Lite includes an HTML benchmark landing page:
+
+- `reports/performance_dashboard.html`
+
+The dashboard summarizes:
+- memory-port latency/throughput improvements
+- runtime regression gate status
+- malformed-trace false accepts
+- cache/locality access-pattern results
+- KV-cache/token-batching pressure simulations
+
+Scope note: dashboard metrics are simulator-derived or educational workflow results, not hardware benchmark measurements.
