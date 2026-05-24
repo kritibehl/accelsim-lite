@@ -832,3 +832,17 @@ The dashboard summarizes:
 - KV-cache/token-batching pressure simulations
 
 Scope note: dashboard metrics are simulator-derived or educational workflow results, not hardware benchmark measurements.
+
+## Dashboard walkthrough and screenshot guidance
+
+Additional dashboard explanation artifacts:
+
+- `docs/performance_systems/performance_dashboard_walkthrough.md`
+- `reports/assets/dashboard_screenshot_instructions.md`
+
+These explain:
+- bottleneck-transition meaning
+- runtime regression validation
+- cache/locality tradeoffs
+- KV-cache/token-batching pressure behavior
+- and recommended dashboard screenshot capture workflow.
