@@ -858,3 +858,22 @@ AccelSim-Lite includes a concise proof page and concurrency microbenchmark:
 - `reports/assets/performance_dashboard_screenshot_note.md`
 
 These artifacts summarize the C++ systems, runtime, performance, ML-systems, concurrency, and validation signals demonstrated by the project.
+
+## Makefile and CI workflow
+
+AccelSim-Lite includes a Makefile and GitHub Actions workflow for reproducible C++ systems/performance validation.
+
+Common commands:
+
+```bash
+make build
+make test
+make benchmark
+make dashboard
+make ml-study
+make quality
+CI workflow:
+
+.github/workflows/cpp-quality.yml
+
+The workflow builds the C++ targets, runs tests, executes benchmark/report generators, and regenerates the performance dashboard.
