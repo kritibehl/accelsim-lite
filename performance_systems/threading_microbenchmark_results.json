@@ -1,0 +1,37 @@
+{
+  "scope": "Python threading/concurrency microbenchmark for queue-worker behavior; not a production scheduler benchmark",
+  "results": [
+    {
+      "worker_count": 1,
+      "tasks": 20000,
+      "elapsed_ms": 44.7496,
+      "throughput_tasks_per_sec": 446931.54,
+      "completed": 20000,
+      "throughput_relative_to_single_worker": 1.0
+    },
+    {
+      "worker_count": 2,
+      "tasks": 20000,
+      "elapsed_ms": 44.0662,
+      "throughput_tasks_per_sec": 453862.52,
+      "completed": 20000,
+      "throughput_relative_to_single_worker": 1.0155
+    },
+    {
+      "worker_count": 4,
+      "tasks": 20000,
+      "elapsed_ms": 48.5244,
+      "throughput_tasks_per_sec": 412163.99,
+      "completed": 20000,
+      "throughput_relative_to_single_worker": 0.9222
+    },
+    {
+      "worker_count": 8,
+      "tasks": 20000,
+      "elapsed_ms": 47.1319,
+      "throughput_tasks_per_sec": 424340.9,
+      "completed": 20000,
+      "throughput_relative_to_single_worker": 0.9495
+    }
+  ]
+}

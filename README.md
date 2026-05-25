@@ -846,3 +846,15 @@ These explain:
 - cache/locality tradeoffs
 - KV-cache/token-batching pressure behavior
 - and recommended dashboard screenshot capture workflow.
+
+## What this proves
+
+AccelSim-Lite includes a concise proof page and concurrency microbenchmark:
+
+- `docs/performance_systems/what_this_proves.md`
+- `performance_systems/threading_microbenchmark.py`
+- `performance_systems/threading_microbenchmark_report.md`
+- `performance_systems/threading_microbenchmark_results.json`
+- `reports/assets/performance_dashboard_screenshot_note.md`
+
+These artifacts summarize the C++ systems, runtime, performance, ML-systems, concurrency, and validation signals demonstrated by the project.
