@@ -877,3 +877,31 @@ CI workflow:
 .github/workflows/cpp-quality.yml
 
 The workflow builds the C++ targets, runs tests, executes benchmark/report generators, and regenerates the performance dashboard.
+
+## Jenkins-style CI and CMake build matrix
+
+AccelSim-Lite includes Jenkins-style and CMake build-profile automation:
+
+- `Jenkinsfile`
+- `ci/quality_gate.sh`
+- `ci/quality_gate_report.md`
+- `cmake/BuildProfiles.cmake`
+- `ci/run_build_matrix.sh`
+- `ci/build_matrix_report.md`
+
+The quality gate covers:
+- CMake configure/build
+- GoogleTest/CTest validation
+- benchmark execution
+- runtime regression threshold checks
+- report archival guidance
+- failure diagnostics
+
+The build matrix covers:
+- Debug
+- Release
+- ASan
+- UBSan
+- warnings-as-errors
+
+Scope note: these are local/CI-style build reliability workflows for C++ runtime/performance experiments.
