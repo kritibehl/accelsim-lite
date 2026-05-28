@@ -1,0 +1,7 @@
+expected=200000
+unsafe_counter=200000
+locked_counter=200000
+atomic_counter=200000
+unsafe_us=58
+locked_us=6443
+atomic_us=2255

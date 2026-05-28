@@ -13,6 +13,7 @@ add_executable(accelsim_tests
   test_boundary_workloads.cpp
   test_queue.cpp
   test_determinism.cpp
+    test_os_concepts.cpp
 )
 
 target_compile_definitions(accelsim_tests PRIVATE PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}")

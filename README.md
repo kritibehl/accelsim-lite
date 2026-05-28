@@ -905,3 +905,17 @@ The build matrix covers:
 - warnings-as-errors
 
 Scope note: these are local/CI-style build reliability workflows for C++ runtime/performance experiments.
+
+## OS concepts validation demos
+
+AccelSim-Lite includes small C++ OS-concepts demos for systems/performance roles:
+
+- `os_concepts/threading_race_sim.cpp`
+- `os_concepts/memory_pressure_sim.cpp`
+- `os_concepts/run_os_concepts_demo.sh`
+- `os_concepts/scheduler_latency_report.md`
+- `tests/test_os_concepts.cpp`
+
+These demos cover thread contention, mutex/atomic correctness, memory-pressure-style working-set behavior, scheduler-style latency reporting, and GoogleTest-backed regression checks.
+
+Scope note: these are educational OS-concepts demos and do not claim kernel development, production OS scheduler implementation, or hardware memory profiling.

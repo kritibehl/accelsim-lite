@@ -87,3 +87,13 @@ add_executable(runtime_equivalence_harness
 add_executable(dispatch_lookup_structure_benchmark
     execution_engine_lab/dispatch_lookup_structure_benchmark.cpp)
 
+
+
+add_executable(threading_race_sim
+  os_concepts/threading_race_sim.cpp
+)
+
+add_executable(memory_pressure_sim
+  os_concepts/memory_pressure_sim.cpp
+)
+
