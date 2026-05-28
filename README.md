@@ -919,3 +919,20 @@ AccelSim-Lite includes small C++ OS-concepts demos for systems/performance roles
 These demos cover thread contention, mutex/atomic correctness, memory-pressure-style working-set behavior, scheduler-style latency reporting, and GoogleTest-backed regression checks.
 
 Scope note: these are educational OS-concepts demos and do not claim kernel development, production OS scheduler implementation, or hardware memory profiling.
+
+## Cache hierarchy behavior study
+
+AccelSim-Lite includes a small simulated cache hierarchy study:
+
+- `cache_behavior/run_cache_hierarchy_study.py`
+- `cache_behavior/cache_hierarchy_results.json`
+- `cache_behavior/cache_hierarchy_report.md`
+- `cache_behavior/cache_latency_chart.svg`
+
+The study models:
+- L1 hit behavior
+- L2 hit behavior
+- memory access latency
+- locality profiles such as hot working sets, mixed locality, streaming access, and pointer chasing
+
+Scope note: this is a simulated cache hierarchy study and does not claim hardware-counter measurement or CPU microarchitecture benchmarking.

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="304" viewBox="0 0 820 304">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="30" y="40" font-family="Arial" font-size="24" font-weight="700">Simulated Cache Hierarchy Latency</text>
+<text x="30" y="68" font-family="Arial" font-size="13" fill="#555">Average access latency by locality profile; simulated cycles, not hardware counters.</text>
+<text x="30" y="120" font-family="Arial" font-size="14">hot_working_set</text>
+<rect x="230" y="100" width="56" height="28" rx="6" fill="#2563eb"/>
+<text x="296" y="120" font-family="Arial" font-size="14" fill="#111">9.44 cycles</text>
+<text x="30" y="166" font-family="Arial" font-size="14">mixed_locality</text>
+<rect x="230" y="146" width="142" height="28" rx="6" fill="#2563eb"/>
+<text x="382" y="166" font-family="Arial" font-size="14" fill="#111">23.8 cycles</text>
+<text x="30" y="212" font-family="Arial" font-size="14">streaming_access</text>
+<rect x="230" y="192" width="385" height="28" rx="6" fill="#2563eb"/>
+<text x="625" y="212" font-family="Arial" font-size="14" fill="#111">64.24 cycles</text>
+<text x="30" y="258" font-family="Arial" font-size="14">pointer_chasing</text>
+<rect x="230" y="238" width="520" height="28" rx="6" fill="#2563eb"/>
+<text x="760" y="258" font-family="Arial" font-size="14" fill="#111">86.64 cycles</text>
+</svg>

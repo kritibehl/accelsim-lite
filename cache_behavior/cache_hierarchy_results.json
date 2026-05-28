@@ -1,0 +1,58 @@
+{
+  "scope": "simulated cache hierarchy study; not hardware counter measurement",
+  "latency_model": {
+    "l1_cycles": 4,
+    "l2_cycles": 12,
+    "memory_cycles": 120
+  },
+  "results": [
+    {
+      "name": "hot_working_set",
+      "description": "Small repeated working set with high L1 locality.",
+      "l1_hit_rate": 0.86,
+      "l2_hit_rate": 0.1,
+      "memory_rate": 0.04,
+      "l1_cycles": 4,
+      "l2_cycles": 12,
+      "memory_cycles": 120,
+      "average_access_latency_cycles": 9.44,
+      "slowdown_vs_all_l1_hits": 2.36
+    },
+    {
+      "name": "mixed_locality",
+      "description": "Moderate locality with partial L2 reuse.",
+      "l1_hit_rate": 0.55,
+      "l2_hit_rate": 0.3,
+      "memory_rate": 0.15,
+      "l1_cycles": 4,
+      "l2_cycles": 12,
+      "memory_cycles": 120,
+      "average_access_latency_cycles": 23.8,
+      "slowdown_vs_all_l1_hits": 5.95
+    },
+    {
+      "name": "streaming_access",
+      "description": "Large streaming access pattern with reduced cache reuse.",
+      "l1_hit_rate": 0.22,
+      "l2_hit_rate": 0.28,
+      "memory_rate": 0.5,
+      "l1_cycles": 4,
+      "l2_cycles": 12,
+      "memory_cycles": 120,
+      "average_access_latency_cycles": 64.24,
+      "slowdown_vs_all_l1_hits": 16.06
+    },
+    {
+      "name": "pointer_chasing",
+      "description": "Pointer-heavy pattern with poor locality and high memory access pressure.",
+      "l1_hit_rate": 0.12,
+      "l2_hit_rate": 0.18,
+      "memory_rate": 0.7,
+      "l1_cycles": 4,
+      "l2_cycles": 12,
+      "memory_cycles": 120,
+      "average_access_latency_cycles": 86.64,
+      "slowdown_vs_all_l1_hits": 21.66
+    }
+  ]
+}
