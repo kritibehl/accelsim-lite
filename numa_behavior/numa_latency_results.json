@@ -1,0 +1,33 @@
+{
+  "scope": "simulated NUMA locality study; not hardware NUMA measurement",
+  "latency_model": {
+    "local_memory_cycles": 80,
+    "remote_memory_cycles": 155
+  },
+  "results": [
+    {
+      "name": "local_memory_access",
+      "local_rate": 0.92,
+      "remote_rate": 0.08,
+      "average_latency_cycles": 86.0,
+      "latency_delta_vs_all_local_cycles": 6.0,
+      "slowdown_vs_all_local": 1.075
+    },
+    {
+      "name": "balanced_cross_socket_access",
+      "local_rate": 0.6,
+      "remote_rate": 0.4,
+      "average_latency_cycles": 110.0,
+      "latency_delta_vs_all_local_cycles": 30.0,
+      "slowdown_vs_all_local": 1.375
+    },
+    {
+      "name": "remote_heavy_access",
+      "local_rate": 0.3,
+      "remote_rate": 0.7,
+      "average_latency_cycles": 132.5,
+      "latency_delta_vs_all_local_cycles": 52.5,
+      "slowdown_vs_all_local": 1.656
+    }
+  ]
+}

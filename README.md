@@ -936,3 +936,15 @@ The study models:
 - locality profiles such as hot working sets, mixed locality, streaming access, and pointer chasing
 
 Scope note: this is a simulated cache hierarchy study and does not claim hardware-counter measurement or CPU microarchitecture benchmarking.
+
+## Simulated NUMA locality study
+
+AccelSim-Lite includes a small simulated NUMA local-vs-remote memory study:
+
+- `numa_behavior/run_numa_latency_study.py`
+- `numa_behavior/numa_latency_results.json`
+- `numa_behavior/numa_latency_report.md`
+
+The study models local-memory access, balanced cross-socket-style access, and remote-heavy access to reason about latency deltas and memory-placement tradeoffs.
+
+Scope note: this is a simulated NUMA-locality study and does not claim real NUMA hardware measurement or CPU performance-counter profiling.
