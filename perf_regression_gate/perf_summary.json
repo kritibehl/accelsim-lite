@@ -1,0 +1,46 @@
+{
+  "scope": "C++ performance regression gate over synthetic benchmark summaries",
+  "p95_regression_threshold_percent": 25.0,
+  "throughput_drop_threshold_percent": 10.0,
+  "total_benchmarks": 3,
+  "failed_benchmarks": 1,
+  "decision": "fail",
+  "results": [
+    {
+      "benchmark": "metadata_lookup",
+      "baseline_p95_ns": 410,
+      "candidate_p95_ns": 620,
+      "p95_regression_percent": 51.22,
+      "baseline_throughput_ops_sec": 2400000,
+      "candidate_throughput_ops_sec": 2100000,
+      "throughput_change_percent": -12.5,
+      "decision": "fail",
+      "reasons": [
+        "p95 latency regression 51.22% > 25.0%",
+        "throughput drop -12.50% < -10.0%"
+      ]
+    },
+    {
+      "benchmark": "cache_locality_scan",
+      "baseline_p95_ns": 1200,
+      "candidate_p95_ns": 1180,
+      "p95_regression_percent": -1.67,
+      "baseline_throughput_ops_sec": 850000,
+      "candidate_throughput_ops_sec": 860000,
+      "throughput_change_percent": 1.18,
+      "decision": "pass",
+      "reasons": []
+    },
+    {
+      "benchmark": "threading_queue_worker",
+      "baseline_p95_ns": 1800,
+      "candidate_p95_ns": 2200,
+      "p95_regression_percent": 22.22,
+      "baseline_throughput_ops_sec": 445000,
+      "candidate_throughput_ops_sec": 410000,
+      "throughput_change_percent": -7.87,
+      "decision": "pass",
+      "reasons": []
+    }
+  ]
+}

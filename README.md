@@ -948,3 +948,22 @@ AccelSim-Lite includes a small simulated NUMA local-vs-remote memory study:
 The study models local-memory access, balanced cross-socket-style access, and remote-heavy access to reason about latency deltas and memory-placement tradeoffs.
 
 Scope note: this is a simulated NUMA-locality study and does not claim real NUMA hardware measurement or CPU performance-counter profiling.
+
+## Performance regression and profiling artifacts
+
+AccelSim-Lite includes final C++ runtime/performance validation artifacts:
+
+- `perf_regression_gate/baseline.json`
+- `perf_regression_gate/candidate.json`
+- `perf_regression_gate/compare_perf.py`
+- `perf_regression_gate/perf_report.md`
+- `profiler/runtime_profile.json`
+- `profiler/flamegraph_report.html`
+- `profiler/hot_path_summary.md`
+- `ci_matrix/asan_report.md`
+- `ci_matrix/ubsan_report.md`
+- `ci_matrix/warnings_as_errors.md`
+
+These artifacts make performance validation visible through baseline-vs-candidate regression checks, profiler-style hot-path reports, and sanitizer/build-hygiene summaries.
+
+Scope note: these are educational C++ runtime/performance validation artifacts and do not claim production-scale profiling or hardware-counter benchmarking.

@@ -1,0 +1,30 @@
+{
+  "scope": "simulated runtime hot-path profile; not sampled production profiling",
+  "hot_paths": [
+    {
+      "component": "metadata_lookup",
+      "self_percent": 31.4,
+      "reason": "runtime metadata lookup and map/tree index pressure"
+    },
+    {
+      "component": "bytecode_dispatch",
+      "self_percent": 24.8,
+      "reason": "interpreter-style opcode dispatch overhead"
+    },
+    {
+      "component": "cache_locality_scan",
+      "self_percent": 18.6,
+      "reason": "pointer-heavy and layout-sensitive access patterns"
+    },
+    {
+      "component": "threading_queue_worker",
+      "self_percent": 14.2,
+      "reason": "shared queue contention and worker synchronization"
+    },
+    {
+      "component": "wasm_validation",
+      "self_percent": 11.0,
+      "reason": "structured trace validation and malformed-case checks"
+    }
+  ]
+}

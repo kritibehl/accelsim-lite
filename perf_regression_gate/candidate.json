@@ -1,0 +1,19 @@
+{
+  "benchmarks": [
+    {
+      "name": "metadata_lookup",
+      "p95_ns": 620,
+      "throughput_ops_sec": 2100000
+    },
+    {
+      "name": "cache_locality_scan",
+      "p95_ns": 1180,
+      "throughput_ops_sec": 860000
+    },
+    {
+      "name": "threading_queue_worker",
+      "p95_ns": 2200,
+      "throughput_ops_sec": 410000
+    }
+  ]
+}
