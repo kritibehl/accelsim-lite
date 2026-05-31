@@ -1,0 +1,41 @@
+{
+  "scope": "baseline-vs-optimized comparison layer over AccelSim-Lite studies",
+  "experiments": [
+    {
+      "name": "metadata_lookup_path",
+      "baseline_latency_ns": 620,
+      "optimized_latency_ns": 410,
+      "baseline_throughput": 2100000,
+      "optimized_throughput": 2400000,
+      "optimization": "restore faster metadata lookup path",
+      "latency_change_percent": -33.87,
+      "speedup_x": 1.512,
+      "throughput_change_percent": 14.29,
+      "decision": "improved"
+    },
+    {
+      "name": "cache_locality_layout",
+      "baseline_latency_cycles": 86.64,
+      "optimized_latency_cycles": 23.8,
+      "baseline_throughput": 1.0,
+      "optimized_throughput": 3.64,
+      "optimization": "move pointer-heavy traversal toward mixed-locality layout",
+      "latency_change_percent": -72.53,
+      "speedup_x": 3.64,
+      "throughput_change_percent": 264.0,
+      "decision": "improved"
+    },
+    {
+      "name": "threading_queue_partitioning",
+      "baseline_latency_ns": 2200,
+      "optimized_latency_ns": 1800,
+      "baseline_throughput": 410000,
+      "optimized_throughput": 445000,
+      "optimization": "reduce shared queue contention",
+      "latency_change_percent": -18.18,
+      "speedup_x": 1.222,
+      "throughput_change_percent": 8.54,
+      "decision": "improved"
+    }
+  ]
+}

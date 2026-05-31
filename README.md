@@ -967,3 +967,20 @@ AccelSim-Lite includes final C++ runtime/performance validation artifacts:
 These artifacts make performance validation visible through baseline-vs-candidate regression checks, profiler-style hot-path reports, and sanitizer/build-hygiene summaries.
 
 Scope note: these are educational C++ runtime/performance validation artifacts and do not claim production-scale profiling or hardware-counter benchmarking.
+
+## Runtime Advisor and Optimization Explorer
+
+AccelSim-Lite includes recruiter-readable performance interpretation layers:
+
+- `runtime_advisor/run_runtime_advisor.py`
+- `runtime_advisor/runtime_advisor_report.json`
+- `runtime_advisor/runtime_advisor_report.md`
+- `optimization_explorer/run_optimization_explorer.py`
+- `optimization_explorer/optimization_comparison.json`
+- `optimization_explorer/optimization_explorer_report.md`
+
+The Runtime Advisor translates benchmark signals into bottleneck diagnoses and recommendations.
+
+The Optimization Explorer compares baseline and optimized scenarios using latency change, speedup, throughput movement, and regression/improvement decisions.
+
+Scope note: these are educational interpretation layers over simulator-derived experiments, not production autotuning or hardware profiling systems.
