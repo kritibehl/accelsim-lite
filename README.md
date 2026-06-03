@@ -984,3 +984,16 @@ The Runtime Advisor translates benchmark signals into bottleneck diagnoses and r
 The Optimization Explorer compares baseline and optimized scenarios using latency change, speedup, throughput movement, and regression/improvement decisions.
 
 Scope note: these are educational interpretation layers over simulator-derived experiments, not production autotuning or hardware profiling systems.
+
+## Build analytics and flaky-test detection
+
+AccelSim-Lite includes a synthetic CI/build-health analytics workflow:
+
+- `build_analytics/build_history.json`
+- `build_analytics/regression_trends.json`
+- `build_analytics/flaky_test_detector.py`
+- `build_analytics/build_health_report.md`
+
+The workflow analyzes build history, failed builds, recurring/flaky tests, build-duration deltas, regression trends, and root-cause patterns such as cache invalidation or queue contention.
+
+Scope note: this is a synthetic build-analytics workflow for CI/CD validation practice and does not claim production build-system ownership or Apple internal infrastructure experience.

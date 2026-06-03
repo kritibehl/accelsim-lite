@@ -1,0 +1,17 @@
+{
+  "scope": "synthetic build-history dataset for CI/build analytics",
+  "builds": [
+    {"build_id": "B-001", "commit": "a11", "status": "pass", "duration_sec": 420, "failed_tests": [], "root_cause": null},
+    {"build_id": "B-002", "commit": "a12", "status": "fail", "duration_sec": 510, "failed_tests": ["test_metadata_lookup"], "root_cause": "cache invalidation"},
+    {"build_id": "B-003", "commit": "a13", "status": "pass", "duration_sec": 430, "failed_tests": [], "root_cause": null},
+    {"build_id": "B-004", "commit": "a14", "status": "fail", "duration_sec": 620, "failed_tests": ["test_queue_pressure"], "root_cause": "thread contention"},
+    {"build_id": "B-005", "commit": "a15", "status": "fail", "duration_sec": 600, "failed_tests": ["test_metadata_lookup"], "root_cause": "cache invalidation"},
+    {"build_id": "B-006", "commit": "a16", "status": "pass", "duration_sec": 440, "failed_tests": [], "root_cause": null},
+    {"build_id": "B-007", "commit": "a17", "status": "fail", "duration_sec": 670, "failed_tests": ["test_cache_locality"], "root_cause": "memory layout regression"},
+    {"build_id": "B-008", "commit": "a18", "status": "pass", "duration_sec": 425, "failed_tests": [], "root_cause": null},
+    {"build_id": "B-009", "commit": "a19", "status": "fail", "duration_sec": 690, "failed_tests": ["test_metadata_lookup", "test_cache_locality"], "root_cause": "cache invalidation"},
+    {"build_id": "B-010", "commit": "a20", "status": "pass", "duration_sec": 415, "failed_tests": [], "root_cause": null},
+    {"build_id": "B-011", "commit": "a21", "status": "fail", "duration_sec": 710, "failed_tests": ["test_threading_microbenchmark"], "root_cause": "queue contention"},
+    {"build_id": "B-012", "commit": "a22", "status": "fail", "duration_sec": 705, "failed_tests": ["test_metadata_lookup"], "root_cause": "cache invalidation"}
+  ]
+}

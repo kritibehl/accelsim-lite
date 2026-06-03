@@ -1,0 +1,36 @@
+{
+  "scope": "synthetic build analytics for CI/build health review",
+  "total_builds": 12,
+  "failed_builds": 7,
+  "passed_builds": 5,
+  "failure_rate_percent": 58.33,
+  "flaky_tests": 2,
+  "flaky_test_details": [
+    {
+      "test": "test_metadata_lookup",
+      "failure_count": 4,
+      "builds": [
+        "B-002",
+        "B-005",
+        "B-009",
+        "B-012"
+      ],
+      "classification": "flaky_or_recurring"
+    },
+    {
+      "test": "test_cache_locality",
+      "failure_count": 2,
+      "builds": [
+        "B-007",
+        "B-009"
+      ],
+      "classification": "flaky_or_recurring"
+    }
+  ],
+  "regression_detected": true,
+  "root_cause": "cache invalidation",
+  "root_cause_occurrences": 4,
+  "avg_pass_duration_sec": 426.0,
+  "avg_fail_duration_sec": 643.57,
+  "duration_delta_fail_vs_pass_sec": 217.57
+}
