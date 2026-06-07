@@ -997,3 +997,31 @@ AccelSim-Lite includes a synthetic CI/build-health analytics workflow:
 The workflow analyzes build history, failed builds, recurring/flaky tests, build-duration deltas, regression trends, and root-cause patterns such as cache invalidation or queue contention.
 
 Scope note: this is a synthetic build-analytics workflow for CI/CD validation practice and does not claim production build-system ownership or Apple internal infrastructure experience.
+
+## Build Analytics Hub
+
+AccelSim-Lite includes a Build Analytics Hub for CI/build-health visibility:
+
+| Signal | Value |
+|---|---:|
+| Total builds analyzed | 12 |
+| Failed builds | 7 |
+| Failure rate | 58.33% |
+| Flaky / recurring tests | 2 |
+| Regression detected | true |
+| Top root cause | cache invalidation |
+| Root-cause occurrences | 4 |
+| Avg pass duration | 426.0 sec |
+| Avg fail duration | 643.57 sec |
+| Failure-duration delta | +217.57 sec |
+
+Key artifacts:
+
+- `build_analytics/build_history.json`
+- `build_analytics/regression_trends.json`
+- `build_analytics/flaky_test_detector.py`
+- `build_analytics/build_health_report.md`
+
+The hub detects recurring failed tests, build-duration drift, regression trends, and root-cause patterns across synthetic C++ runtime-validation pipelines.
+
+Scope note: this is a synthetic build-analytics workflow for CI/CD validation practice and does not claim production build-system ownership or Apple internal infrastructure experience.
