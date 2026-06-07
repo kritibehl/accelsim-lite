@@ -1,0 +1,14 @@
+{
+  "release": "v1.2",
+  "status": "candidate_baseline",
+  "benchmarks": {
+    "metadata_lookup_p95_ns": 410,
+    "metadata_lookup_throughput_ops_sec": 2400000,
+    "cache_locality_latency_cycles": 23.8,
+    "threading_queue_throughput_ops_sec": 445000
+  },
+  "build_health": {
+    "failed_builds": 2,
+    "flaky_tests": 1
+  }
+}

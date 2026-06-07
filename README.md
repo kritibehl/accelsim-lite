@@ -1025,3 +1025,22 @@ Key artifacts:
 The hub detects recurring failed tests, build-duration drift, regression trends, and root-cause patterns across synthetic C++ runtime-validation pipelines.
 
 Scope note: this is a synthetic build-analytics workflow for CI/CD validation practice and does not claim production build-system ownership or Apple internal infrastructure experience.
+
+## Engineering Performance Center and Regression Explorer
+
+AccelSim-Lite includes executive-readable performance and release-risk summaries:
+
+- `engineering_performance_center/generate_performance_center.py`
+- `engineering_performance_center/performance_center_summary.json`
+- `engineering_performance_center/performance_center_report.md`
+- `regression_explorer/release_a.json`
+- `regression_explorer/release_b.json`
+- `regression_explorer/compare_releases.py`
+- `regression_explorer/regression_summary.json`
+- `regression_explorer/regression_explorer_report.md`
+
+The Engineering Performance Center summarizes the biggest bottleneck, recommendation, speedup opportunity, failed builds, flaky tests, root cause, release decision, and engineering-health status.
+
+The Regression Explorer compares release A vs release B across benchmark drift, build-health movement, root cause, and release-blocking decisions.
+
+Scope note: these are educational performance/release-risk workflows over simulator-derived data and do not claim production release ownership or internal build infrastructure.

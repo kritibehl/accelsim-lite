@@ -1,0 +1,43 @@
+{
+  "release_a": "v1.2",
+  "release_b": "v1.3",
+  "regressions": 3,
+  "failed_build_delta": 5,
+  "flaky_test_delta": 1,
+  "root_cause": "metadata lookup path regression",
+  "decision": "block_release",
+  "metrics": [
+    {
+      "metric": "metadata_lookup_p95_ns",
+      "release_a": 410,
+      "release_b": 620,
+      "change_percent": 51.22,
+      "direction": "lower_is_better",
+      "classification": "regression"
+    },
+    {
+      "metric": "metadata_lookup_throughput_ops_sec",
+      "release_a": 2400000,
+      "release_b": 2100000,
+      "change_percent": -12.5,
+      "direction": "higher_is_better",
+      "classification": "regression"
+    },
+    {
+      "metric": "cache_locality_latency_cycles",
+      "release_a": 23.8,
+      "release_b": 86.64,
+      "change_percent": 264.03,
+      "direction": "lower_is_better",
+      "classification": "regression"
+    },
+    {
+      "metric": "threading_queue_throughput_ops_sec",
+      "release_a": 445000,
+      "release_b": 410000,
+      "change_percent": -7.87,
+      "direction": "higher_is_better",
+      "classification": "neutral"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "biggest_bottleneck": "cache locality",
+  "bottleneck_workload": "pointer_chasing",
+  "recommendation": "reduce pointer-heavy traversal, improve data locality, or restructure hot data into contiguous layouts",
+  "speedup_opportunity": "3.64x",
+  "speedup_source": "cache_locality_layout",
+  "failed_builds": 7,
+  "flaky_tests": 2,
+  "regression_detected": true,
+  "top_root_cause": "cache invalidation",
+  "release_decision": "block_release",
+  "release_root_cause": "metadata lookup path regression",
+  "engineering_health": "needs_review"
+}
