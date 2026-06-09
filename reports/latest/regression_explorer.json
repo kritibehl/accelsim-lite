@@ -1,0 +1,12 @@
+{
+  "project": "AccelSim-Lite",
+  "p95_regression_prior_run_pct": 51.22,
+  "p95_current_run": "within threshold",
+  "throughput_change_pct": -12.5,
+  "optimization_speedup": "3.64x",
+  "build_matrix": "PASS",
+  "asan": "PASS",
+  "ubsan": "PASS",
+  "warnings_as_errors": "PASS",
+  "tests_passing": 32
+}
