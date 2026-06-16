@@ -184,3 +184,31 @@ make test
   "action": "reorder_instruction_schedule"
 }
 ```
+
+## Runtime Performance Validation
+
+AccelSim-Lite validates runtime behavior across:
+
+- instruction lifecycle correctness
+- scheduler behavior
+- memory-pressure scenarios
+- workload trace comparison
+- benchmark regression thresholds
+- p95 latency and throughput changes
+
+Key artifacts:
+
+- `runtime_validation/benchmark_runner.md`
+- `runtime_validation/workload_trace_summary.md`
+- `runtime_validation/memory_pressure_report.md`
+- `runtime_validation/scheduler_regression_report.md`
+- `runtime_validation/build_regression_matrix.md`
+- `runtime_validation/p95_regression_report.md`
+- `performance_regression/baseline_metrics.json`
+- `performance_regression/candidate_metrics.json`
+- `performance_regression/regression_summary.md`
+- `performance_regression/bottleneck_analysis.md`
+
+GoogleTest coverage includes instruction lifecycle, scheduler regression, memory pressure, benchmark thresholds, and runtime state transitions.
+
+Scope note: these are educational C++ runtime/performance validation workflows and do not claim production hardware benchmarking.

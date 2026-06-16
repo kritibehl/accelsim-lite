@@ -1,0 +1,10 @@
+{
+  "release": "baseline",
+  "metrics": {
+    "instruction_lifecycle_pass_rate": 1.0,
+    "scheduler_p95_latency_ns": 1800,
+    "memory_pressure_latency_cycles": 23.8,
+    "metadata_lookup_p95_ns": 410,
+    "throughput_ops_sec": 2400000
+  }
+}
