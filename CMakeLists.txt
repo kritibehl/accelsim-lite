@@ -48,7 +48,7 @@ set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
 
 add_library(firmware_validation
   firmware_style_validation/fixed_point_filter.cpp
-  firmware_style_validation/ring_buffer.c
+  firmware_style_validation/ring_buffer.cpp
 )
 
 target_include_directories(firmware_validation PUBLIC
