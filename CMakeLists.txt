@@ -44,3 +44,14 @@ target_link_libraries(accelsim-lite PRIVATE accelsim_lite_core)
 
 set_target_properties(accelsim-lite PROPERTIES OUTPUT_NAME accelsim-lite)
 # /ACCELSIM_LITE_STAGE2
+
+
+add_library(firmware_validation
+  firmware_style_validation/fixed_point_filter.cpp
+  firmware_style_validation/ring_buffer.c
+)
+
+target_include_directories(firmware_validation PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/firmware_style_validation
+)
+

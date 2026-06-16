@@ -212,3 +212,31 @@ Key artifacts:
 GoogleTest coverage includes instruction lifecycle, scheduler regression, memory pressure, benchmark thresholds, and runtime state transitions.
 
 Scope note: these are educational C++ runtime/performance validation workflows and do not claim production hardware benchmarking.
+
+## Firmware-Style Validation Lab
+
+This module adds constrained C/C++ validation exercises for systems where correctness, timing, and memory behavior matter.
+
+It covers:
+
+- fixed-point arithmetic checks
+- bit-exactness against reference outputs
+- ring-buffer boundary behavior
+- timing-budget summaries
+- memory-budget summaries
+- hardware-interface mock validation
+
+Key artifacts:
+
+- `firmware_style_validation/README.md`
+- `firmware_style_validation/fixed_point_filter.cpp`
+- `firmware_style_validation/fixed_point_filter.h`
+- `firmware_style_validation/ring_buffer.c`
+- `firmware_style_validation/ring_buffer.h`
+- `firmware_style_validation/hardware_interface_mock.h`
+- `firmware_style_validation/reference_outputs.json`
+- `firmware_style_validation/timing_budget_report.md`
+- `firmware_style_validation/memory_budget_report.md`
+- `firmware_style_validation/bit_exactness_report.md`
+
+This is not production firmware or real hardware integration. It is a systems-validation exercise for constrained-runtime implementation patterns.

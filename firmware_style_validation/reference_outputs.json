@@ -1,0 +1,6 @@
+{
+  "scope": "reference outputs for Q8.8 fixed-point filter validation",
+  "alpha_q8_8": 128,
+  "inputs_q8_8": [256, 256, 512, 0],
+  "expected_outputs_q8_8": [128, 192, 352, 176]
+}
