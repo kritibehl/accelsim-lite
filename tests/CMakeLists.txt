@@ -12,6 +12,6 @@ add_executable(accelsim_tests
 )
 
 target_compile_definitions(accelsim_tests PRIVATE PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-target_link_libraries(accelsim_tests PRIVATE accelsim GTest::gtest_main)
+target_link_libraries(accelsim_tests PRIVATE accelsim accelsim_lite_core firmware_validation GTest::gtest_main)
 
 add_test(NAME accelsim_tests COMMAND accelsim_tests)
