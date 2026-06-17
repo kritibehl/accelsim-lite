@@ -1,3 +1,4 @@
+![CAD Flow CI](https://github.com/kritibehl/accelsim-lite/actions/workflows/cad_flow_ci.yml/badge.svg)
 # AccelSim-Lite
 
 **Turns performance regressions into named bottlenecks with actionable fixes.**
@@ -262,3 +263,34 @@ AccelSim-Lite includes a hardware-adjacent CAD-flow automation lab for RTL workf
 The lab demonstrates RTL lint-style checks, mock simulation regression summaries, changed-file impact analysis, CI-friendly report generation, and hardware-design validation artifacts.
 
 Scope note: this is an educational CAD-flow automation module and does not claim production EDA signoff, physical design, synthesis ownership, or Google internal CAD infrastructure experience.
+
+## CAD Flow Automation Layer
+
+AccelSim-Lite includes a CAD workflow automation layer for:
+
+- RTL lint-style checks
+- simulation regression
+- changed-file impact analysis
+- source-review reporting
+- CI-generated validation artifacts
+
+```text
+RTL files
+   ↓
+lint-style checks
+   ↓
+simulation checks
+   ↓
+regression runner
+   ↓
+changed-file impact analysis
+   ↓
+Markdown / JSON CAD-flow reports
+   ↓
+CI review artifact
+Key Artifacts
+cad_flow/docs/design_doc.md
+cad_flow/docs/rtl_validation_methodology.md
+cad_flow/reports/source_review_summary.md
+cad_flow/reports/cad_flow_dashboard.md
+.github/workflows/cad_flow_ci.yml
