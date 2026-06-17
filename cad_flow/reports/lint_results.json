@@ -1,0 +1,22 @@
+{
+  "files_checked": 3,
+  "failures": 0,
+  "status": "pass",
+  "results": [
+    {
+      "file": "cad_flow/rtl/arbiter.sv",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "file": "cad_flow/rtl/fifo.sv",
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "file": "cad_flow/rtl/register_file.sv",
+      "status": "pass",
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "lint_status": "pass",
+  "lint_failures": 0,
+  "simulation_status": "pass",
+  "tests_run": 4,
+  "tests_passed": 4,
+  "impacted_tests": 5,
+  "cad_flow_status": "pass"
+}

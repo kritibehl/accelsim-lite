@@ -240,3 +240,25 @@ Key artifacts:
 - `firmware_style_validation/bit_exactness_report.md`
 
 This is not production firmware or real hardware integration. It is a systems-validation exercise for constrained-runtime implementation patterns.
+
+## CAD Flow Automation Lab
+
+AccelSim-Lite includes a hardware-adjacent CAD-flow automation lab for RTL workflow validation:
+
+- `cad_flow/rtl/fifo.sv`
+- `cad_flow/rtl/arbiter.sv`
+- `cad_flow/rtl/register_file.sv`
+- `cad_flow/scripts/run_lint.py`
+- `cad_flow/scripts/run_sim.py`
+- `cad_flow/scripts/run_regression.py`
+- `cad_flow/scripts/summarize_results.py`
+- `cad_flow/scripts/changed_rtl_impact.py`
+- `cad_flow/reports/regression_summary.md`
+- `cad_flow/reports/simulation_results.json`
+- `cad_flow/reports/lint_report.md`
+- `cad_flow/Makefile`
+- `cad_flow/Dockerfile`
+
+The lab demonstrates RTL lint-style checks, mock simulation regression summaries, changed-file impact analysis, CI-friendly report generation, and hardware-design validation artifacts.
+
+Scope note: this is an educational CAD-flow automation module and does not claim production EDA signoff, physical design, synthesis ownership, or Google internal CAD infrastructure experience.

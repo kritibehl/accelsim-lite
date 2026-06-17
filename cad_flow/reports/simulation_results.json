@@ -1,0 +1,33 @@
+{
+  "scope": "educational mock RTL simulation regression results",
+  "tests_run": 4,
+  "tests_passed": 4,
+  "tests_failed": 0,
+  "status": "pass",
+  "cases": [
+    {
+      "design": "fifo",
+      "test": "push_pop_ordering",
+      "status": "pass",
+      "cycles": 32
+    },
+    {
+      "design": "fifo",
+      "test": "full_empty_boundaries",
+      "status": "pass",
+      "cycles": 48
+    },
+    {
+      "design": "arbiter",
+      "test": "priority_grant",
+      "status": "pass",
+      "cycles": 12
+    },
+    {
+      "design": "register_file",
+      "test": "write_then_read",
+      "status": "pass",
+      "cycles": 20
+    }
+  ]
+}

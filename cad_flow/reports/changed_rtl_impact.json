@@ -1,0 +1,15 @@
+{
+  "changed_files": [
+    "cad_flow/rtl/fifo.sv",
+    "cad_flow/rtl/register_file.sv"
+  ],
+  "impacted_tests": [
+    "fifo_full_empty",
+    "fifo_ordering",
+    "fifo_push_pop",
+    "register_file_address_bounds",
+    "register_file_read_write"
+  ],
+  "impact_count": 5,
+  "recommendation": "run targeted RTL regression for changed modules"
+}
