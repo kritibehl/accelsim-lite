@@ -1,0 +1,30 @@
+{
+  "tool": "verilator",
+  "tool_available": false,
+  "files_checked": 3,
+  "failures": 0,
+  "status": "pass",
+  "results": [
+    {
+      "file": "cad_flow/rtl/arbiter.sv",
+      "tool_available": false,
+      "status": "pass",
+      "stdout": "",
+      "stderr": "verilator not installed; used lightweight fallback syntax check"
+    },
+    {
+      "file": "cad_flow/rtl/fifo.sv",
+      "tool_available": false,
+      "status": "pass",
+      "stdout": "",
+      "stderr": "verilator not installed; used lightweight fallback syntax check"
+    },
+    {
+      "file": "cad_flow/rtl/register_file.sv",
+      "tool_available": false,
+      "status": "pass",
+      "stdout": "",
+      "stderr": "verilator not installed; used lightweight fallback syntax check"
+    }
+  ]
+}

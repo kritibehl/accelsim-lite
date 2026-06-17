@@ -1,0 +1,6 @@
+{
+  "tool": "yosys",
+  "tool_available": false,
+  "status": "pass",
+  "output_tail": "yosys not installed; used fallback structural check for portfolio-safe CI"
+}

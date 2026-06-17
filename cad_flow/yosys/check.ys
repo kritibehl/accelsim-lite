@@ -1,0 +1,6 @@
+read_verilog -sv cad_flow/rtl/fifo.sv
+read_verilog -sv cad_flow/rtl/arbiter.sv
+read_verilog -sv cad_flow/rtl/register_file.sv
+hierarchy -check
+proc
+check
