@@ -288,9 +288,9 @@ changed-file impact analysis
 Markdown / JSON CAD-flow reports
    ↓
 CI review artifact
-Key Artifacts
-cad_flow/docs/design_doc.md
-cad_flow/docs/rtl_validation_methodology.md
-cad_flow/reports/source_review_summary.md
-cad_flow/reports/cad_flow_dashboard.md
-.github/workflows/cad_flow_ci.yml
+### Key Artifacts
+- `cad_flow/docs/design_doc.md`
+- `cad_flow/docs/rtl_validation_methodology.md`
+- `cad_flow/reports/source_review_summary.md`
+- `cad_flow/reports/cad_flow_dashboard.md`
+- `.github/workflows/cad_flow_ci.yml`
