@@ -13,7 +13,7 @@ C++ runtime and performance validation platform with CI regression gating.
 
 **Problem:** Performance profilers tell you a workload is slow. They don't tell you which pipeline stage is the constraint, or whether adding hardware will help. The bottleneck moves as workloads shift between compute-heavy and memory-heavy profiles.
 
-**Impact:** Teams add compute capacity to bandwidth-bound workloads, or vice versa, wasting cost with no improvement.
+**Impact:** Teams add compute capacity to bandwidth-bound workloads or vice versa, wasting cost with no improvement.
 
 **Proof:** Every cycle that doesn't produce output gets a named stall reason. Bottleneck advisor issues concrete fix recommendations per workload profile. p95 regression gate detected +51.22% before it reached production.
 
@@ -260,9 +260,9 @@ AccelSim-Lite includes a hardware-adjacent CAD-flow automation lab for RTL workf
 - `cad_flow/Makefile`
 - `cad_flow/Dockerfile`
 
-The lab demonstrates RTL lint-style checks, mock simulation regression summaries, changed-file impact analysis, CI-friendly report generation, and hardware-design validation artifacts.
+The lab demonstrates RTL lint-style checks, mock simulation regression summaries, changed-file impact analysis, CI-friendly report generation and hardware-design validation artifacts.
 
-Scope note: this is an educational CAD-flow automation module and does not claim production EDA signoff, physical design, synthesis ownership, or Google internal CAD infrastructure experience.
+Scope note: this is an educational CAD-flow automation module and does not claim production EDA signoff, physical design, synthesis ownership or Google internal CAD infrastructure experience.
 
 ## CAD Flow Automation Layer
 
