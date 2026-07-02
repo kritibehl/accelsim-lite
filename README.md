@@ -294,3 +294,13 @@ CI review artifact
 - `cad_flow/reports/source_review_summary.md`
 - `cad_flow/reports/cad_flow_dashboard.md`
 - `.github/workflows/cad_flow_ci.yml`
+
+## C++ Performance Profile
+
+AccelSim-Lite includes a C++ performance profiling report:
+
+- `benchmarks/performance_profile.md`
+
+The report summarizes benchmark methodology, runtime comparison, throughput, latency, CPU-time interpretation, compiler profiles, and regression signals across deterministic pipeline simulation runs.
+
+Scope note: this is a simulator-derived C++ performance methodology artifact and does not claim hardware-counter profiling or production benchmarking.
