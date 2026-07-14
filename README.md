@@ -304,3 +304,29 @@ AccelSim-Lite includes a C++ performance profiling report:
 The report summarizes benchmark methodology, runtime comparison, throughput, latency, CPU-time interpretation, compiler profiles, and regression signals across deterministic pipeline simulation runs.
 
 Scope note: this is a simulator-derived C++ performance methodology artifact and does not claim hardware-counter profiling or production benchmarking.
+
+## TrajectoryGraph-Lite
+
+AccelSim-Lite includes a deterministic C++ graph/topology analysis module for synthetic route and trajectory data.
+
+It covers:
+
+- parsing synthetic trajectory points
+- graph node/edge construction
+- connected-component analysis
+- disconnected segment detection
+- edge-distance calculations
+- turn-transition analysis
+- benchmark report generation
+
+Key artifacts:
+
+- `trajectory_graph_lite/include/trajectory_graph.h`
+- `trajectory_graph_lite/src/trajectory_graph.cpp`
+- `trajectory_graph_lite/src/trajectory_graph_cli.cpp`
+- `trajectory_graph_lite/data/connected_route.csv`
+- `trajectory_graph_lite/data/disconnected_route.csv`
+- `trajectory_graph_lite/reports/trajectory_graph_report.md`
+- `tests/test_trajectory_graph.cpp`
+
+Scope note: this is a synthetic graph and computational-geometry-adjacent exercise. It does not claim autonomous-driving, production mapping, or road-network ownership.

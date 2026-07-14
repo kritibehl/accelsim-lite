@@ -55,3 +55,19 @@ target_include_directories(firmware_validation PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/firmware_style_validation
 )
 
+
+add_library(trajectory_graph_lite
+  trajectory_graph_lite/src/trajectory_graph.cpp
+)
+
+target_include_directories(trajectory_graph_lite PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/trajectory_graph_lite/include
+)
+
+add_executable(trajectory-graph
+  trajectory_graph_lite/src/trajectory_graph_cli.cpp
+)
+
+target_link_libraries(trajectory-graph PRIVATE
+  trajectory_graph_lite
+)
