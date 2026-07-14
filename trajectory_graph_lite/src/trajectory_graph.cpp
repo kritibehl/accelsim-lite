@@ -78,7 +78,7 @@ std::size_t TrajectoryGraph::connected_components() const {
     std::size_t components = 0;
 
     for (const auto& [id, _] : points_) {
-        if (visited.contains(id)) {
+        if (visited.find(id) != visited.end()) {
             continue;
         }
 
@@ -97,7 +97,7 @@ std::size_t TrajectoryGraph::connected_components() const {
             }
 
             for (const auto neighbor : adjacency_it->second) {
-                if (!visited.contains(neighbor)) {
+                if (visited.find(neighbor) == visited.end()) {
                     visited.insert(neighbor);
                     pending.push(neighbor);
                 }
