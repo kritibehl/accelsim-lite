@@ -1,0 +1,29 @@
+{
+  "scope": "deterministic synthetic trajectory graph benchmark",
+  "cases_run": 2,
+  "all_cases_passed": true,
+  "results": [
+    {
+      "case": "connected_route",
+      "elapsed_ms": 274.0383,
+      "nodes": 5,
+      "edges": 4,
+      "connected_components": 1,
+      "disconnected_segments": 0,
+      "total_edge_distance": 4.0,
+      "average_edge_distance": 1.0,
+      "turn_transitions": 1
+    },
+    {
+      "case": "disconnected_route",
+      "elapsed_ms": 2.9064,
+      "nodes": 6,
+      "edges": 3,
+      "connected_components": 3,
+      "disconnected_segments": 2,
+      "total_edge_distance": 3.0,
+      "average_edge_distance": 1.0,
+      "turn_transitions": 3
+    }
+  ]
+}
