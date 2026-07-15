@@ -1,0 +1,52 @@
+{
+  "scope": "deterministic simulated storage datapath benchmark",
+  "cases_run": 3,
+  "all_cases_passed": true,
+  "results": [
+    {
+      "case": "baseline",
+      "wall_time_ms": 585.9131,
+      "total_requests": 6,
+      "read_requests": 4,
+      "write_requests": 2,
+      "cache_hits": 4,
+      "cache_misses": 2,
+      "max_queue_depth": 6,
+      "throughput_requests_per_sec": 97560.976,
+      "p50_latency_us": 9.0,
+      "p95_latency_us": 19.0,
+      "p99_latency_us": 19.8,
+      "bottleneck": "balanced"
+    },
+    {
+      "case": "cache_pressure",
+      "wall_time_ms": 3.9688,
+      "total_requests": 8,
+      "read_requests": 7,
+      "write_requests": 1,
+      "cache_hits": 1,
+      "cache_misses": 7,
+      "max_queue_depth": 8,
+      "throughput_requests_per_sec": 45977.011,
+      "p50_latency_us": 21.25,
+      "p95_latency_us": 27.6,
+      "p99_latency_us": 28.72,
+      "bottleneck": "cache_miss_pressure"
+    },
+    {
+      "case": "queue_pressure",
+      "wall_time_ms": 3.2151,
+      "total_requests": 12,
+      "read_requests": 6,
+      "write_requests": 6,
+      "cache_hits": 3,
+      "cache_misses": 9,
+      "max_queue_depth": 8,
+      "throughput_requests_per_sec": 42253.521,
+      "p50_latency_us": 24.75,
+      "p95_latency_us": 31.4,
+      "p99_latency_us": 32.28,
+      "bottleneck": "queue_depth_pressure"
+    }
+  ]
+}

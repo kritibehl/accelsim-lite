@@ -330,3 +330,30 @@ Key artifacts:
 - `tests/test_trajectory_graph.cpp`
 
 Scope note: this is a synthetic graph and computational-geometry-adjacent exercise. It does not claim autonomous-driving, production mapping, or road-network ownership.
+
+## Storage Datapath Simulation
+
+AccelSim-Lite includes a deterministic C++ storage-style datapath simulation module.
+
+It covers:
+
+- read/write request queues
+- queue-depth tracking
+- cache hit/miss behavior
+- simulated memory-bandwidth pressure
+- throughput measurement
+- p50/p95/p99 latency reporting
+- bottleneck classification
+
+Key artifacts:
+
+- `storage_datapath/include/storage_datapath.h`
+- `storage_datapath/src/storage_datapath.cpp`
+- `storage_datapath/src/storage_datapath_cli.cpp`
+- `storage_datapath/data/baseline_workload.csv`
+- `storage_datapath/data/cache_pressure_workload.csv`
+- `storage_datapath/data/queue_pressure_workload.csv`
+- `storage_datapath/reports/storage_datapath_report.md`
+- `tests/test_storage_datapath.cpp`
+
+Scope note: this is a storage-style simulation exercise and does not claim filesystem, kernel, device virtualization, hardware offload, or Azure internal implementation experience.

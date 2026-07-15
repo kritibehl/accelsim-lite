@@ -71,3 +71,19 @@ add_executable(trajectory-graph
 target_link_libraries(trajectory-graph PRIVATE
   trajectory_graph_lite
 )
+
+add_library(storage_datapath
+  storage_datapath/src/storage_datapath.cpp
+)
+
+target_include_directories(storage_datapath PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/storage_datapath/include
+)
+
+add_executable(storage-datapath
+  storage_datapath/src/storage_datapath_cli.cpp
+)
+
+target_link_libraries(storage-datapath PRIVATE
+  storage_datapath
+)

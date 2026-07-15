@@ -10,6 +10,7 @@ add_executable(accelsim_tests
   test_queue.cpp
   test_determinism.cpp
   test_trajectory_graph.cpp
+  test_storage_datapath.cpp
 )
 
 target_compile_definitions(accelsim_tests PRIVATE PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}")

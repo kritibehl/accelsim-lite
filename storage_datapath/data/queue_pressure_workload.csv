@@ -1,0 +1,13 @@
+id,operation,block,size_bytes,cache_hit
+1,write,200,16384,false
+2,read,201,16384,false
+3,write,202,32768,false
+4,read,203,16384,true
+5,write,204,32768,false
+6,read,205,16384,false
+7,write,206,32768,false
+8,read,207,16384,true
+9,write,208,32768,false
+10,read,209,16384,false
+11,write,210,32768,false
+12,read,211,16384,true
