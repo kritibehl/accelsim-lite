@@ -87,3 +87,25 @@ add_executable(storage-datapath
 target_link_libraries(storage-datapath PRIVATE
   storage_datapath
 )
+
+add_library(performance_engine
+  performance_engine/src/performance_engine.cpp
+)
+
+target_include_directories(performance_engine PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/performance_engine/include
+)
+
+find_package(Threads REQUIRED)
+
+target_link_libraries(performance_engine PUBLIC
+  Threads::Threads
+)
+
+add_executable(performance-benchmark
+  performance_engine/src/performance_benchmark_cli.cpp
+)
+
+target_link_libraries(performance-benchmark PRIVATE
+  performance_engine
+)

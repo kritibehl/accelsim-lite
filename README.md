@@ -357,3 +357,41 @@ Key artifacts:
 - `tests/test_storage_datapath.cpp`
 
 Scope note: this is a storage-style simulation exercise and does not claim filesystem, kernel, device virtualization, hardware offload, or Azure internal implementation experience.
+
+## Multithreaded Performance Engineering
+
+AccelSim-Lite includes a deterministic C++ performance-engine module for
+studying runtime scaling and concurrency behavior.
+
+The module includes:
+
+- single-threaded and multithreaded execution
+- worker-count scaling
+- bounded request queues
+- queue wait measurement
+- lock-contention instrumentation
+- benchmark-owned memory-allocation counts
+- cache-local and cache-unfriendly access patterns
+- throughput measurement
+- p50/p95/p99 task latency
+- workload-size scaling
+- `-O0`, `-O2`, and `-O3` comparisons
+- macOS Instruments Time Profiler workflow
+- deterministic checksum verification
+
+Key artifacts:
+
+- `performance_engine/include/performance_engine.h`
+- `performance_engine/src/performance_engine.cpp`
+- `performance_engine/src/performance_benchmark_cli.cpp`
+- `performance_engine/scripts/run_performance_matrix.py`
+- `performance_engine/scripts/compare_optimizations.py`
+- `performance_engine/scripts/run_instruments_profile.sh`
+- `performance_engine/reports/multithreaded_performance_report.md`
+- `performance_engine/reports/compiler_optimization_report.md`
+- `docs/performance_analysis.md`
+- `tests/test_performance_engine.cpp`
+
+Scope note: these are deterministic synthetic systems-performance workloads.
+The project does not claim production trading-system or Citadel internal
+infrastructure experience.

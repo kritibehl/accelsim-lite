@@ -11,9 +11,11 @@ add_executable(accelsim_tests
   test_determinism.cpp
   test_trajectory_graph.cpp
   test_storage_datapath.cpp
+  test_performance_engine.cpp
 )
 
 target_compile_definitions(accelsim_tests PRIVATE PROJECT_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
-target_link_libraries(accelsim_tests PRIVATE accelsim accelsim_lite_core firmware_validation trajectory_graph_lite storage_datapath GTest::gtest_main)
+target_link_libraries(accelsim_tests PRIVATE accelsim accelsim_lite_core firmware_validation trajectory_graph_lite storage_datapath
+    performance_engine GTest::gtest_main)
 
 add_test(NAME accelsim_tests COMMAND accelsim_tests)
