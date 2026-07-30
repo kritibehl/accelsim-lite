@@ -59,6 +59,12 @@ PerformanceEngine::PerformanceEngine(BenchmarkConfig config)
         );
     }
 
+    if (config_.queue_batch_size == 0) {
+        throw std::invalid_argument(
+            "queue_batch_size must be greater than zero"
+        );
+    }
+
     for (std::size_t i = 0; i < data_.size(); ++i) {
         data_[i] =
             static_cast<std::uint64_t>((i * 2654435761ULL) ^ (i >> 3));
@@ -201,9 +207,11 @@ BenchmarkResult PerformanceEngine::run_multithreaded() {
     auto worker = [&]() {
         WorkerMetrics local_metrics;
         std::vector<double> local_latencies;
+        std::vector<QueuedTask> task_batch;
+        task_batch.reserve(config_.queue_batch_size);
 
         while (true) {
-            QueuedTask task;
+            task_batch.clear();
 
             const auto lock_attempt =
                 std::chrono::steady_clock::now();
@@ -241,38 +249,54 @@ BenchmarkResult PerformanceEngine::run_multithreaded() {
                 break;
             }
 
-            task = queue.front();
-            queue.pop_front();
-
-            queue_not_full.notify_one();
-            lock.unlock();
-
-            const auto execution_start =
-                std::chrono::steady_clock::now();
-
-            local_metrics.queue_wait_ns +=
-                static_cast<std::uint64_t>(
-                    std::chrono::duration_cast<std::chrono::nanoseconds>(
-                        execution_start - task.queued_at
-                    ).count()
+            const std::size_t tasks_to_take =
+                std::min(
+                    config_.queue_batch_size,
+                    queue.size()
                 );
 
-            const std::uint64_t task_checksum =
-                process_work(task.work, local_metrics);
+            for (
+                std::size_t index = 0;
+                index < tasks_to_take;
+                ++index
+            ) {
+                task_batch.push_back(queue.front());
+                queue.pop_front();
+            }
 
-            checksum.fetch_xor(
-                task_checksum,
-                std::memory_order_relaxed
-            );
+            queue_not_full.notify_all();
+            lock.unlock();
 
-            const auto execution_end =
-                std::chrono::steady_clock::now();
+            for (const auto& task : task_batch) {
+                const auto execution_start =
+                    std::chrono::steady_clock::now();
 
-            local_latencies.push_back(
-                std::chrono::duration<double, std::micro>(
-                    execution_end - task.queued_at
-                ).count()
-            );
+                local_metrics.queue_wait_ns +=
+                    static_cast<std::uint64_t>(
+                        std::chrono::duration_cast<
+                            std::chrono::nanoseconds
+                        >(
+                            execution_start - task.queued_at
+                        ).count()
+                    );
+
+                const std::uint64_t task_checksum =
+                    process_work(task.work, local_metrics);
+
+                checksum.fetch_xor(
+                    task_checksum,
+                    std::memory_order_relaxed
+                );
+
+                const auto execution_end =
+                    std::chrono::steady_clock::now();
+
+                local_latencies.push_back(
+                    std::chrono::duration<double, std::micro>(
+                        execution_end - task.queued_at
+                    ).count()
+                );
+            }
         }
 
         std::lock_guard<std::mutex> guard(metrics_mutex);

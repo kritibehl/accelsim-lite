@@ -1,0 +1,499 @@
+#!/usr/bin/env python3
+
+import argparse
+import csv
+import json
+import math
+import statistics
+import subprocess
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+DEFAULT_BINARY = ROOT / "build" / "performance-benchmark"
+
+
+def percentile(values: list[float], fraction: float) -> float:
+    ordered = sorted(values)
+
+    if not ordered:
+        return 0.0
+
+    position = fraction * (len(ordered) - 1)
+    lower = math.floor(position)
+    upper = math.ceil(position)
+
+    if lower == upper:
+        return ordered[lower]
+
+    weight = position - lower
+    return (
+        ordered[lower] * (1.0 - weight)
+        + ordered[upper] * weight
+    )
+
+
+def run_once(
+    binary: Path,
+    workers: int,
+    workload: int,
+    pattern: str,
+    batch_size: int,
+) -> dict[str, str]:
+    command = [
+        str(binary),
+        "multi",
+        str(workers),
+        str(workload),
+        pattern,
+        str(batch_size),
+    ]
+
+    completed = subprocess.run(
+        command,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    rows = list(csv.DictReader(completed.stdout.splitlines()))
+
+    if len(rows) != 1:
+        raise RuntimeError(
+            f"Unexpected benchmark output:\n{completed.stdout}"
+        )
+
+    return rows[0]
+
+
+def summarize(
+    samples: list[dict[str, str]],
+    label: str,
+    warmups: int,
+    iterations: int,
+    workers: int,
+    workload: int,
+    pattern: str,
+    batch_size: int,
+) -> dict:
+    elapsed = [
+        float(sample["elapsed_ms"])
+        for sample in samples
+    ]
+
+    throughput = [
+        float(sample["throughput_items_per_second"])
+        for sample in samples
+    ]
+
+    p95_latency = [
+        float(sample["p95_task_latency_us"])
+        for sample in samples
+    ]
+
+    p99_latency = [
+        float(sample["p99_task_latency_us"])
+        for sample in samples
+    ]
+
+    lock_acquisitions = [
+        float(sample["lock_acquisitions"])
+        for sample in samples
+    ]
+
+    contention = [
+        float(sample["contention_rate"])
+        for sample in samples
+    ]
+
+    mean_elapsed = statistics.fmean(elapsed)
+
+    variance = (
+        statistics.variance(elapsed)
+        if len(elapsed) > 1
+        else 0.0
+    )
+
+    standard_deviation = math.sqrt(variance)
+
+    confidence_interval_95 = (
+        1.96
+        * standard_deviation
+        / math.sqrt(len(elapsed))
+        if elapsed
+        else 0.0
+    )
+
+    checksums = {
+        sample["checksum"]
+        for sample in samples
+    }
+
+    if len(checksums) != 1:
+        raise RuntimeError(
+            f"Non-deterministic checksums detected: {checksums}"
+        )
+
+    return {
+        "label": label,
+        "configuration": {
+            "warmup_iterations": warmups,
+            "measured_iterations": iterations,
+            "workers": workers,
+            "workload_size": workload,
+            "access_pattern": pattern,
+            "queue_batch_size": batch_size,
+        },
+        "runtime_ms": {
+            "mean": mean_elapsed,
+            "median": statistics.median(elapsed),
+            "p95": percentile(elapsed, 0.95),
+            "p99": percentile(elapsed, 0.99),
+            "variance": variance,
+            "standard_deviation": standard_deviation,
+            "confidence_interval_95_half_width":
+                confidence_interval_95,
+        },
+        "throughput_items_per_second": {
+            "median": statistics.median(throughput),
+            "p95": percentile(throughput, 0.95),
+        },
+        "task_p95_latency_us": {
+            "median": statistics.median(p95_latency),
+            "p95": percentile(p95_latency, 0.95),
+        },
+        "task_p99_latency_us": {
+            "median": statistics.median(p99_latency),
+            "p95": percentile(p99_latency, 0.95),
+        },
+        "lock_acquisitions": {
+            "median": statistics.median(lock_acquisitions),
+        },
+        "contention_rate": {
+            "median": statistics.median(contention),
+        },
+        "checksum": next(iter(checksums)),
+    }
+
+
+def generate(args: argparse.Namespace) -> None:
+    binary = Path(args.binary)
+
+    if not binary.exists():
+        raise SystemExit(
+            f"Benchmark binary not found: {binary}"
+        )
+
+    for _ in range(args.warmups):
+        run_once(
+            binary,
+            args.workers,
+            args.workload,
+            args.pattern,
+            args.batch_size,
+        )
+
+    samples = [
+        run_once(
+            binary,
+            args.workers,
+            args.workload,
+            args.pattern,
+            args.batch_size,
+        )
+        for _ in range(args.iterations)
+    ]
+
+    summary = summarize(
+        samples=samples,
+        label=args.label,
+        warmups=args.warmups,
+        iterations=args.iterations,
+        workers=args.workers,
+        workload=args.workload,
+        pattern=args.pattern,
+        batch_size=args.batch_size,
+    )
+
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(summary, indent=2) + "\n")
+
+    print(json.dumps(summary, indent=2))
+
+
+def percent_change(
+    baseline: float,
+    candidate: float,
+) -> float:
+    if baseline == 0:
+        return 0.0
+
+    return ((candidate - baseline) / baseline) * 100.0
+
+
+def compare(args: argparse.Namespace) -> int:
+    baseline = json.loads(
+        Path(args.baseline).read_text()
+    )
+
+    candidate = json.loads(
+        Path(args.candidate).read_text()
+    )
+
+    baseline_config = baseline["configuration"]
+    candidate_config = candidate["configuration"]
+
+    comparable_fields = [
+        "warmup_iterations",
+        "measured_iterations",
+        "workers",
+        "workload_size",
+        "access_pattern",
+    ]
+
+    configuration_mismatches = {
+        field: {
+            "baseline": baseline_config[field],
+            "candidate": candidate_config[field],
+        }
+        for field in comparable_fields
+        if baseline_config[field] != candidate_config[field]
+    }
+
+    checksum_match = (
+        baseline["checksum"] == candidate["checksum"]
+    )
+
+    baseline_runtime_median = (
+        baseline["runtime_ms"]["median"]
+    )
+    candidate_runtime_median = (
+        candidate["runtime_ms"]["median"]
+    )
+
+    baseline_runtime_p95 = (
+        baseline["runtime_ms"]["p95"]
+    )
+    candidate_runtime_p95 = (
+        candidate["runtime_ms"]["p95"]
+    )
+
+    baseline_runtime_p99 = (
+        baseline["runtime_ms"]["p99"]
+    )
+    candidate_runtime_p99 = (
+        candidate["runtime_ms"]["p99"]
+    )
+
+    baseline_task_p95 = (
+        baseline["task_p95_latency_us"]["median"]
+    )
+    candidate_task_p95 = (
+        candidate["task_p95_latency_us"]["median"]
+    )
+
+    baseline_task_p99 = (
+        baseline["task_p99_latency_us"]["median"]
+    )
+    candidate_task_p99 = (
+        candidate["task_p99_latency_us"]["median"]
+    )
+
+    baseline_throughput = (
+        baseline["throughput_items_per_second"]["median"]
+    )
+    candidate_throughput = (
+        candidate["throughput_items_per_second"]["median"]
+    )
+
+    baseline_locks = (
+        baseline["lock_acquisitions"]["median"]
+    )
+    candidate_locks = (
+        candidate["lock_acquisitions"]["median"]
+    )
+
+    baseline_variance = baseline["runtime_ms"]["variance"]
+    candidate_variance = candidate["runtime_ms"]["variance"]
+
+    changes = {
+        "runtime_median_percent": percent_change(
+            baseline_runtime_median,
+            candidate_runtime_median,
+        ),
+        "runtime_p95_percent": percent_change(
+            baseline_runtime_p95,
+            candidate_runtime_p95,
+        ),
+        "runtime_p99_percent": percent_change(
+            baseline_runtime_p99,
+            candidate_runtime_p99,
+        ),
+        "task_p95_median_percent": percent_change(
+            baseline_task_p95,
+            candidate_task_p95,
+        ),
+        "task_p99_median_percent": percent_change(
+            baseline_task_p99,
+            candidate_task_p99,
+        ),
+        "median_throughput_percent": percent_change(
+            baseline_throughput,
+            candidate_throughput,
+        ),
+        "median_lock_acquisitions_percent": percent_change(
+            baseline_locks,
+            candidate_locks,
+        ),
+        "runtime_variance_percent": percent_change(
+            baseline_variance,
+            candidate_variance,
+        ),
+    }
+
+    failures = []
+
+    if configuration_mismatches:
+        failures.append(
+            "baseline and candidate configurations are incompatible"
+        )
+
+    if not checksum_match:
+        failures.append(
+            "candidate checksum differs from baseline"
+        )
+
+    if changes["runtime_median_percent"] > args.threshold:
+        failures.append(
+            "median runtime regression exceeded threshold"
+        )
+
+    if changes["task_p95_median_percent"] > args.threshold:
+        failures.append(
+            "median task p95 regression exceeded threshold"
+        )
+
+    stability_warnings = []
+
+    if changes["runtime_p95_percent"] > args.threshold:
+        stability_warnings.append(
+            "cross-run p95 runtime increased beyond threshold"
+        )
+
+    if changes["runtime_p99_percent"] > args.threshold:
+        stability_warnings.append(
+            "cross-run p99 runtime increased beyond threshold"
+        )
+
+    if changes["runtime_variance_percent"] > args.threshold:
+        stability_warnings.append(
+            "run-to-run variance increased beyond threshold"
+        )
+
+    report = {
+        "baseline": args.baseline,
+        "candidate": args.candidate,
+        "regression_threshold_percent": args.threshold,
+        "configuration_mismatches": configuration_mismatches,
+        "checksum_match": checksum_match,
+        "primary_gate_metrics": [
+            "runtime_median_percent",
+            "task_p95_median_percent",
+        ],
+        "changes": changes,
+        "stability_warnings": stability_warnings,
+        "decision": "FAIL" if failures else "PASS",
+        "reasons": (
+            failures
+            if failures
+            else [
+                "candidate passed median runtime and task p95 gates"
+            ]
+        ),
+    }
+
+    print(json.dumps(report, indent=2))
+
+    if args.report:
+        Path(args.report).write_text(
+            json.dumps(report, indent=2) + "\n"
+        )
+
+    return 1 if failures else 0
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description=(
+            "AccelSim-Lite reproducible performance-regression gate"
+        )
+    )
+
+    parser.add_argument(
+        "--binary",
+        default=str(DEFAULT_BINARY),
+    )
+
+    parser.add_argument("--run", action="store_true")
+    parser.add_argument("--label")
+    parser.add_argument("--output")
+
+    parser.add_argument("--warmups", type=int, default=5)
+    parser.add_argument("--iterations", type=int, default=25)
+    parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--workload", type=int, default=1000000)
+
+    parser.add_argument(
+        "--pattern",
+        choices=["local", "unfriendly"],
+        default="local",
+    )
+
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+    )
+
+    parser.add_argument("--baseline")
+    parser.add_argument("--candidate")
+
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=10.0,
+    )
+
+    parser.add_argument("--report")
+
+    args = parser.parse_args()
+
+    if args.run:
+        if not args.label or not args.output:
+            parser.error(
+                "--run requires --label and --output"
+            )
+
+        generate(args)
+        return 0
+
+    if args.baseline and args.candidate:
+        return compare(args)
+
+    parser.error(
+        "Use --run to generate results or provide "
+        "--baseline and --candidate to compare them."
+    )
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except subprocess.CalledProcessError as error:
+        print(
+            f"Benchmark command failed with exit code "
+            f"{error.returncode}",
+            file=sys.stderr,
+        )
+        sys.exit(error.returncode)

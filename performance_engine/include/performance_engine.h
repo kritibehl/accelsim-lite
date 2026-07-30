@@ -31,6 +31,10 @@ struct BenchmarkConfig {
     std::size_t chunk_size = 256;
     std::size_t queue_capacity = 1024;
     AccessPattern access_pattern = AccessPattern::CacheLocal;
+
+    // Number of queued tasks removed per mutex acquisition.
+    // A value of 1 preserves the original behavior.
+    std::size_t queue_batch_size = 1;
 };
 
 struct WorkerMetrics {

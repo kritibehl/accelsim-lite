@@ -104,3 +104,80 @@ TEST(PerformanceEngine, RejectsZeroWorkers) {
         std::invalid_argument
     );
 }
+
+TEST(PerformanceEngine, BatchedQueuePreservesDeterministicChecksum) {
+    performance_engine::PerformanceEngine original_engine({
+        8,
+        100000,
+        256,
+        1024,
+        performance_engine::AccessPattern::CacheLocal,
+        1
+    });
+
+    performance_engine::PerformanceEngine optimized_engine({
+        8,
+        100000,
+        256,
+        1024,
+        performance_engine::AccessPattern::CacheLocal,
+        8
+    });
+
+    const auto original =
+        original_engine.run_multithreaded();
+
+    const auto optimized =
+        optimized_engine.run_multithreaded();
+
+    EXPECT_EQ(original.checksum, optimized.checksum);
+    EXPECT_EQ(
+        original.tasks_processed,
+        optimized.tasks_processed
+    );
+}
+
+TEST(PerformanceEngine, BatchedQueueReducesLockAcquisitions) {
+    performance_engine::PerformanceEngine original_engine({
+        8,
+        100000,
+        256,
+        1024,
+        performance_engine::AccessPattern::CacheLocal,
+        1
+    });
+
+    performance_engine::PerformanceEngine optimized_engine({
+        8,
+        100000,
+        256,
+        1024,
+        performance_engine::AccessPattern::CacheLocal,
+        8
+    });
+
+    const auto original =
+        original_engine.run_multithreaded();
+
+    const auto optimized =
+        optimized_engine.run_multithreaded();
+
+    EXPECT_LT(
+        optimized.lock_acquisitions,
+        original.lock_acquisitions
+    );
+}
+
+TEST(PerformanceEngine, RejectsZeroQueueBatchSize) {
+    EXPECT_THROW(
+        performance_engine::PerformanceEngine({
+            4,
+            4096,
+            256,
+            64,
+            performance_engine::AccessPattern::CacheLocal,
+            0
+        }),
+        std::invalid_argument
+    );
+}

@@ -1,0 +1,39 @@
+{
+  "label": "baseline-single-pop",
+  "configuration": {
+    "warmup_iterations": 5,
+    "measured_iterations": 25,
+    "workers": 8,
+    "workload_size": 1000000,
+    "access_pattern": "local",
+    "queue_batch_size": 1
+  },
+  "runtime_ms": {
+    "mean": 4.317952,
+    "median": 4.3072,
+    "p95": 4.744479999999999,
+    "p99": 6.202479999999997,
+    "variance": 0.3898891309333334,
+    "standard_deviation": 0.6244110272355329,
+    "confidence_interval_95_half_width": 0.2447691226763289
+  },
+  "throughput_items_per_second": {
+    "median": 232168905.6649,
+    "p95": 275091310.72638
+  },
+  "task_p95_latency_us": {
+    "median": 376.2625,
+    "p95": 1022.3602999999997
+  },
+  "task_p99_latency_us": {
+    "median": 427.8205,
+    "p95": 1052.8970999999997
+  },
+  "lock_acquisitions": {
+    "median": 3915.0
+  },
+  "contention_rate": {
+    "median": 0.3377
+  },
+  "checksum": "465942206559627073"
+}

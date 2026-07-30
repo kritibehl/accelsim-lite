@@ -53,13 +53,14 @@ void print_result(
 }  // namespace
 
 int main(int argc, char** argv) {
-    if (argc != 5) {
+    if (argc != 5 && argc != 6) {
         std::cerr
             << "usage: performance-benchmark "
             << "<mode: single|multi> "
             << "<workers> "
             << "<workload_size> "
-            << "<pattern: local|unfriendly>\n";
+            << "<pattern: local|unfriendly> "
+            << "[queue_batch_size]\n";
 
         return 2;
     }
@@ -75,6 +76,11 @@ int main(int argc, char** argv) {
 
         const std::string pattern_text = argv[4];
 
+        const std::size_t queue_batch_size =
+            argc == 6
+                ? parse_size(argv[5], "queue batch size")
+                : 1;
+
         const auto pattern =
             pattern_text == "local"
                 ? performance_engine::AccessPattern::CacheLocal
@@ -85,7 +91,8 @@ int main(int argc, char** argv) {
             workload,
             256,
             1024,
-            pattern
+            pattern,
+            queue_batch_size
         });
 
         std::cout

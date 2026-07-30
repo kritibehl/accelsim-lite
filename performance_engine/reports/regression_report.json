@@ -1,0 +1,30 @@
+{
+  "baseline": "performance_engine/reports/baseline.json",
+  "candidate": "performance_engine/reports/candidate.json",
+  "regression_threshold_percent": 10.0,
+  "configuration_mismatches": {},
+  "checksum_match": true,
+  "primary_gate_metrics": [
+    "runtime_median_percent",
+    "task_p95_median_percent"
+  ],
+  "changes": {
+    "runtime_median_percent": -32.19028603268945,
+    "runtime_p95_percent": 17.5939196708595,
+    "runtime_p99_percent": 17.771085114341375,
+    "task_p95_median_percent": -71.60232550413606,
+    "task_p99_median_percent": -66.27393965459814,
+    "median_throughput_percent": 47.469280150663046,
+    "median_lock_acquisitions_percent": -84.54661558109834,
+    "runtime_variance_percent": 266.5676712536291
+  },
+  "stability_warnings": [
+    "cross-run p95 runtime increased beyond threshold",
+    "cross-run p99 runtime increased beyond threshold",
+    "run-to-run variance increased beyond threshold"
+  ],
+  "decision": "PASS",
+  "reasons": [
+    "candidate passed median runtime and task p95 gates"
+  ]
+}

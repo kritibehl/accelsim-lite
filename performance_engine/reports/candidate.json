@@ -1,0 +1,39 @@
+{
+  "label": "candidate-batched-pop",
+  "configuration": {
+    "warmup_iterations": 5,
+    "measured_iterations": 25,
+    "workers": 8,
+    "workload_size": 1000000,
+    "access_pattern": "local",
+    "queue_batch_size": 8
+  },
+  "runtime_ms": {
+    "mean": 3.273324,
+    "median": 2.9207,
+    "p95": 5.579219999999994,
+    "p99": 7.304727999999997,
+    "variance": 1.4292075077333333,
+    "standard_deviation": 1.1954946707256093,
+    "confidence_interval_95_half_width": 0.4686339109244389
+  },
+  "throughput_items_per_second": {
+    "median": 342377813.9177,
+    "p95": 429001069.47195995
+  },
+  "task_p95_latency_us": {
+    "median": 106.8498,
+    "p95": 695.2029399999996
+  },
+  "task_p99_latency_us": {
+    "median": 144.287,
+    "p95": 771.9760999999994
+  },
+  "lock_acquisitions": {
+    "median": 605.0
+  },
+  "contention_rate": {
+    "median": 0.276
+  },
+  "checksum": "465942206559627073"
+}

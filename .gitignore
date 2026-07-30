@@ -10,3 +10,10 @@ build/
 .idea/
 !reports/
 !reports/**
+
+build-asan/
+build-ubsan/
+build-tsan/
+build-profile/
+*.trace/
+.DS_Store

@@ -109,3 +109,11 @@ add_executable(performance-benchmark
 target_link_libraries(performance-benchmark PRIVATE
   performance_engine
 )
+
+add_executable(performance-profile-runner
+  performance_engine/src/performance_profile_runner.cpp
+)
+
+target_link_libraries(performance-profile-runner PRIVATE
+  performance_engine
+)

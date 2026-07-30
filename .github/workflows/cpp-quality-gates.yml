@@ -1,0 +1,117 @@
+name: C++ Quality Gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Release
+            os: ubuntu-latest
+            build_type: Release
+            cxx_flags: ""
+
+          - name: AddressSanitizer
+            os: ubuntu-latest
+            build_type: Debug
+            cxx_flags: >-
+              -fsanitize=address
+              -fno-omit-frame-pointer
+
+          - name: UndefinedBehaviorSanitizer
+            os: ubuntu-latest
+            build_type: Debug
+            cxx_flags: >-
+              -fsanitize=undefined
+              -fno-omit-frame-pointer
+
+          - name: ThreadSanitizer
+            os: ubuntu-latest
+            build_type: Debug
+            cxx_flags: >-
+              -fsanitize=thread
+              -fno-omit-frame-pointer
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: |
+          cmake \
+            -S . \
+            -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DCMAKE_CXX_FLAGS="${{ matrix.cxx_flags }}" \
+            -DCMAKE_EXE_LINKER_FLAGS="${{ matrix.cxx_flags }}"
+
+      - name: Build
+        run: cmake --build build -j 2
+
+      - name: GoogleTest
+        run: |
+          ctest \
+            --test-dir build \
+            --output-on-failure
+
+  regression-gate:
+    name: Performance Regression Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure release benchmark
+        run: |
+          cmake \
+            -S . \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build benchmark
+        run: |
+          cmake \
+            --build build \
+            --target performance-benchmark \
+            -j 2
+
+      - name: Generate baseline
+        run: |
+          ./benchmark \
+            --run \
+            --label baseline-single-pop \
+            --output baseline.json \
+            --warmups 3 \
+            --iterations 25 \
+            --workers 8 \
+            --workload 1000000 \
+            --pattern local \
+            --batch-size 1
+
+      - name: Generate candidate
+        run: |
+          ./benchmark \
+            --run \
+            --label candidate-batched-pop \
+            --output candidate.json \
+            --warmups 3 \
+            --iterations 25 \
+            --workers 8 \
+            --workload 1000000 \
+            --pattern local \
+            --batch-size 8
+
+      - name: Enforce regression threshold
+        run: |
+          ./benchmark \
+            --baseline baseline.json \
+            --candidate candidate.json \
+            --threshold 10

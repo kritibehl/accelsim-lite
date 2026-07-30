@@ -1,3 +1,9 @@
+# AccelSim-Lite — Deterministic C++ Performance Regression Lab
+
+> **Project scope:** AccelSim-Lite is a deterministic pipeline, concurrency,
+> and performance-regression laboratory. It is **not** the established
+> Accel-Sim GPU simulator and does not claim hardware-accurate GPU modeling.
+
 ![CAD Flow CI](https://github.com/kritibehl/accelsim-lite/actions/workflows/cad_flow_ci.yml/badge.svg)
 # AccelSim-Lite
 
@@ -395,3 +401,61 @@ Key artifacts:
 Scope note: these are deterministic synthetic systems-performance workloads.
 The project does not claim production trading-system or Citadel internal
 infrastructure experience.
+
+## Reproducible performance-regression gate
+
+Generate the original single-task queue baseline:
+
+```bash
+./benchmark \
+  --run \
+  --label baseline-single-pop \
+  --output performance_engine/reports/baseline.json \
+  --warmups 5 \
+  --iterations 25 \
+  --workers 8 \
+  --workload 1000000 \
+  --pattern local \
+  --batch-size 1
+Generate the batched queue candidate:
+
+./benchmark \
+  --run \
+  --label candidate-batched-pop \
+  --output performance_engine/reports/candidate.json \
+  --warmups 5 \
+  --iterations 25 \
+  --workers 8 \
+  --workload 1000000 \
+  --pattern local \
+  --batch-size 8
+
+Compare the results:
+
+./benchmark \
+  --baseline performance_engine/reports/baseline.json \
+  --candidate performance_engine/reports/candidate.json \
+  --threshold 10 \
+  --report performance_engine/reports/regression_report.json
+
+The benchmark includes:
+
+warmup iterations
+multiple measured iterations
+median, p95, and p99 runtime
+task p95 and p99 latency
+variance and standard deviation
+approximate 95% confidence interval
+throughput
+lock acquisitions and contention
+deterministic checksum validation
+an executable regression decision
+
+The optimization batches queue removals under one mutex acquisition and
+processes each batch outside the critical section. This reduces synchronization
+operations while preserving deterministic results.
+
+The regression gate treats median runtime and median task p95 latency as its
+primary release metrics. Cross-run p95 and p99 remain visible as stability
+signals because they can expose scheduler noise or increased variance.
+
