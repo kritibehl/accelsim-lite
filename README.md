@@ -458,4 +458,3 @@ operations while preserving deterministic results.
 The regression gate treats median runtime and median task p95 latency as its
 primary release metrics. Cross-run p95 and p99 remain visible as stability
 signals because they can expose scheduler noise or increased variance.
-
