@@ -117,3 +117,52 @@ add_executable(performance-profile-runner
 target_link_libraries(performance-profile-runner PRIVATE
   performance_engine
 )
+
+add_library(pthread_queue_c STATIC
+  benchmarks/pthreads_queue/src/pthread_queue.c
+)
+
+target_include_directories(pthread_queue_c PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/benchmarks/pthreads_queue/include
+)
+
+target_link_libraries(pthread_queue_c PUBLIC
+  Threads::Threads
+)
+
+set_target_properties(
+  pthread_queue_c
+  PROPERTIES
+    C_STANDARD 11
+    C_STANDARD_REQUIRED YES
+)
+
+add_executable(pthread-queue-benchmark
+  benchmarks/pthreads_queue/src/pthread_queue_benchmark.c
+)
+
+target_link_libraries(pthread-queue-benchmark PRIVATE
+  pthread_queue_c
+  Threads::Threads
+  m
+)
+
+set_target_properties(
+  pthread-queue-benchmark
+  PROPERTIES
+    C_STANDARD 11
+    C_STANDARD_REQUIRED YES
+)
+
+add_executable(pthread-queue-test
+  benchmarks/pthreads_queue/src/pthread_queue_test.c
+)
+
+target_link_libraries(pthread-queue-test PRIVATE
+  pthread_queue_c
+)
+
+add_test(
+  NAME pthread_queue_test
+  COMMAND pthread-queue-test
+)

@@ -458,3 +458,34 @@ operations while preserving deterministic results.
 The regression gate treats median runtime and median task p95 latency as its
 primary release metrics. Cross-run p95 and p99 remain visible as stability
 signals because they can expose scheduler noise or increased variance.
+
+## POSIX pthreads C concurrency module
+
+AccelSim-Lite includes a focused C implementation of a bounded multithreaded
+work queue using POSIX threading primitives.
+
+The module uses:
+
+- `pthread_create` / `pthread_join`
+- `pthread_mutex_t`
+- `pthread_cond_t`
+- `pthread_mutex_trylock`
+- `malloc` / `calloc` / `free`
+- C structs and raw pointers
+
+It benchmarks the C pthread implementation against the existing C++
+`std::thread` performance engine across worker counts and workload sizes,
+reporting throughput, p95/p99 latency, contention, allocation counts, and
+deterministic checksums.
+
+Key artifacts:
+
+- `benchmarks/pthreads_queue/include/pthread_queue.h`
+- `benchmarks/pthreads_queue/src/pthread_queue.c`
+- `benchmarks/pthreads_queue/src/pthread_queue_benchmark.c`
+- `benchmarks/pthreads_queue/src/pthread_queue_test.c`
+- `benchmarks/pthreads_queue/scripts/compare_pthreads_cpp.py`
+- `benchmarks/pthreads_queue/reports/pthreads_vs_cpp.md`
+
+Scope note: this provides focused POSIX-threaded C systems experience; it does
+not by itself imply broad C fluency or Darwin kernel/runtime experience.
