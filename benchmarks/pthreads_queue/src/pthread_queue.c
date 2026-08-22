@@ -23,13 +23,15 @@ static int lock_queue(
     uint64_t start_ns;
     uint64_t end_ns;
     int rc;
+    int contended;
 
     start_ns = pthread_queue_now_ns();
+    contended = 0;
 
     rc = pthread_mutex_trylock(&queue->mutex);
 
     if (rc == EBUSY) {
-        queue->contended_lock_acquisitions++;
+        contended = 1;
         rc = pthread_mutex_lock(&queue->mutex);
     }
 
@@ -40,7 +42,13 @@ static int lock_queue(
     end_ns = pthread_queue_now_ns();
 
     queue->lock_acquisitions++;
-    queue->lock_wait_ns += end_ns - start_ns;
+
+    if (contended) {
+        queue->contended_lock_acquisitions++;
+    }
+
+    queue->lock_wait_ns +=
+        end_ns - start_ns;
 
     return 0;
 }
@@ -120,7 +128,10 @@ int pthread_work_queue_push(
         return EINVAL;
     }
 
-    rc = lock_queue(queue);
+    rc = pthread_mutex_lock(
+        &queue->mutex
+    );
+
     if (rc != 0) {
         return rc;
     }

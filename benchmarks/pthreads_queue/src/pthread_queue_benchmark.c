@@ -21,6 +21,27 @@ typedef struct {
     size_t latency_count;
 } worker_context_t;
 
+static int compare_uint64(
+    const void *left,
+    const void *right
+) {
+    const uint64_t a =
+        *(const uint64_t *)left;
+
+    const uint64_t b =
+        *(const uint64_t *)right;
+
+    if (a < b) {
+        return -1;
+    }
+
+    if (a > b) {
+        return 1;
+    }
+
+    return 0;
+}
+
 static int compare_double(
     const void *a,
     const void *b
@@ -111,6 +132,13 @@ static uint64_t process_item(
         checksum += temporary[i];
     }
 
+    qsort(
+        temporary,
+        count,
+        sizeof(uint64_t),
+        compare_uint64
+    );
+
     for (i = 1; i < count; ++i) {
         checksum ^=
             temporary[i] - temporary[i - 1];
@@ -138,12 +166,12 @@ static void *worker_main(void *argument) {
             &item
         );
 
-        if (rc < 0) {
-            return NULL;
-        }
-
         if (rc == 0) {
             break;
+        }
+
+        if (rc != 1) {
+            return NULL;
         }
 
         start_ns = pthread_queue_now_ns();

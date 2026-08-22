@@ -85,28 +85,39 @@ for workload in WORKLOADS:
             )
 
         for _ in range(ITERATIONS):
-            pthread_samples.append(
-                run_csv(
-                    [
-                        str(PTHREAD_BIN),
-                        str(workers),
-                        str(workload),
-                    ]
-                )
+            c_row = run_csv(
+                [
+                    str(PTHREAD_BIN),
+                    str(workers),
+                    str(workload),
+                ]
             )
 
-            cpp_samples.append(
-                run_csv(
-                    [
-                        str(CPP_BIN),
-                        "multi",
-                        str(workers),
-                        str(workload),
-                        "local",
-                        "1",
-                    ]
-                )
+            cpp_row = run_csv(
+                [
+                    str(CPP_BIN),
+                    "multi",
+                    str(workers),
+                    str(workload),
+                    "local",
+                    "1",
+                ]
             )
+
+            if c_row["tasks_processed"] != cpp_row["tasks_processed"]:
+                raise RuntimeError(
+                    f"task-count mismatch: workers={workers}, "
+                    f"workload={workload}"
+                )
+
+            if c_row["checksum"] != cpp_row["checksum"]:
+                raise RuntimeError(
+                    f"checksum mismatch: workers={workers}, "
+                    f"workload={workload}"
+                )
+
+            pthread_samples.append(c_row)
+            cpp_samples.append(cpp_row)
 
         def median_metric(
             samples,
