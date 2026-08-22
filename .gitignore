@@ -17,3 +17,8 @@ build-tsan/
 build-profile/
 *.trace/
 .DS_Store
+
+# pthread sanitizer builds
+build-pthread-asan/
+build-pthread-tsan/
+build-pthread-ubsan/
