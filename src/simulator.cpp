@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "accelsim/core/simulator.hpp"
 #include <deque>
 #include <filesystem>

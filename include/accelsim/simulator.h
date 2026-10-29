@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include "accelsim/instruction.h"
 #include "accelsim/queue.h"
 #include "accelsim/memory_controller.h"

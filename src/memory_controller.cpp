@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "accelsim/memory_controller.h"
 
 namespace accelsim {

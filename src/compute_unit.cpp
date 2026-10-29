@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "accelsim/compute_unit.h"
 
 namespace accelsim {

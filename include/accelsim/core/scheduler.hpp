@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include <unordered_set>
 #include "accelsim/model/instruction.hpp"
 

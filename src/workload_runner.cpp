@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "accelsim/core/workload_runner.hpp"
 #include <filesystem>
 #include <fstream>

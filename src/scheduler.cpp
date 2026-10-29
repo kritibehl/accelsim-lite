@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "accelsim/core/scheduler.hpp"
 
 namespace accelsim {
