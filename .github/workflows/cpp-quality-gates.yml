@@ -91,7 +91,7 @@ jobs:
             --output baseline.json \
             --warmups 3 \
             --iterations 25 \
-            --workers 8 \
+            --workers $(nproc) \
             --workload 1000000 \
             --pattern local \
             --batch-size 1
@@ -104,7 +104,7 @@ jobs:
             --output candidate.json \
             --warmups 3 \
             --iterations 25 \
-            --workers 8 \
+            --workers $(nproc) \
             --workload 1000000 \
             --pattern local \
             --batch-size 8
