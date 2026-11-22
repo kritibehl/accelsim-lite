@@ -159,7 +159,7 @@ AccelSim-Lite/
 git clone https://github.com/kritibehl/AccelSim-Lite && cd AccelSim-Lite
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-bash scripts/run_demo.sh    # regression explorer output
+bash scripts/run_demo.sh    # regression explorer output (final plot step needs: pip install matplotlib)
 ctest --test-dir build --output-on-failure    # 18 gtest cases
 ```
 
@@ -168,8 +168,8 @@ ctest --test-dir build --output-on-failure    # 18 gtest cases
 ## Tests
 
 ```bash
-make test
-# → 32 tests passing
+ctest --test-dir build --output-on-failure
+# → 18 gtest cases (2 ctest entries)
 # AddressSanitizer: PASS — 0 heap errors
 # UndefinedBehaviorSanitizer: PASS — 0 undefined behavior
 # Warnings-as-errors: PASS
